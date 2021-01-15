@@ -1,6 +1,6 @@
-# Project Name
+# ZenRent Reservation
 
-> Project description
+> Reservation module for ZenRent application (built-from-scratch clone of existing application).
 
 ## Related Projects
 
