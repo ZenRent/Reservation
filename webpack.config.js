@@ -7,15 +7,15 @@ module.exports = {
   entry: SRC_FILE,
   output: {
     path: DIST_DIR,
-    filename: 'app.js'
+    filename: 'app.js',
   },
   module: {
     rules: [
       {
         test: /\.jsx$/,
-        use: 'babel-loader'
-      }
-    ]
+        use: 'babel-loader',
+      },
+    ],
   },
-  mode: 'development'
+  mode: 'development',
 };

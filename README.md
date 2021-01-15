@@ -4,10 +4,9 @@
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - https://github.com/ZenRent/Gallery
+  - https://github.com/ZenRent/Reviews
+  - https://github.com/ZenRent/More-Places-To-Stay
 
 ## Table of Contents
 
@@ -36,4 +35,3 @@ From within the root directory:
 npm install -g webpack
 npm install
 ```
-
