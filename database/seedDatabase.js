@@ -13,7 +13,7 @@ const upperLimits = {
     canBeZero: false,
   },
   averageRating: {
-    limit: 5,
+    limit: 500,
     canBeZero: false,
   },
   reviewCount: {
@@ -105,10 +105,10 @@ const addDocument = (mongoDoc, callback) => {
 };
 
 for (let i = 0; i < docsToCreate; i++) {
-  let mongoDoc = {
+  const mongoDoc = {
     listingId: i + 1,
     nightlyRate: getRandomValue(upperLimits.nightlyRate),
-    averageRating: getRandomValue(upperLimits.averageRating),
+    averageRating: (getRandomValue(upperLimits.averageRating) / 100),
     reviewCount: getRandomValue(upperLimits.reviewCount),
     minNights: getRandomValue(upperLimits.minNights),
     bookedDates: getRandomDateRanges(),
