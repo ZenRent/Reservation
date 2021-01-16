@@ -4,6 +4,7 @@ const database = require('./index.js');
 const { Schema } = mongoose;
 
 const listingSchema = new Schema({
+  listingId: { type: Number, required: true },
   nightlyRate: { type: Number, required: true },
   averageRating: { type: Number, required: true, default: 0 },
   reviewCount: { type: Number, required: true, default: 0 },

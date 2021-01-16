@@ -1,7 +1,7 @@
 const { Listing } = require('../../database/Listing.js');
 
 module.exports.getData = (id, callback) => {
-  Listing.find({ _id: id }, (err, res) => {
+  Listing.find({ listingId: id }, (err, res) => {
     if (err) {
       callback(err);
     } else {
