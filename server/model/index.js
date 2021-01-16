@@ -1,0 +1,11 @@
+const { Listing } = require('../../database/Listing.js');
+
+module.exports.getData = (id, callback) => {
+  Listing.find({ _id: id }, (err, res) => {
+    if (err) {
+      callback(err);
+    } else {
+      callback(null, res);
+    }
+  });
+};
