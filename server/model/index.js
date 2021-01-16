@@ -5,7 +5,7 @@ module.exports.getData = (id, callback) => {
     if (err) {
       callback(err);
     } else {
-      callback(null, res);
+      callback(null, res[0]);
     }
   });
 };
