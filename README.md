@@ -16,7 +16,16 @@
 
 ## Usage
 
-> Some usage instructions
+### API
+
+* Endpoint: `/api/listings/<id>`
+* Method: GET
+* Route parameter: Pass target listing's ID number
+* Sample response:
+
+```
+Work in progress – TBC
+```
 
 ## Requirements
 
