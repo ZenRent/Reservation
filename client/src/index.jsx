@@ -1,5 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App';
+import Reservation from './components/Reservation';
 
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(<Reservation />, document.getElementById('app'));

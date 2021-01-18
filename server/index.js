@@ -5,7 +5,7 @@ const controller = require('./controller');
 const app = express();
 const port = '3003';
 
-app.use(express.static(path.join(__dirname, '../client/public')));
+app.use('/:id', express.static(path.join(__dirname, '../client/public')));
 
 app.get('/api/listings/:id', controller.getData);
 
