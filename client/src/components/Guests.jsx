@@ -1,4 +1,5 @@
 import React from 'react';
+import Category from './Category';
 
 const { Component } = React;
 
@@ -12,6 +13,7 @@ class Guests extends Component {
     return (
       <div>
         <h2>Guests component</h2>
+        <Category />
       </div>
     );
   }
