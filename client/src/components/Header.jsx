@@ -23,7 +23,8 @@ const Header = (props) => {
   const ratingDisplay = reviewCount > 0
     ? (
       <span>
-        <span>{`★ ${averageRating} `}</span>
+        <span style={{ color: '#ff385c' }}>{'★ '}</span>
+        <span>{`${averageRating} `}</span>
         <span>{`(${reviewCount})`}</span>
       </span>
     )
