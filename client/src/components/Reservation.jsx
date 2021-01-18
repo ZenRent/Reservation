@@ -85,6 +85,7 @@ class Reservation extends Component {
       nightlyRate,
       averageRating,
       reviewCount,
+      bookedDates,
       checkInDate,
       checkOutDate,
     } = this.state;
@@ -94,7 +95,12 @@ class Reservation extends Component {
 
     return (
       <div>
-        <Header nightlyRate={nightlyRate} averageRating={averageRating} reviewCount={reviewCount} />
+        <Header
+          nightlyRate={nightlyRate}
+          averageRating={averageRating}
+          reviewCount={reviewCount}
+          bookedDates={bookedDates}
+        />
         <Dates />
         <Guests />
         {checkOrReserveButton}
