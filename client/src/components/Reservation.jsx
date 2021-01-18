@@ -1,5 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
+import Header from './Header';
 import Dates from './Dates';
 import Guests from './Guests';
 import Costs from './Costs';
@@ -60,19 +61,19 @@ class Reservation extends Component {
           bookedDates,
         } = data;
         this.setState({
-          listingId: listingId,
-          nightlyRate: nightlyRate,
-          averageRating: averageRating,
-          reviewCount: reviewCount,
-          minNights: minNights,
-          maxGuests: maxGuests,
-          cleaningFee: cleaningFee,
-          serviceFee: serviceFee,
-          occupancyTaxesAndFees: occupancyTaxesAndFees,
-          discountWeekly10: discountWeekly10,
-          discountWeekly20: discountWeekly20,
-          discountMonthly20: discountMonthly20,
-          bookedDates: bookedDates,
+          listingId,
+          nightlyRate,
+          averageRating,
+          reviewCount,
+          minNights,
+          maxGuests,
+          cleaningFee,
+          serviceFee,
+          occupancyTaxesAndFees,
+          discountWeekly10,
+          discountWeekly20,
+          discountMonthly20,
+          bookedDates,
         });
       },
       error: console.error
@@ -80,12 +81,23 @@ class Reservation extends Component {
   }
 
   render() {
-    const { listingId, nightlyRate } = this.state;
+    const {
+      nightlyRate,
+      averageRating,
+      reviewCount,
+      checkInDate,
+      checkOutDate,
+    } = this.state;
+    const checkOrReserveButton = checkInDate === '' || checkOutDate === ''
+      ? <button type="submit">Check Availability</button>
+      : <button type="submit">Reserve</button>;
+
     return (
       <div>
-        <h1>ZenRent Reservation App {listingId + ' | ' + nightlyRate}</h1>
+        <Header nightlyRate={nightlyRate} averageRating={averageRating} reviewCount={reviewCount} />
         <Dates />
         <Guests />
+        {checkOrReserveButton}
         <Costs />
       </div>
     );
