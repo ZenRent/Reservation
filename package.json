@@ -7,7 +7,9 @@
     "url": "https://github.com/ZenRent/reservation.git"
   },
   "scripts": {
-    "react-dev": "webpack -w"
+    "react-dev": "webpack -w",
+    "server-dev": "nodemon ./server/index.js",
+    "seed-db": "node ./database/seedDatabase.js"
   },
   "dependencies": {
     "express": "^4.17.1",
