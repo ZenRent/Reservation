@@ -3,7 +3,7 @@ import Calendar from './Calendar';
 
 const { Component } = React;
 
-class Dates extends Component {
+export default class Dates extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -84,5 +84,3 @@ class Dates extends Component {
     );
   }
 }
-
-export default Dates;

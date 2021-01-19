@@ -7,7 +7,7 @@ import Costs from './Costs';
 
 const { Component } = React;
 
-class Reservation extends Component {
+export default class Reservation extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -109,5 +109,3 @@ class Reservation extends Component {
     );
   }
 }
-
-export default Reservation;
