@@ -3,7 +3,7 @@ import Category from './Category';
 
 const { Component } = React;
 
-class Guests extends Component {
+export default class Guests extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -18,5 +18,3 @@ class Guests extends Component {
     );
   }
 }
-
-export default Guests;
