@@ -22,11 +22,12 @@ export default class Dates extends Component {
     const { name } = event.target;
     const focus = name.match(/(.+)Input/) ? name.match(/(.+)Input/)[1] : '';
     this.setState({
+      formFocus: focus,
       fieldFocus: focus,
     });
   }
 
-  handleFieldBlur(event) {
+  handleFieldBlur() {
     this.setState({
       fieldFocus: '',
     });
@@ -48,8 +49,20 @@ export default class Dates extends Component {
   }
 
   render() {
-    const { checkInInput, checkOutInput, fieldFocus } = this.state;
-    const tempTableBorderStyle = {
+    const {
+      formFocus,
+      checkInInput,
+      checkOutInput,
+      fieldFocus,
+    } = this.state;
+    const checkInTableBorderStyle = formFocus === 'checkIn' ? {
+      border: '3px black solid',
+    } : {
+      border: '1px black solid',
+    };
+    const checkOutTableBorderStyle = formFocus === 'checkOut' ? {
+      border: '3px black solid',
+    } : {
       border: '1px black solid',
     };
 
@@ -58,22 +71,22 @@ export default class Dates extends Component {
         <table>
           <tbody>
             <tr>
-              <td style={tempTableBorderStyle}>
+              <td style={checkInTableBorderStyle}>
                 <form name="checkInInput" onReset={this.clearInput} onFocus={this.handleFieldFocus} onBlur={this.handleFieldBlur}>
                   <label htmlFor="checkInInputField">
                     Check-in
                     <input type="text" name="checkInInput" id="checkInInputField" value={checkInInput} onChange={this.handleInput} placeholder={fieldFocus === 'checkIn' ? 'MM/DD/YYYY' : 'Add date'} />
                   </label>
-                  <input type="reset" value="×" />
+                  {checkInInput !== '' ? <input type="reset" value="×" /> : null}
                 </form>
               </td>
-              <td style={tempTableBorderStyle}>
+              <td style={checkOutTableBorderStyle}>
                 <form name="checkOutInput" onReset={this.clearInput} onFocus={this.handleFieldFocus} onBlur={this.handleFieldBlur}>
                   <label htmlFor="checkOutInputField">
                     Checkout
                     <input type="text" name="checkOutInput" id="checkOutInputField" value={checkOutInput} onChange={this.handleInput} placeholder={fieldFocus === 'checkOut' ? 'MM/DD/YYYY' : 'Add date'} />
                   </label>
-                  <input type="reset" value="×" />
+                  {checkOutInput !== '' ? <input type="reset" value="×" /> : null}
                 </form>
               </td>
             </tr>
