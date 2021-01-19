@@ -96,9 +96,10 @@ export default class Dates extends Component {
       border: '1px black solid',
     };
 
-    let datesDisplay;
-    if (DatesMaximized) {
-      datesDisplay = (
+    const calendar = DatesMaximized ? <Calendar /> : null;
+
+    return (
+      <div>
         <div onFocus={this.handleDatesFocus} onBlur={this.handleDatesBlur}>
           <table>
             <tbody>
@@ -124,43 +125,8 @@ export default class Dates extends Component {
               </tr>
             </tbody>
           </table>
-          <Calendar />
+          {calendar}
         </div>
-      );
-    } else {
-      datesDisplay = (
-        <div onClick={this.handleDatesClick} onFocus={this.handleDatesFocus}>
-          <table>
-            <tbody>
-              <tr>
-                <td style={checkInCheckOutTableBorderStyle}>
-                  <form name="checkInInput" onReset={this.clearInput} onFocus={this.handleFieldFocus} onBlur={this.handleFieldBlur}>
-                    <label htmlFor="checkInInputField">
-                      Check-in
-                      <input type="text" name="checkInInput" id="checkInInputField" value={checkInInput} onChange={this.handleInput} placeholder={fieldFocus === 'checkIn' ? 'MM/DD/YYYY' : 'Add date'} />
-                    </label>
-                    {checkInInput !== '' ? <input type="reset" value="×" /> : null}
-                  </form>
-                </td>
-                <td style={checkInCheckOutTableBorderStyle}>
-                  <form name="checkOutInput" onReset={this.clearInput} onFocus={this.handleFieldFocus} onBlur={this.handleFieldBlur}>
-                    <label htmlFor="checkOutInputField">
-                      Checkout
-                      <input type="text" name="checkOutInput" id="checkOutInputField" value={checkOutInput} onChange={this.handleInput} placeholder={fieldFocus === 'checkOut' ? 'MM/DD/YYYY' : 'Add date'} />
-                    </label>
-                    {checkOutInput !== '' ? <input type="reset" value="×" /> : null}
-                  </form>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      );
-    }
-
-    return (
-      <div>
-        {datesDisplay}
       </div>
     );
   }
