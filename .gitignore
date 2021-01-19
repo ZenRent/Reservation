@@ -91,6 +91,9 @@ dist
 # vuepress build output
 .vuepress/dist
 
+# Webpack build output
+client/public/app.js
+
 # Serverless directories
 .serverless/
 
