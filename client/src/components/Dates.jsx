@@ -35,14 +35,23 @@ export default class Dates extends Component {
     });
   }
 
-  handleDatesBlur() {
-    this.setState({
-      DatesMaximized: false,
-    });
+  handleDatesBlur(event) {
+    console.log('event.target:');
+    console.log(event.target);
+    console.log('event.currentTarget:');
+    console.log(event.currentTarget);
+    console.log('event.relatedTarget:');
+    console.log(event.relatedTarget);
+    // if (event.target === event.currentTarget) {
+    if (event.relatedTarget === null) {
+      this.setState({
+        DatesMaximized: false,
+      });
+    }
   }
 
   handleFieldFocus(event) {
-    const { name } = event.target;
+    const { name } = event.currentTarget;
     const focus = name.match(/(.+)Input/) ? name.match(/(.+)Input/)[1] : '';
     this.setState({
       formFocus: focus,
@@ -50,10 +59,12 @@ export default class Dates extends Component {
     });
   }
 
-  handleFieldBlur() {
-    this.setState({
-      fieldFocus: '',
-    });
+  handleFieldBlur(event) {
+    if (event.target === event.currentTarget) {
+      this.setState({
+        fieldFocus: '',
+      });
+    }
   }
 
   handleInput(event) {
@@ -80,21 +91,6 @@ export default class Dates extends Component {
       checkOutInput,
       fieldFocus,
     } = this.state;
-    const checkInCheckOutTableBorderStyle = DatesFocused ? {
-      border: '3px black solid',
-    } : {
-      border: '1px black solid',
-    };
-    const checkInTableBorderStyle = formFocus === 'checkIn' ? {
-      border: '3px black solid',
-    } : {
-      border: '1px black solid',
-    };
-    const checkOutTableBorderStyle = formFocus === 'checkOut' ? {
-      border: '3px black solid',
-    } : {
-      border: '1px black solid',
-    };
     const dateInputBox = (formAndFieldFocusValue, formAndFieldName, fieldId, labelText) => (
       <td style={formFocus === formAndFieldFocusValue
         ? { border: '3px black solid' }
@@ -130,30 +126,17 @@ export default class Dates extends Component {
 
     return (
       <div>
-        <div onFocus={this.handleDatesFocus} onBlur={this.handleDatesBlur}>
+        <div
+          tabIndex={1}
+          onFocus={this.handleDatesFocus}
+          onBlur={this.handleDatesBlur}
+          style={{ outline: 'none' }}
+        >
           <table>
             <tbody>
               <tr>
                 {dateInputBox('checkIn', 'checkInInput', 'checkInInputField', 'Check-in')}
                 {dateInputBox('checkOut', 'checkOutInput', 'checkOutInputField', 'Checkout')}
-                {/* <td style={checkInTableBorderStyle}>
-                  <form name="checkInInput" onReset={this.clearInput} onFocus={this.handleFieldFocus} onBlur={this.handleFieldBlur}>
-                    <label htmlFor="checkInInputField">
-                      <div style={{ pointerEvents: 'none', textTransform: 'uppercase' }}>Check-in</div>
-                      <input type="text" name="checkInInput" id="checkInInputField" value={checkInInput} onChange={this.handleInput} placeholder={fieldFocus === 'checkIn' ? 'MM/DD/YYYY' : 'Add date'} />
-                    </label>
-                    {checkInInput !== '' ? <input type="reset" value="×" /> : null}
-                  </form>
-                </td> */}
-                {/* <td style={checkOutTableBorderStyle}>
-                  <form name="checkOutInput" onReset={this.clearInput} onFocus={this.handleFieldFocus} onBlur={this.handleFieldBlur}>
-                    <label htmlFor="checkOutInputField">
-                      <div style={{ pointerEvents: 'none', textTransform: 'uppercase' }}>Checkout</div>
-                      <input type="text" name="checkOutInput" id="checkOutInputField" value={checkOutInput} onChange={this.handleInput} placeholder={fieldFocus === 'checkOut' ? 'MM/DD/YYYY' : 'Add date'} />
-                    </label>
-                    {checkOutInput !== '' ? <input type="reset" value="×" /> : null}
-                  </form>
-                </td> */}
               </tr>
             </tbody>
           </table>
