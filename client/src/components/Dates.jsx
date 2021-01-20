@@ -42,11 +42,11 @@ export default class Dates extends Component {
   }
 
   handleFieldBlur(event) {
-    if (event.target === event.currentTarget) {
+    // if (event.target === event.currentTarget) {
       this.setState({
         fieldFocus: '',
       });
-    }
+    // }
   }
 
   render() {
