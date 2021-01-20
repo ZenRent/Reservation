@@ -95,6 +95,36 @@ export default class Dates extends Component {
     } : {
       border: '1px black solid',
     };
+    const dateInputBox = (formAndFieldFocusValue, formAndFieldName, fieldId, labelText) => (
+      <td style={formFocus === formAndFieldFocusValue
+        ? { border: '3px black solid' }
+        : { border: '1px black solid' }}
+      >
+        <form
+          name={formAndFieldName}
+          onReset={this.clearInput}
+          onFocus={this.handleFieldFocus}
+          onBlur={this.handleFieldBlur}
+        >
+          <label htmlFor={fieldId}>
+            <div style={{ pointerEvents: 'none', textTransform: 'uppercase' }}>
+              {labelText}
+            </div>
+            <input
+              type="text"
+              name={formAndFieldName}
+              id={fieldId}
+              value={checkOutInput}
+              onChange={this.handleInput}
+              placeholder={fieldFocus === formAndFieldFocusValue
+                ? 'MM/DD/YYYY'
+                : 'Add date'}
+            />
+          </label>
+          {checkOutInput !== '' ? <input type="reset" value="×" /> : null}
+        </form>
+      </td>
+    );
 
     const calendar = DatesMaximized ? <Calendar /> : null;
 
@@ -104,24 +134,26 @@ export default class Dates extends Component {
           <table>
             <tbody>
               <tr>
-                <td style={checkInTableBorderStyle}>
+                {dateInputBox('checkIn', 'checkInInput', 'checkInInputField', 'Check-in')}
+                {dateInputBox('checkOut', 'checkOutInput', 'checkOutInputField', 'Checkout')}
+                {/* <td style={checkInTableBorderStyle}>
                   <form name="checkInInput" onReset={this.clearInput} onFocus={this.handleFieldFocus} onBlur={this.handleFieldBlur}>
                     <label htmlFor="checkInInputField">
-                      Check-in
+                      <div style={{ pointerEvents: 'none', textTransform: 'uppercase' }}>Check-in</div>
                       <input type="text" name="checkInInput" id="checkInInputField" value={checkInInput} onChange={this.handleInput} placeholder={fieldFocus === 'checkIn' ? 'MM/DD/YYYY' : 'Add date'} />
                     </label>
                     {checkInInput !== '' ? <input type="reset" value="×" /> : null}
                   </form>
-                </td>
-                <td style={checkOutTableBorderStyle}>
+                </td> */}
+                {/* <td style={checkOutTableBorderStyle}>
                   <form name="checkOutInput" onReset={this.clearInput} onFocus={this.handleFieldFocus} onBlur={this.handleFieldBlur}>
                     <label htmlFor="checkOutInputField">
-                      Checkout
+                      <div style={{ pointerEvents: 'none', textTransform: 'uppercase' }}>Checkout</div>
                       <input type="text" name="checkOutInput" id="checkOutInputField" value={checkOutInput} onChange={this.handleInput} placeholder={fieldFocus === 'checkOut' ? 'MM/DD/YYYY' : 'Add date'} />
                     </label>
                     {checkOutInput !== '' ? <input type="reset" value="×" /> : null}
                   </form>
-                </td>
+                </td> */}
               </tr>
             </tbody>
           </table>

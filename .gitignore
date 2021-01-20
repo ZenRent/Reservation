@@ -91,9 +91,6 @@ dist
 # vuepress build output
 .vuepress/dist
 
-# Webpack build output
-client/public/app.js
-
 # Serverless directories
 .serverless/
 
@@ -105,3 +102,9 @@ client/public/app.js
 
 # TernJS port file
 .tern-port
+
+# Webpack build output
+client/public/app.js
+
+# Practice
+client/src/components/Example.jsx
