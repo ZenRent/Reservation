@@ -7,29 +7,10 @@ const { Component } = React;
 export default class DateInput extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      // input: '',
-    };
-    // this.handleInput = this.handleInput.bind(this);
-    // this.clearInput = this.clearInput.bind(this);
+    this.state = {};
   }
 
-  // handleInput(event) {
-  //   const { value } = event.target;
-  //   this.setState({
-  //     input: value,
-  //   });
-  // }
-
-  // clearInput(event) {
-  //   event.preventDefault();
-  //   this.setState({
-  //     input: '',
-  //   });
-  // }
-
   render() {
-    // const { input } = this.state;
     const {
       dateType,
       onFieldFocus,
