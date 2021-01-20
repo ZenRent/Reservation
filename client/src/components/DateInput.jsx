@@ -33,6 +33,7 @@ export default class DateInput extends Component {
       dateType,
       onFieldFocus,
       onFieldBlur,
+      DatesMaximized,
       formFocus,
       fieldFocus,
     } = this.props;
@@ -47,7 +48,7 @@ export default class DateInput extends Component {
     const labelText = dateType.charAt(0).toUpperCase() + dateType.slice(1);
 
     return (
-      <td style={formFocus === formAndFieldFocusValue
+      <td style={formFocus === formAndFieldFocusValue && DatesMaximized
         ? { border: '3px black solid' }
         : { border: '1px black solid' }}
       >
@@ -83,6 +84,7 @@ DateInput.propTypes = {
   dateType: PropTypes.string.isRequired,
   onFieldFocus: PropTypes.func.isRequired,
   onFieldBlur: PropTypes.func.isRequired,
+  DatesMaximized: PropTypes.bool.isRequired,
   formFocus: PropTypes.string.isRequired,
   fieldFocus: PropTypes.string.isRequired,
 };

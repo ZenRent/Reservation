@@ -72,6 +72,7 @@ export default class Dates extends Component {
                 onFieldFocus={this.handleFieldFocus}
                 onFieldBlur={this.handleFieldBlur}
                 dateType="check-in"
+                DatesMaximized={DatesMaximized}
                 formFocus={formFocus}
                 fieldFocus={fieldFocus}
               />
@@ -79,6 +80,7 @@ export default class Dates extends Component {
                 onFieldFocus={this.handleFieldFocus}
                 onFieldBlur={this.handleFieldBlur}
                 dateType="checkout"
+                DatesMaximized={DatesMaximized}
                 formFocus={formFocus}
                 fieldFocus={fieldFocus}
               />
