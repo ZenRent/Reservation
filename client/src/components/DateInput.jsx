@@ -8,28 +8,28 @@ export default class DateInput extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      input: '',
+      // input: '',
     };
-    this.handleInput = this.handleInput.bind(this);
-    this.clearInput = this.clearInput.bind(this);
+    // this.handleInput = this.handleInput.bind(this);
+    // this.clearInput = this.clearInput.bind(this);
   }
 
-  handleInput(event) {
-    const { value } = event.target;
-    this.setState({
-      input: value,
-    });
-  }
+  // handleInput(event) {
+  //   const { value } = event.target;
+  //   this.setState({
+  //     input: value,
+  //   });
+  // }
 
-  clearInput(event) {
-    event.preventDefault();
-    this.setState({
-      input: '',
-    });
-  }
+  // clearInput(event) {
+  //   event.preventDefault();
+  //   this.setState({
+  //     input: '',
+  //   });
+  // }
 
   render() {
-    const { input } = this.state;
+    // const { input } = this.state;
     const {
       dateType,
       onFieldFocus,
@@ -37,6 +37,9 @@ export default class DateInput extends Component {
       DatesMaximized,
       formFocus,
       fieldFocus,
+      input,
+      onInput,
+      onClear,
     } = this.props;
 
     const dateTypeWithoutHyphen = dateType.indexOf('-') > -1
@@ -61,7 +64,7 @@ export default class DateInput extends Component {
       >
         <form
           name={formAndFieldName}
-          onReset={this.clearInput}
+          onReset={onClear}
           onFocus={onFieldFocus}
           onBlur={onFieldBlur}
         >
@@ -74,7 +77,7 @@ export default class DateInput extends Component {
               name={formAndFieldName}
               id={fieldId}
               value={input}
-              onChange={this.handleInput}
+              onChange={onInput}
               placeholder={fieldFocus === formAndFieldFocusValue && DatesMaximized
                 ? 'MM/DD/YYYY'
                 : 'Add date'}
@@ -95,4 +98,7 @@ DateInput.propTypes = {
   DatesMaximized: PropTypes.bool.isRequired,
   formFocus: PropTypes.string.isRequired,
   fieldFocus: PropTypes.string.isRequired,
+  input: PropTypes.string.isRequired,
+  onInput: PropTypes.func.isRequired,
+  onClear: PropTypes.func.isRequired,
 };

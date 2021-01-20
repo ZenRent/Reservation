@@ -12,11 +12,17 @@ export default class Dates extends Component {
       DatesMaximized: false,
       formFocus: '',
       fieldFocus: '',
+      checkInInput: '',
+      checkOutInput: '',
     };
     this.handleDatesFocus = this.handleDatesFocus.bind(this);
     this.handleDatesBlur = this.handleDatesBlur.bind(this);
+    this.handleClose = this.handleClose.bind(this);
     this.handleFieldFocus = this.handleFieldFocus.bind(this);
     this.handleFieldBlur = this.handleFieldBlur.bind(this);
+    this.handleInput = this.handleInput.bind(this);
+    this.clearInput = this.clearInput.bind(this);
+    this.clearAllInput = this.clearAllInput.bind(this);
   }
 
   handleDatesFocus() {
@@ -31,6 +37,12 @@ export default class Dates extends Component {
         DatesMaximized: false,
       });
     }
+  }
+
+  handleClose() {
+    this.setState({
+      DatesMaximized: false,
+    });
   }
 
   handleFieldFocus(event) {
@@ -48,11 +60,38 @@ export default class Dates extends Component {
     });
   }
 
+  handleInput(event) {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value,
+    });
+  }
+
+  clearInput(event) {
+    event.preventDefault();
+    const { name } = event.target;
+    this.setState({
+      [name]: '',
+    });
+  }
+
+  clearAllInput(event) {
+    event.preventDefault();
+    this.setState({
+      formFocus: '',
+      fieldFocus: '',
+      checkInInput: '',
+      checkOutInput: '',
+    });
+  }
+
   render() {
     const {
       DatesMaximized,
       formFocus,
       fieldFocus,
+      checkInInput,
+      checkOutInput,
     } = this.state;
     const { minNights } = this.props;
 
@@ -69,7 +108,19 @@ export default class Dates extends Component {
       )
       : null;
 
-    const calendar = DatesMaximized ? <Calendar /> : null;
+    const calendar = DatesMaximized
+      ? <Calendar />
+      : null;
+
+    const footer = DatesMaximized
+      ? (
+        <div>
+          <span>⌨️</span>
+          <button type="button" onClick={this.clearAllInput}>Clear dates</button>
+          <button type="button" onClick={this.handleClose}>Close</button>
+        </div>
+      )
+      : null;
 
     return (
       <div
@@ -89,6 +140,9 @@ export default class Dates extends Component {
                 DatesMaximized={DatesMaximized}
                 formFocus={formFocus}
                 fieldFocus={fieldFocus}
+                input={checkInInput}
+                onInput={this.handleInput}
+                onClear={this.clearInput}
               />
               <DateInput
                 onFieldFocus={this.handleFieldFocus}
@@ -97,11 +151,15 @@ export default class Dates extends Component {
                 DatesMaximized={DatesMaximized}
                 formFocus={formFocus}
                 fieldFocus={fieldFocus}
+                input={checkOutInput}
+                onInput={this.handleInput}
+                onClear={this.clearInput}
               />
             </tr>
           </tbody>
         </table>
         {calendar}
+        {footer}
       </div>
     );
   }
