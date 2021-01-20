@@ -1,4 +1,5 @@
 import React from 'react';
+// import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const { Component } = React;
@@ -37,6 +38,7 @@ export default class DateInput extends Component {
       formFocus,
       fieldFocus,
     } = this.props;
+
     const dateTypeWithoutHyphen = dateType.indexOf('-') > -1
       ? dateType.slice(0, dateType.indexOf('-')) + dateType.slice(dateType.indexOf('-') + 1)
       : dateType;
@@ -47,7 +49,12 @@ export default class DateInput extends Component {
     const fieldId = `${formAndFieldName}Field`;
     const labelText = dateType.charAt(0).toUpperCase() + dateType.slice(1);
 
+    // const TableCell = styled.td`
+    //   border: ${(props) => (props.focused ? '3px black solid' : '1px black solid')};
+    // `;
+
     return (
+      // <TableCell focused={formFocus === formAndFieldFocusValue && DatesMaximized}>
       <td style={formFocus === formAndFieldFocusValue && DatesMaximized
         ? { border: '3px black solid' }
         : { border: '1px black solid' }}
@@ -68,13 +75,14 @@ export default class DateInput extends Component {
               id={fieldId}
               value={input}
               onChange={this.handleInput}
-              placeholder={fieldFocus === formAndFieldFocusValue
+              placeholder={fieldFocus === formAndFieldFocusValue && DatesMaximized
                 ? 'MM/DD/YYYY'
                 : 'Add date'}
             />
           </label>
           {input !== '' ? <input type="reset" value="×" /> : null}
         </form>
+      {/* </TableCell> */}
       </td>
     );
   }
