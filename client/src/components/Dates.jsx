@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import DateInput from './DateInput';
 import Calendar from './Calendar';
 
@@ -41,12 +42,10 @@ export default class Dates extends Component {
     });
   }
 
-  handleFieldBlur(event) {
-    // if (event.target === event.currentTarget) {
-      this.setState({
-        fieldFocus: '',
-      });
-    // }
+  handleFieldBlur() {
+    this.setState({
+      fieldFocus: '',
+    });
   }
 
   render() {
@@ -55,6 +54,20 @@ export default class Dates extends Component {
       formFocus,
       fieldFocus,
     } = this.state;
+    const { minNights } = this.props;
+
+    const selectDates = DatesMaximized
+      ? (
+        <td>
+          <div>
+            Select dates
+          </div>
+          <div>
+            {`Minimum stay: ${minNights} ${minNights === 1 ? 'night' : 'nights'}`}
+          </div>
+        </td>
+      )
+      : null;
 
     const calendar = DatesMaximized ? <Calendar /> : null;
 
@@ -68,6 +81,7 @@ export default class Dates extends Component {
         <table>
           <tbody>
             <tr>
+              {selectDates}
               <DateInput
                 onFieldFocus={this.handleFieldFocus}
                 onFieldBlur={this.handleFieldBlur}
@@ -92,3 +106,7 @@ export default class Dates extends Component {
     );
   }
 }
+
+Dates.propTypes = {
+  minNights: PropTypes.number.isRequired,
+};

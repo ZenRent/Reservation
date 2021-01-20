@@ -85,6 +85,7 @@ export default class Reservation extends Component {
       nightlyRate,
       averageRating,
       reviewCount,
+      minNights,
       bookedDates,
       checkInDate,
       checkOutDate,
@@ -101,7 +102,7 @@ export default class Reservation extends Component {
           reviewCount={reviewCount}
           bookedDates={bookedDates}
         />
-        <Dates />
+        <Dates minNights={minNights} />
         <Guests />
         {checkOrReserveButton}
         <Costs />
