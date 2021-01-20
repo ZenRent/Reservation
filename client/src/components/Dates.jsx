@@ -115,7 +115,7 @@ export default class Dates extends Component {
     const footer = DatesMaximized
       ? (
         <div>
-          <span>⌨️</span>
+          <span><img src="./img/kb_no-hover.png" alt="keyboard icon" style={{ width: '24px', height: 'auto' }} /></span>
           <button type="button" onClick={this.clearAllInput}>Clear dates</button>
           <button type="button" onClick={this.handleClose}>Close</button>
         </div>

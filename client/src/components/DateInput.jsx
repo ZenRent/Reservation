@@ -34,14 +34,14 @@ export default class DateInput extends Component {
     const labelText = dateType.charAt(0).toUpperCase() + dateType.slice(1);
 
     // const TableCell = styled.td`
-    //   border: ${(props) => (props.focused ? '3px black solid' : '1px black solid')};
+    //   border: ${(props) => (props.focused ? '3px solid black' : '1px solid black')};
     // `;
 
     return (
       // <TableCell focused={formFocus === formAndFieldFocusValue && DatesMaximized}>
       <td style={formFocus === formAndFieldFocusValue && DatesMaximized
-        ? { border: '3px black solid' }
-        : { border: '1px black solid' }}
+        ? { border: '3px solid black' }
+        : { border: '1px solid black' }}
       >
         <form
           name={formAndFieldName}
