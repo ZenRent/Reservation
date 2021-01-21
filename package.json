@@ -10,7 +10,8 @@
     "react-dev": "webpack -w",
     "server-dev": "nodemon ./server/index.js",
     "seed-db": "node ./database/seedDatabase.js",
-    "test": "jest"
+    "test": "jest",
+    "test-coverage": "jest --coverage"
   },
   "dependencies": {
     "@wojtekmaj/enzyme-adapter-react-17": "^0.4.1",
