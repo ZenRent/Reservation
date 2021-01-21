@@ -1,6 +1,6 @@
 .monthRow {
   display: flex;
-  width: 800px;
+  width: 99vw;
   overflow-x: scroll;
 }
 

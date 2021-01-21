@@ -4,6 +4,21 @@
 }
 
 .keyboardIcon {
+  display: inline-block;
   width: 24px;
-  height: auto;
+  height: 24px;
+  background-image: url('./img/kb_no-hover.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.keyboardIcon:hover {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background-image: url('./img/kb_hover.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }

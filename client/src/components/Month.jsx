@@ -7,7 +7,6 @@ const Month = ({ month }) => {
     <div>
       <h4>
         {monthAndYear}
-        {/* Month component */}
       </h4>
       <Week />
     </div>
