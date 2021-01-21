@@ -1,0 +1,13 @@
+.monthRow {
+  display: flex;
+  width: 800px;
+  overflow-x: scroll;
+}
+
+.monthRow::-webkit-scrollbar {
+  display: none;
+}
+
+.monthBlock {
+  flex: 0 0 180px;
+}

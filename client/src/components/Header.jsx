@@ -3,13 +3,12 @@ import PropTypes from 'prop-types';
 import dateComp from '../utils/dateComputation';
 import styles from './styles/Header.css';
 
-const Header = (props) => {
-  const {
-    nightlyRate,
-    averageRating,
-    reviewCount,
-    bookedDates,
-  } = props;
+const Header = ({
+  nightlyRate,
+  averageRating,
+  reviewCount,
+  bookedDates,
+}) => {
   const nightlyRateDisplay = (
     <span>
       {'¥ '}

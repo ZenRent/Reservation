@@ -1,13 +1,24 @@
 import React from 'react';
 import Month from './Month';
+import styles from './styles/Calendar.css';
 
-const Calendar = (props) => (
-  <div>
-    <h3>
-      Calendar component
-    </h3>
-    <Month />
-  </div>
-);
+const Calendar = (props) => {
+  const months = [];
+  const nextMonth = new Date();
+  for (let i = 0; i < 37; i += 1) {
+    months.push(
+      <div key={nextMonth} className={styles.monthBlock}>
+        <Month month={new Date(nextMonth)} />
+      </div>,
+    );
+    nextMonth.setMonth(nextMonth.getMonth() + 1);
+  }
+
+  return (
+    <div className={styles.monthRow}>
+      {months}
+    </div>
+  );
+};
 
 export default Calendar;
