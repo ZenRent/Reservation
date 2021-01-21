@@ -1,8 +1,11 @@
 import React from 'react';
 import Week from './Week';
+import dateComp from '../utils/dateComputation';
 
-const Month = ({ month }) => {
-  const monthAndYear = month.toLocaleString('en-US', { month: 'long', year: 'numeric' });
+const Month = ({ monthDate }) => {
+  const monthAndYear = monthDate.toLocaleString('en-US', { month: 'long', year: 'numeric' });
+  const weeksAndDays = dateComp.getWeeksAndDays(monthDate);
+
   return (
     <div>
       <h4>
