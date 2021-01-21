@@ -1,6 +1,7 @@
 import React from 'react';
 // import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import styles from './style/DateInput.css';
 
 const { Component } = React;
 
@@ -54,6 +55,7 @@ export default class DateInput extends Component {
               {labelText}
             </div>
             <input
+              className={styles.test}
               type="text"
               name={formAndFieldName}
               id={fieldId}
@@ -66,6 +68,7 @@ export default class DateInput extends Component {
           </label>
           {input !== '' ? <input type="reset" value="×" /> : null}
         </form>
+        {/* <p className={styles.test}>This is some test text</p> */}
       {/* </TableCell> */}
       </td>
     );

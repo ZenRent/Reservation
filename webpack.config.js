@@ -15,6 +15,25 @@ module.exports = {
         test: /\.jsx$/,
         use: 'babel-loader',
       },
+      // {
+      //   test: /\.css$/,
+      //   use: ['style-loader', 'css-loader'],
+      // },
+      {
+        test: /\.css$/i,
+        // exclude: /node_modules/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                localIdentName: '[path][name]__[local]--[hash:base64:5]',
+              },
+            },
+          },
+        ],
+      },
     ],
   },
   mode: 'development',
