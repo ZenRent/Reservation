@@ -1,5 +1,4 @@
 import React from 'react';
-// import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import styles from './style/DateInput.css';
 
@@ -34,12 +33,7 @@ export default class DateInput extends Component {
     const fieldId = `${formAndFieldName}Field`;
     const labelText = dateType.charAt(0).toUpperCase() + dateType.slice(1);
 
-    // const TableCell = styled.td`
-    //   border: ${(props) => (props.focused ? '3px solid black' : '1px solid black')};
-    // `;
-
     return (
-      // <TableCell focused={formFocus === formAndFieldFocusValue && DatesMaximized}>
       <td style={formFocus === formAndFieldFocusValue && DatesMaximized
         ? { border: '3px solid black' }
         : { border: '1px solid black' }}
@@ -68,8 +62,6 @@ export default class DateInput extends Component {
           </label>
           {input !== '' ? <input type="reset" value="×" /> : null}
         </form>
-        {/* <p className={styles.test}>This is some test text</p> */}
-      {/* </TableCell> */}
       </td>
     );
   }
