@@ -34,9 +34,9 @@ export default class DateInput extends Component {
     const labelText = dateType.charAt(0).toUpperCase() + dateType.slice(1);
 
     return (
-      <td style={formFocus === formAndFieldFocusValue && DatesMaximized
-        ? { border: '3px solid black' }
-        : { border: '1px solid black' }}
+      <td className={formFocus === formAndFieldFocusValue && DatesMaximized
+        ? styles.focused
+        : styles.unfocused}
       >
         <form
           name={formAndFieldName}
@@ -45,11 +45,10 @@ export default class DateInput extends Component {
           onBlur={onFieldBlur}
         >
           <label htmlFor={fieldId}>
-            <div style={{ pointerEvents: 'none', textTransform: 'uppercase' }}>
+            <div className={styles.dateInputLabel}>
               {labelText}
             </div>
             <input
-              className={styles.test}
               type="text"
               name={formAndFieldName}
               id={fieldId}

@@ -1,4 +1,12 @@
-.test {
-  color: lightblue;
-  background-color: darkgreen;
+.focused {
+  border: 3px solid black;
+}
+
+.unfocused {
+  border: 1px solid black;
+}
+
+.dateInputLabel {
+  pointer-events: none;
+  text-transform: uppercase;
 }
