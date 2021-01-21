@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import dateComp from '../utils/dateComputation';
+import styles from './styles/Header.css';
 
 const Header = (props) => {
   const {
@@ -23,7 +24,7 @@ const Header = (props) => {
   const ratingDisplay = reviewCount > 0
     ? (
       <span>
-        <span style={{ color: '#ff385c' }}>{'★ '}</span>
+        <span className={styles.star}>{'★ '}</span>
         <span>{`${averageRating} `}</span>
         <span>{`(${reviewCount})`}</span>
       </span>

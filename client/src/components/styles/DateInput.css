@@ -1,0 +1,30 @@
+.focused {
+  border: 3px solid black;
+}
+
+.unfocused {
+  border: 1px solid black;
+}
+
+.dateInputLabel {
+  pointer-events: none;
+  text-transform: uppercase;
+}
+
+.inputContainer {
+  display: grid;
+  height: 2.5rem;
+  grid-template: 1fr 1fr / 5fr 1fr;
+}
+
+.inputLabel {
+  grid-area: 1 / 1 / span 1 / span 1;
+}
+
+.inputField {
+  grid-area: 2 / 1 / span 1 / span 1;
+}
+
+.inputClear {
+  grid-area: 1 / 2 / span 2 / span 1;
+}

@@ -1,0 +1,9 @@
+.DatesContainer {
+  display: inline-block;
+  outline: none;
+}
+
+.keyboardIcon {
+  width: 24px;
+  height: auto;
+}

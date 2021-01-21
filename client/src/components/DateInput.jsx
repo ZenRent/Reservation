@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './style/DateInput.css';
+import styles from './styles/DateInput.css';
 
 const { Component } = React;
 
@@ -39,16 +39,18 @@ export default class DateInput extends Component {
         : styles.unfocused}
       >
         <form
+          className={styles.inputContainer}
           name={formAndFieldName}
           onReset={onClear}
           onFocus={onFieldFocus}
           onBlur={onFieldBlur}
         >
-          <label htmlFor={fieldId}>
+          <label className={styles.inputLabel} htmlFor={fieldId}>
             <div className={styles.dateInputLabel}>
               {labelText}
             </div>
             <input
+              className={styles.inputField}
               type="text"
               name={formAndFieldName}
               id={fieldId}
@@ -59,7 +61,7 @@ export default class DateInput extends Component {
                 : 'Add date'}
             />
           </label>
-          {input !== '' ? <input type="reset" value="×" /> : null}
+          {input !== '' ? <input className={styles.inputClear} type="reset" value="×" /> : null}
         </form>
       </td>
     );
