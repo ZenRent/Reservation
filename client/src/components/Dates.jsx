@@ -12,10 +12,12 @@ export default class Dates extends Component {
     super(props);
     this.state = {
       DatesMaximized: false,
+      // DatesMaximized: true,
       formFocus: '',
       fieldFocus: '',
       checkInInput: '',
       checkOutInput: '',
+      scrollPosition: 0,
     };
     this.handleDatesFocus = this.handleDatesFocus.bind(this);
     this.handleDatesBlur = this.handleDatesBlur.bind(this);
@@ -25,7 +27,15 @@ export default class Dates extends Component {
     this.handleInput = this.handleInput.bind(this);
     this.clearInput = this.clearInput.bind(this);
     this.clearAllInput = this.clearAllInput.bind(this);
+    this.moveScrollPositionLeft = this.moveScrollPositionLeft.bind(this);
+    this.moveScrollPositionRight = this.moveScrollPositionRight.bind(this);
   }
+
+  // componentDidUpdate() {
+  //   const { scrollPosition } = this.state;
+  //   const root = document.querySelector(':root');
+  //   root.style.setProperty('--scroll-position', scrollPosition);
+  // }
 
   handleDatesFocus() {
     this.setState({
@@ -87,6 +97,24 @@ export default class Dates extends Component {
     });
   }
 
+  moveScrollPositionLeft() {
+    const { scrollPosition } = this.state;
+    if (scrollPosition > 0) {
+      this.setState({
+        scrollPosition: scrollPosition - 1,
+      });
+    }
+  }
+
+  moveScrollPositionRight() {
+    const { scrollPosition } = this.state;
+    if (scrollPosition < 18) {
+      this.setState({
+        scrollPosition: scrollPosition + 1,
+      });
+    }
+  }
+
   render() {
     const {
       DatesMaximized,
@@ -94,6 +122,7 @@ export default class Dates extends Component {
       fieldFocus,
       checkInInput,
       checkOutInput,
+      scrollPosition,
     } = this.state;
     const { minNights } = this.props;
 
@@ -111,7 +140,7 @@ export default class Dates extends Component {
       : null;
 
     const calendar = DatesMaximized
-      ? <Calendar />
+      ? <Calendar scrollPosition={scrollPosition} />
       : null;
 
     const footer = DatesMaximized
@@ -129,6 +158,15 @@ export default class Dates extends Component {
     const daysOfWeek = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
     const dayLabels = DatesMaximized
       ? <Week week={daysOfWeek} />
+      : null;
+
+    const calendarMovementButtons = DatesMaximized
+      ? (
+        <div className={styles.calendarMovementButtonContainer}>
+          <button type="button" onClick={this.moveScrollPositionLeft}>←</button>
+          <button type="button" onClick={this.moveScrollPositionRight}>→</button>
+        </div>
+      )
       : null;
 
     return (
@@ -173,6 +211,9 @@ export default class Dates extends Component {
               <span className={styles.dayLabel}>{dayLabels}</span>
               <span className={styles.dayLabel}>{dayLabels}</span>
             </div>
+          </div>
+          <div className={styles.calendarMovementButtonAbsoluteContainer}>
+            {calendarMovementButtons}
           </div>
         </div>
         {calendar}

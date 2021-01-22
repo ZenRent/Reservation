@@ -4,6 +4,7 @@ import Header from './Header';
 import Dates from './Dates';
 import Guests from './Guests';
 import Costs from './Costs';
+import styles from './styles/Reservation.css';
 
 const { Component } = React;
 
@@ -95,7 +96,7 @@ export default class Reservation extends Component {
       : <button type="submit">Reserve</button>;
 
     return (
-      <div>
+      <div className={styles.container}>
         <Header
           nightlyRate={nightlyRate}
           averageRating={averageRating}

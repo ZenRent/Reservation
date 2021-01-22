@@ -46,3 +46,19 @@
   /* border: 1px solid blue; */
   width: 220px;
 }
+
+.calendarMovementButtonAbsoluteContainer {
+  position: absolute;
+  top: 12px;
+  left: 14px;
+  width: 472px;
+}
+
+.calendarMovementButtonContainer {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  width: 472px;
+  z-index: 5;
+  /* border: 1px solid blue; */
+}
