@@ -31,12 +31,6 @@ export default class Dates extends Component {
     this.moveScrollPositionRight = this.moveScrollPositionRight.bind(this);
   }
 
-  // componentDidUpdate() {
-  //   const { scrollPosition } = this.state;
-  //   const root = document.querySelector(':root');
-  //   root.style.setProperty('--scroll-position', scrollPosition);
-  // }
-
   handleDatesFocus() {
     this.setState({
       DatesMaximized: true,

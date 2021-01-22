@@ -9,31 +9,9 @@
 
 .monthRow {
   display: flex;
-  /* width: 99vw; */
-  /* width: 500px; */
-  /* overflow-x: scroll; */
-  /* overflow-x: hidden; */
   transform: translateX(calc(var(--scroll-position) * -500px));
   transition: transform 0.25s;
 }
-
-/* .monthRow1::before {
-  content: var(--scroll-position);
-} */
-
-/* .monthRow1 {
-  display: flex; */
-  /* position: relative;
-  z-index: 1; */
-  /* width: 500px; */
-  /* overflow-x: scroll; */
-  /* overflow-x: hidden; */
-  /* transform: translateX(-5px); */
-  /* transform: translateX(-500px); */
-  /* transform: translateX(calc(3 * -100px)); */
-  /* transform: translateX(calc(var(--scroll-position) * -500px));
-  transition: transform 0.5s;
-} */
 
 .monthRow::-webkit-scrollbar {
   display: none;

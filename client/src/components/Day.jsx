@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './styles/Day.css';
 
 const Day = ({ day }) => {
@@ -19,3 +20,7 @@ const Day = ({ day }) => {
 };
 
 export default Day;
+
+Day.propTypes = {
+  day: PropTypes.shape(PropTypes.object).isRequired,
+};

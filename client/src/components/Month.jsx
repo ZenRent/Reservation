@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Week from './Week';
 import dateComp from '../utils/dateComputation';
 import styles from './styles/Month.css';
@@ -19,3 +20,7 @@ const Month = ({ monthDate }) => {
 };
 
 export default Month;
+
+Month.propTypes = {
+  monthDate: PropTypes.shape(PropTypes.object).isRequired,
+};

@@ -36,8 +36,6 @@
 
 .dayLabelFlexContainer {
   display: flex;
-  /* position: relative; */
-  /* display: block; */
   justify-content: space-between;
 }
 

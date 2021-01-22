@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Day from './Day';
 import styles from './styles/Week.css';
 
@@ -17,3 +18,7 @@ const Week = ({ week }) => {
 };
 
 export default Week;
+
+Week.propTypes = {
+  week: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
