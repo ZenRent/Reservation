@@ -8,6 +8,7 @@
   display: none;
 }
 
-.monthBlock {
-  flex: 0 0 180px;
+.monthContainer {
+  flex: 0 0 250px;
+  /* border: 2px solid red; */
 }

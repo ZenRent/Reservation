@@ -22,3 +22,27 @@
   background-repeat: no-repeat;
   background-position: center;
 }
+
+.dayLabelRelativeContainer {
+  position: relative;
+}
+
+.dayLabelAbsoluteContainer {
+  position: absolute;
+  top: 40px;
+  left: 14px;
+  width: 472px;
+}
+
+.dayLabelFlexContainer {
+  display: flex;
+  /* position: relative; */
+  /* display: block; */
+  justify-content: space-between;
+}
+
+.dayLabel {
+  display: inline-block;
+  /* border: 1px solid blue; */
+  width: 220px;
+}

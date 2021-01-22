@@ -2,15 +2,17 @@ import React from 'react';
 import styles from './styles/Day.css';
 
 const Day = ({ day }) => {
-  const dayDisplay = day === ''
-    ? ''
-    : day.getDate();
+  let dayDisplay;
+  if (typeof day === 'string' && day.length === 2) {
+    dayDisplay = day;
+  } else {
+    dayDisplay = day === ''
+      ? ''
+      : day.getDate();
+  }
 
   return (
     <div className={styles.dayBlock}>
-      {/* <h6>
-        Day component
-      </h6> */}
       {dayDisplay}
     </div>
   );

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import DateInput from './DateInput';
 import Calendar from './Calendar';
+import Week from './Week';
 import styles from './styles/Dates.css';
 
 const { Component } = React;
@@ -125,6 +126,11 @@ export default class Dates extends Component {
       )
       : null;
 
+    const daysOfWeek = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
+    const dayLabels = DatesMaximized
+      ? <Week week={daysOfWeek} />
+      : null;
+
     return (
       <div
         tabIndex={1}
@@ -161,6 +167,14 @@ export default class Dates extends Component {
             </tr>
           </tbody>
         </table>
+        <div className={styles.dayLabelRelativeContainer}>
+          <div className={styles.dayLabelAbsoluteContainer}>
+            <div className={styles.dayLabelFlexContainer}>
+              <span className={styles.dayLabel}>{dayLabels}</span>
+              <span className={styles.dayLabel}>{dayLabels}</span>
+            </div>
+          </div>
+        </div>
         {calendar}
         {footer}
       </div>

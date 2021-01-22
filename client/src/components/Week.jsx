@@ -1,15 +1,16 @@
 import React from 'react';
 import Day from './Day';
+import styles from './styles/Week.css';
 
 const Week = ({ week }) => {
-  const days = week.map((day, key) => <Day key={day + key} day={day} />);
+  let number = -1;
+  const days = week.map((day) => {
+    number += 1;
+    return <Day key={day + number} day={day} />;
+  });
 
   return (
-    <div>
-      {/* <h5>
-        Week component
-      </h5> */}
-      {/* <Day /> */}
+    <div className={styles.weekRow}>
       {days}
     </div>
   );

@@ -19,9 +19,6 @@ const dateComp = {
 
   getWeeksAndDays(monthDate) {
     const month = monthDate.getMonth();
-    // const nextMonth = new Date(monthDate);
-    // nextMonth.setMonth(nextMonth.getMonth() + 1);
-    // nextMonth.setDate(nextMonth.getDate() + 1);
     const weekdayNumber = this.getWeekdayNumber(monthDate);
     const weeksAndDays = [];
     let currentWeek = [];
@@ -29,7 +26,6 @@ const dateComp = {
       currentWeek.push('');
     }
     while (monthDate.getMonth() === month) {
-    // while (monthDate < nextMonth) {
       currentWeek.push(new Date(monthDate));
       monthDate.setDate(monthDate.getDate() + 1);
       if (currentWeek.length === 7) {
