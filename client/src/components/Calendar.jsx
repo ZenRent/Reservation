@@ -9,7 +9,7 @@ const Calendar = (props) => {
   for (let i = 0; i < 37; i += 1) {
     months.push(
       <div key={nextMonth} className={styles.monthBlock}>
-        <Month date={new Date(nextMonth)} />
+        <Month monthDate={new Date(nextMonth)} />
       </div>,
     );
     nextMonth.setMonth(nextMonth.getMonth() + 1);
