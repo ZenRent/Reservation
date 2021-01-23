@@ -20,8 +20,8 @@ const Week = ({ week }) => {
 export default Week;
 
 Week.propTypes = {
-  // week: PropTypes.array.isRequired,
-  // week: PropTypes.arrayOf(PropTypes.object).isRequired,
-  week: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)])).isRequired,
-  // week: PropTypes.oneOfType([PropTypes.string, PropTypes.shape(PropTypes.object)]).isRequired,
+  week: PropTypes.arrayOf(PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.instanceOf(Date),
+  ])).isRequired,
 };

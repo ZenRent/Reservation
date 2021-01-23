@@ -22,7 +22,5 @@ const Day = ({ day }) => {
 export default Day;
 
 Day.propTypes = {
-  // day: PropTypes.shape(PropTypes.object).isRequired,
-  // day: PropTypes.oneOfType([PropTypes.string, PropTypes.shape(PropTypes.object)]).isRequired,
   day: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]).isRequired,
 };

@@ -122,14 +122,16 @@ export default class Dates extends Component {
 
     const selectDates = DatesMaximized
       ? (
-        <td>
+        // <td>
+        <div className={styles.selectDatesContainer}>
           <div>
             Select dates
           </div>
           <div>
             {`Minimum stay: ${minNights} ${minNights === 1 ? 'night' : 'nights'}`}
           </div>
-        </td>
+        </div>
+        // </td>
       )
       : null;
 
@@ -140,8 +142,24 @@ export default class Dates extends Component {
     const footer = DatesMaximized
       ? (
         <div>
-          <span className={styles.keyboardIcon} />
-          {/* <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style="display: block; height: 24px; width: 24px; fill: currentcolor;"><path d="M29 5a2 2 0 0 1 1.995 1.85L31 7v18a2 2 0 0 1-1.85 1.995L29 27H3a2 2 0 0 1-1.995-1.85L1 25V7a2 2 0 0 1 1.85-1.995L3 5zm0 2H3v18h26zm-8 13v2H11v-2zm3-5a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm16-4a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"></path></svg> */}
+          {/* <span className={styles.keyboardIcon} /> */}
+          <svg
+            viewBox="0 0 32 32"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+            role="presentation"
+            focusable="false"
+            style={
+              {
+                display: 'block',
+                height: '24px',
+                width: '24px',
+                fill: 'currentcolor',
+              }
+            }
+          >
+            <path d="M29 5a2 2 0 0 1 1.995 1.85L31 7v18a2 2 0 0 1-1.85 1.995L29 27H3a2 2 0 0 1-1.995-1.85L1 25V7a2 2 0 0 1 1.85-1.995L3 5zm0 2H3v18h26zm-8 13v2H11v-2zm3-5a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm16-4a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+          </svg>
           <button type="button" onClick={this.clearAllInput}>Clear dates</button>
           <button type="button" onClick={this.handleClose}>Close</button>
         </div>
@@ -169,10 +187,13 @@ export default class Dates extends Component {
         onBlur={this.handleDatesBlur}
         className={styles.DatesContainer}
       >
-        <table>
+        <div className={styles.dateInputGridContainer}>
+        {/* <table>
           <tbody>
-            <tr>
-              {selectDates}
+            <tr> */}
+          {selectDates}
+          <div className={styles.dateInputContainer}>
+            <div className={styles.checkInInput}>
               <DateInput
                 onFieldFocus={this.handleFieldFocus}
                 onFieldBlur={this.handleFieldBlur}
@@ -184,6 +205,8 @@ export default class Dates extends Component {
                 onInput={this.handleInput}
                 onClear={this.clearInput}
               />
+            </div>
+            <div className={styles.checkOutInput}>
               <DateInput
                 onFieldFocus={this.handleFieldFocus}
                 onFieldBlur={this.handleFieldBlur}
@@ -195,9 +218,12 @@ export default class Dates extends Component {
                 onInput={this.handleInput}
                 onClear={this.clearInput}
               />
-            </tr>
+            </div>
+          </div>
+            {/* </tr>
           </tbody>
-        </table>
+        </table> */}
+        </div>
         <div className={styles.dayLabelRelativeContainer}>
           <div className={styles.dayLabelAbsoluteContainer}>
             <div className={styles.dayLabelFlexContainer}>

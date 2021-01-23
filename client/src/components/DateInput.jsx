@@ -34,7 +34,11 @@ export default class DateInput extends Component {
     const labelText = dateType.charAt(0).toUpperCase() + dateType.slice(1);
 
     return (
-      <td className={formFocus === formAndFieldFocusValue && DatesMaximized
+      // <td className={formFocus === formAndFieldFocusValue && DatesMaximized
+      //   ? styles.focused
+      //   : styles.unfocused}
+      // >
+      <div className={formFocus === formAndFieldFocusValue && DatesMaximized
         ? styles.focused
         : styles.unfocused}
       >
@@ -63,7 +67,8 @@ export default class DateInput extends Component {
           </label>
           {input !== '' ? <input className={styles.inputClear} type="reset" value="×" /> : null}
         </form>
-      </td>
+      </div>
+      // </td>
     );
   }
 }
