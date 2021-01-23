@@ -1,14 +1,16 @@
 .focused {
-  border: 3px solid black;
+  /* border: 3px solid black; */
 }
 
 .unfocused {
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 
 .dateInputLabel {
   pointer-events: none;
   text-transform: uppercase;
+  font-size: 11px;
+  font-family: 'RedHatDisplay-Bold', 'Helvetica Neue', Arial, sans-serif;
 }
 
 .inputContainer {
@@ -23,6 +25,9 @@
 
 .inputField {
   grid-area: 2 / 1 / span 1 / span 1;
+  border: 0;
+  outline: 0;
+  background-color: rgba(0, 0, 0, 0);
 }
 
 .inputClear {
