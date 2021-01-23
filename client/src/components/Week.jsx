@@ -20,5 +20,5 @@ const Week = ({ week }) => {
 export default Week;
 
 Week.propTypes = {
-  week: PropTypes.arrayOf(PropTypes.object).isRequired,
+  week: PropTypes.arrayOf().isRequired,
 };

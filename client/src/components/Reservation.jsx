@@ -5,6 +5,7 @@ import Dates from './Dates';
 import Guests from './Guests';
 import Costs from './Costs';
 import styles from './styles/Reservation.css';
+import './styles/global.css';
 
 const { Component } = React;
 

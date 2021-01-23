@@ -108,3 +108,8 @@ client/public/app.js
 
 # Practice
 client/src/components/Example.jsx
+
+# Assets
+client/public/*.ttf
+client/public/*.otf
+client/public/*.png
