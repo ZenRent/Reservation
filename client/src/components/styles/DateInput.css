@@ -1,20 +1,4 @@
-/* .focused {
-  border: 3px solid black;
-  border-radius: 7px;
-  width: 157px;
-  height: 56px;
-  padding: 10px;
-} */
-
-/* .unfocused {
-  border: 1px solid black;
-  width: 157px;
-  height: 56px;
-  padding: 10px;
-} */
-
 .dateInputContainer {
-  /* border: 1px solid black; */
   width: 157px;
   height: 56px;
   padding: 10px;
