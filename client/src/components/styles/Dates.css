@@ -1,36 +1,137 @@
-.DatesContainer {
+.fixedInPlaceDatesContainer {
+  width: 319px;
+  height: 62px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.DatesContainerMinimized {
   display: inline-block;
   position: relative;
   /* display: inline-grid; */
   /* display: grid; */
   outline: none;
   margin-top: 14px;
-  border: 1px solid #b0b0b0;
-  border-radius: 7px;
-  padding: 10px;
+  /* border: 1px solid #b0b0b0; */
+  /* border-radius: 7px; */
+  /* padding: 10px; */
+  /* width: calc(367px - 48px); */
 }
 
-.dateInputGridContainer {
+.DatesContainerMaximized {
+  display: inline-block;
+  position: absolute;
+  top: 71px;
+  right: -10px;
+  /* display: inline-grid; */
+  /* display: grid; */
+  outline: none;
+  margin-top: 14px;
+  border: 0;
+  border-radius: 16px;
+  padding: 24px 32px 16px;
+  width: calc(367px - 48px);
+  background-color: #fff;
+  width: 661px;
+  height: 464px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 16px;
+}
+
+.dateInputOuterGridContainer {
   display: grid;
-  grid-template: 1fr / 1fr;
+  grid-template: 1fr / 1fr 1fr;
 }
 
 .selectDatesContainer {
   grid-area: 1 / 1 / span 1 / span 1;
 }
 
-.dateInputContainer {
+.borderDatesContainer {
+  /* border: 1px solid #b0b0b0; */
+  /* border-radius: 7px; */
+  padding: 0;
+  width: calc(367px - 48px);
+  /* width: 314px; */
+  height: 57px;
   grid-area: 1 / 2 / span 1 / span 1;
+  /* display: grid;
+  grid-template: 1fr / 1fr; */
+}
+
+.dateInputInnerGridContainer {
+  /* grid-area: 1 / 2 / span 1 / span 1; */
   display: grid;
-  grid-template: 1fr / 1fr;
+  grid-template: 1fr / 1fr 1fr;
 }
 
-.checkInInput {
+.checkInInputBorder {
   grid-area: 1 / 1 / span 1 / span 1;
+  border-top: 1px solid #b0b0b0;
+  border-right: 1px solid #b0b0b0;
+  border-bottom: 1px solid #b0b0b0;
+  border-left: 1px solid #b0b0b0;
+  border-top-left-radius: 7px;
+  border-bottom-left-radius: 7px;
+  position: relative;
 }
 
-.checkOutInput {
+.checkInInputBorderInputHasFocus {
+  grid-area: 1 / 1 / span 1 / span 1;
+  border-top: 1px solid #b0b0b0;
+  /* border-right: 1px solid rgba(0, 0, 0, 0); */
+  border-bottom: 1px solid #b0b0b0;
+  border-left: 1px solid #b0b0b0;
+  border-top-left-radius: 7px;
+  border-bottom-left-radius: 7px;
+  position: relative;
+}
+
+.checkOutInputBorder {
   grid-area: 1 / 2 / span 1 / span 1;
+  border-top: 1px solid #b0b0b0;
+  border-right: 1px solid #b0b0b0;
+  border-bottom: 1px solid #b0b0b0;
+  /* border-left: 1px solid rgba(0, 0, 0, 0); */
+  border-top-right-radius: 7px;
+  border-bottom-right-radius: 7px;
+  position: relative;
+}
+
+.checkInInputFocused {
+  /* grid-area: 1 / 1 / span 1 / span 1; */
+  border: 2px solid black;
+  border-radius: 7px;
+  position: absolute;
+  top: -2px;
+  left: -2px;
+}
+
+.checkOutInputFocused {
+  grid-area: 1 / 2 / span 1 / span 1;
+  border: 2px solid black;
+  border-radius: 7px;
+  position: absolute;
+  top: -2px;
+  left: -2px;
+}
+
+.checkInInputUnfocused {
+  /* grid-area: 1 / 1 / span 1 / span 1;
+  border: 1px solid #b0b0b0;
+  border-top-left-radius: 7px;
+  border-bottom-left-radius: 7px; */
+  /* border-right: 1px solid #b0b0b0; */
+  position: relative;
+}
+
+.checkOutInputUnfocused {
+  /* grid-area: 1 / 2 / span 1 / span 1;
+  border: 1px solid #b0b0b0;
+  border-top-right-radius: 7px;
+  border-bottom-right-radius: 7px; */
+  /* border-left: 1px solid #b0b0b0; */
+  position: relative;
 }
 
 .keyboardIcon {

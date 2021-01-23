@@ -45,6 +45,14 @@ export default class Dates extends Component {
     }
   }
 
+  // handleDatesBlur(event) {
+  //   if (event.relatedTarget === null) {
+  //     this.setState({
+  //       DatesMaximized: true,
+  //     });
+  //   }
+  // }
+
   handleClose() {
     this.setState({
       DatesMaximized: false,
@@ -122,7 +130,6 @@ export default class Dates extends Component {
 
     const selectDates = DatesMaximized
       ? (
-        // <td>
         <div className={styles.selectDatesContainer}>
           <div>
             Select dates
@@ -131,7 +138,6 @@ export default class Dates extends Component {
             {`Minimum stay: ${minNights} ${minNights === 1 ? 'night' : 'nights'}`}
           </div>
         </div>
-        // </td>
       )
       : null;
 
@@ -151,7 +157,7 @@ export default class Dates extends Component {
             focusable="false"
             style={
               {
-                display: 'block',
+                display: 'inline-block',
                 height: '24px',
                 width: '24px',
                 fill: 'currentcolor',
@@ -181,62 +187,75 @@ export default class Dates extends Component {
       : null;
 
     return (
-      <div
-        tabIndex={1}
-        onFocus={this.handleDatesFocus}
-        onBlur={this.handleDatesBlur}
-        className={styles.DatesContainer}
-      >
-        <div className={styles.dateInputGridContainer}>
-        {/* <table>
-          <tbody>
-            <tr> */}
-          {selectDates}
-          <div className={styles.dateInputContainer}>
-            <div className={styles.checkInInput}>
-              <DateInput
-                onFieldFocus={this.handleFieldFocus}
-                onFieldBlur={this.handleFieldBlur}
-                dateType="check-in"
-                DatesMaximized={DatesMaximized}
-                formFocus={formFocus}
-                fieldFocus={fieldFocus}
-                input={checkInInput}
-                onInput={this.handleInput}
-                onClear={this.clearInput}
-              />
-            </div>
-            <div className={styles.checkOutInput}>
-              <DateInput
-                onFieldFocus={this.handleFieldFocus}
-                onFieldBlur={this.handleFieldBlur}
-                dateType="checkout"
-                DatesMaximized={DatesMaximized}
-                formFocus={formFocus}
-                fieldFocus={fieldFocus}
-                input={checkOutInput}
-                onInput={this.handleInput}
-                onClear={this.clearInput}
-              />
+      <div className={styles.fixedInPlaceDatesContainer}>
+        <div
+          tabIndex={1}
+          onFocus={this.handleDatesFocus}
+          onBlur={this.handleDatesBlur}
+          className={DatesMaximized
+            ? styles.DatesContainerMaximized
+            : styles.DatesContainerMinimized}
+        >
+          <div className={styles.dateInputOuterGridContainer}>
+            {selectDates}
+            <div className={styles.borderDatesContainer}>
+              <div className={styles.dateInputInnerGridContainer}>
+                <div className={formFocus !== '' && DatesMaximized
+                  ? styles.checkInInputBorderInputHasFocus
+                  : styles.checkInInputBorder}
+                >
+                  <div className={formFocus === 'checkIn' && DatesMaximized
+                    ? styles.checkInInputFocused
+                    : styles.checkInInputUnfocused}
+                  >
+                    <DateInput
+                      onFieldFocus={this.handleFieldFocus}
+                      onFieldBlur={this.handleFieldBlur}
+                      dateType="check-in"
+                      DatesMaximized={DatesMaximized}
+                      formFocus={formFocus}
+                      fieldFocus={fieldFocus}
+                      input={checkInInput}
+                      onInput={this.handleInput}
+                      onClear={this.clearInput}
+                    />
+                  </div>
+                </div>
+                <div className={styles.checkOutInputBorder}>
+                  <div className={formFocus === 'checkOut' && DatesMaximized
+                    ? styles.checkOutInputFocused
+                    : styles.checkOutInputUnfocused}
+                  >
+                    <DateInput
+                      onFieldFocus={this.handleFieldFocus}
+                      onFieldBlur={this.handleFieldBlur}
+                      dateType="checkout"
+                      DatesMaximized={DatesMaximized}
+                      formFocus={formFocus}
+                      fieldFocus={fieldFocus}
+                      input={checkOutInput}
+                      onInput={this.handleInput}
+                      onClear={this.clearInput}
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-            {/* </tr>
-          </tbody>
-        </table> */}
+          <div className={styles.dayLabelRelativeContainer}>
+            <div className={styles.dayLabelAbsoluteContainer}>
+              <div className={styles.dayLabelFlexContainer}>
+                <span className={styles.dayLabel}>{dayLabels}</span>
+                <span className={styles.dayLabel}>{dayLabels}</span>
+              </div>
+            </div>
+            <div className={styles.calendarMovementButtonAbsoluteContainer}>
+              {calendarMovementButtons}
+            </div>
+          </div>
+          {calendar}
+          {footer}
         </div>
-        <div className={styles.dayLabelRelativeContainer}>
-          <div className={styles.dayLabelAbsoluteContainer}>
-            <div className={styles.dayLabelFlexContainer}>
-              <span className={styles.dayLabel}>{dayLabels}</span>
-              <span className={styles.dayLabel}>{dayLabels}</span>
-            </div>
-          </div>
-          <div className={styles.calendarMovementButtonAbsoluteContainer}>
-            {calendarMovementButtons}
-          </div>
-        </div>
-        {calendar}
-        {footer}
       </div>
     );
   }

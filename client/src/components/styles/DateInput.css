@@ -1,9 +1,23 @@
-.focused {
-  /* border: 3px solid black; */
-}
+/* .focused {
+  border: 3px solid black;
+  border-radius: 7px;
+  width: 157px;
+  height: 56px;
+  padding: 10px;
+} */
 
-.unfocused {
+/* .unfocused {
+  border: 1px solid black;
+  width: 157px;
+  height: 56px;
+  padding: 10px;
+} */
+
+.dateInputContainer {
   /* border: 1px solid black; */
+  width: 157px;
+  height: 56px;
+  padding: 10px;
 }
 
 .dateInputLabel {
@@ -13,7 +27,7 @@
   font-family: 'RedHatDisplay-Bold', 'Helvetica Neue', Arial, sans-serif;
 }
 
-.inputContainer {
+.inputForm {
   display: grid;
   height: 2.5rem;
   grid-template: 1fr 1fr / 5fr 1fr;
@@ -25,9 +39,12 @@
 
 .inputField {
   grid-area: 2 / 1 / span 1 / span 1;
+  display: inline-block;
   border: 0;
   outline: 0;
   background-color: rgba(0, 0, 0, 0);
+  width: 97px;
+  height: 18px;
 }
 
 .inputClear {
