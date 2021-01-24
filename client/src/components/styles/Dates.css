@@ -26,7 +26,8 @@
   width: calc(367px - 48px);
   background-color: #fff;
   width: 660px;
-  height: 464px;
+  /* height: 464px; */
+  height: 504px;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 16px;
 }
 
@@ -144,7 +145,7 @@
 
 .dayLabelAbsoluteContainer {
   position: absolute;
-  top: 60px;
+  top: 84px;
   left: -14px;
   /* width: 472px; */
   width: 616px;
@@ -165,7 +166,7 @@
 
 .calendarMovementButtonAbsoluteContainer {
   position: absolute;
-  top: 12px;
+  top: 31px;
   left: 0;
   /* width: 472px; */
   width: 586px;
@@ -207,3 +208,71 @@
 .calendarMovementButtonIconDisabled {
   fill: rgb(221, 221, 221);
 }
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  /* align-items: flex-end; */
+}
+
+.keyboardButton {
+  background-color: transparent;
+  border: 0;
+  /* border: 1px solid red; */
+  outline: 0;
+  width: 44px;
+  height: 44px;
+}
+
+.keyboardButton:hover {
+  background: rgb(247, 247, 247);
+  border-radius: 50%;
+  /* display: flex;
+  align-items: center; */
+  /* vertical-align: middle; */
+}
+
+.keyboardButtonIcon {
+  display: inline-block;
+  height: 24px;
+  width: 24px;
+  fill: currentcolor;
+  position: relative;
+  top: 2px;
+}
+
+.clearDatesButton {
+  background: transparent;
+  border: 0;
+  outline: 0;
+  font-family: 'RedHatDisplay-Medium', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 15px;
+  text-decoration: underline;
+  padding: 8px;
+  cursor: pointer;
+  position: relative;
+  right: 8px;
+}
+
+.clearDatesButton:hover {
+  background: rgb(247, 247, 247);
+  border-radius: 8px;
+}
+
+.closeButton {
+  color:rgb(255, 255, 255);
+  background: rgb(34, 34, 34);
+  border: 0;
+  outline: 0;
+  font-family: 'RedHatDisplay-Medium', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 15px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.closeButton:hover {
+  background: rgb(0, 0, 0);
+  /* border-radius: 8px; */
+}
+
