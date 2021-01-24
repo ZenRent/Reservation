@@ -143,8 +143,12 @@ export default class Dates extends Component {
             </svg>
           </button>
           <div>
-            <button className={styles.clearDatesButton} type="button" onClick={this.clearAllInput}>Clear dates</button>
-            <button className={styles.closeButton} type="button" onClick={this.handleMinimizeDates}>Close</button>
+            <div className={styles.clearDatesButtonContainer}>
+              <button className={styles.clearDatesButton} type="button" onClick={this.clearAllInput}>Clear dates</button>
+            </div>
+            <div className={styles.closeButtonContainer}>
+              <button className={styles.closeButton} type="button" onClick={this.handleMinimizeDates}>Close</button>
+            </div>
           </div>
         </div>
       )
@@ -158,44 +162,48 @@ export default class Dates extends Component {
     const calendarMovementButtons = DatesMaximized
       ? (
         <div className={styles.calendarMovementButtonContainer}>
-          <button
-            className={scrollPosition > 0
-              ? styles.calendarMovementButton
-              : styles.calendarMovementButtonDisabled}
-            type="button"
-            onClick={this.moveScrollPositionLeft}
-          >
-            <svg
+          <div className={styles.calendarMovementButtonIndividualContainer}>
+            <button
               className={scrollPosition > 0
-                ? styles.calendarMovementButtonIcon
-                : styles.calendarMovementButtonIconDisabled}
-              viewBox="0 0 18 18"
-              role="presentation"
-              aria-hidden="true"
-              focusable="false"
+                ? styles.calendarMovementButton
+                : styles.calendarMovementButtonDisabled}
+              type="button"
+              onClick={this.moveScrollPositionLeft}
             >
-              <path d="m13.7 16.29a1 1 0 1 1 -1.42 1.41l-8-8a1 1 0 0 1 0-1.41l8-8a1 1 0 1 1 1.42 1.41l-7.29 7.29z" fillRule="evenodd" />
-            </svg>
-          </button>
-          <button
-            className={scrollPosition < 18
-              ? styles.calendarMovementButton
-              : styles.calendarMovementButtonDisabled}
-            type="button"
-            onClick={this.moveScrollPositionRight}
-          >
-            <svg
+              <svg
+                className={scrollPosition > 0
+                  ? styles.calendarMovementButtonIcon
+                  : styles.calendarMovementButtonIconDisabled}
+                viewBox="0 0 18 18"
+                role="presentation"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="m13.7 16.29a1 1 0 1 1 -1.42 1.41l-8-8a1 1 0 0 1 0-1.41l8-8a1 1 0 1 1 1.42 1.41l-7.29 7.29z" fillRule="evenodd" />
+              </svg>
+            </button>
+          </div>
+          <div className={styles.calendarMovementButtonIndividualContainer}>
+            <button
               className={scrollPosition < 18
-                ? styles.calendarMovementButtonIcon
-                : styles.calendarMovementButtonIconDisabled}
-              viewBox="0 0 18 18"
-              role="presentation"
-              aria-hidden="true"
-              focusable="false"
+                ? styles.calendarMovementButton
+                : styles.calendarMovementButtonDisabled}
+              type="button"
+              onClick={this.moveScrollPositionRight}
             >
-              <path d="m4.29 1.71a1 1 0 1 1 1.42-1.41l8 8a1 1 0 0 1 0 1.41l-8 8a1 1 0 1 1 -1.42-1.41l7.29-7.29z" fillRule="evenodd" />
-            </svg>
-          </button>
+              <svg
+                className={scrollPosition < 18
+                  ? styles.calendarMovementButtonIcon
+                  : styles.calendarMovementButtonIconDisabled}
+                viewBox="0 0 18 18"
+                role="presentation"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="m4.29 1.71a1 1 0 1 1 1.42-1.41l8 8a1 1 0 0 1 0 1.41l-8 8a1 1 0 1 1 -1.42-1.41l7.29-7.29z" fillRule="evenodd" />
+              </svg>
+            </button>
+          </div>
         </div>
       )
       : null;
