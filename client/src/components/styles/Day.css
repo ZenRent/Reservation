@@ -1,11 +1,9 @@
 .dayBlock, .dayLabelBlock {
   display: inline-block;
-  /* width: 1.7rem; */
   width: 18px;
   text-align: center;
   font-family: 'RedHatDisplay-Medium', 'Helvetica Neue', Arial, sans-serif;
   font-size: 13px;
-  /* border: 1px solid lightgray; */
 }
 
 .dayLabelBlock {

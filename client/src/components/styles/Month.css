@@ -7,12 +7,8 @@
 }
 
 .monthBlock {
-  /* width: 220px; */
   width: calc((660px - 64px) / 2);
-  /* width: calc(((660px - 64px) / 2) - 10px); */
-  /* width: calc(((660px - 64px) / 2) - 30px); */
   margin: auto;
-  /* border: 1px solid purple; */
 }
 
 .weeks {

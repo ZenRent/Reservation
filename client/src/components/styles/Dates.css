@@ -26,7 +26,6 @@
   width: calc(367px - 48px);
   background-color: #fff;
   width: 660px;
-  /* height: 464px; */
   height: 504px;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 16px;
 }
@@ -147,20 +146,16 @@
   position: absolute;
   top: 84px;
   left: -14px;
-  /* width: 472px; */
   width: 616px;
-  /* border: 1px solid darkgray; */
 }
 
 .dayLabelFlexContainer {
   display: flex;
   justify-content: space-between;
-  /* border: 1px solid brown; */
 }
 
 .dayLabel {
   display: inline-block;
-  /* width: 220px; */
   width: calc((660px - 64px) / 2);
 }
 
@@ -168,7 +163,6 @@
   position: absolute;
   top: 31px;
   left: 0;
-  /* width: 472px; */
   width: 586px;
 }
 
@@ -176,7 +170,6 @@
   display: flex;
   position: relative;
   justify-content: space-between;
-  /* width: 472px; */
   width: 586px;
   z-index: 5;
 }
@@ -188,10 +181,6 @@
   width: 32px;
   height: 32px;
 }
-
-/* .calendarMovementButtonDisabled {
-  color: rgb(221, 221, 221);
-} */
 
 .calendarMovementButton:hover {
   background: rgb(247, 247, 247);
@@ -212,13 +201,11 @@
 .footer {
   display: flex;
   justify-content: space-between;
-  /* align-items: flex-end; */
 }
 
 .keyboardButton {
   background-color: transparent;
   border: 0;
-  /* border: 1px solid red; */
   outline: 0;
   width: 44px;
   height: 44px;
@@ -227,9 +214,6 @@
 .keyboardButton:hover {
   background: rgb(247, 247, 247);
   border-radius: 50%;
-  /* display: flex;
-  align-items: center; */
-  /* vertical-align: middle; */
 }
 
 .keyboardButtonIcon {
@@ -273,6 +257,5 @@
 
 .closeButton:hover {
   background: rgb(0, 0, 0);
-  /* border-radius: 8px; */
 }
 

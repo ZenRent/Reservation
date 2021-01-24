@@ -4,20 +4,15 @@
 
 .monthRowContainer {
   overflow-x: hidden;
-  /* width: 500px; */
   width: calc(660px - 64px);
-  /* border: 1px solid gray; */
 }
 
 .monthRow {
   display: flex;
-  /* transform: translateX(calc(var(--scroll-position) * -500px)); */
-  /* transform: translateX(calc(var(--scroll-position) * -1 * (660px - 64px))); */
   transform: translateX(calc(var(--scroll-position) * -1 * 636px));
   transition: transform 0.25s;
   position: relative;
   left: -23px;
-  /* border: 1px solid orange; */
 }
 
 .monthRow::-webkit-scrollbar {
@@ -25,11 +20,7 @@
 }
 
 .monthContainer {
-  /* flex: 0 0 250px; */
   flex: 0 0 calc((660px - 64px) / 2);
-  /* display: flex;
-  justify-content: space-between; */
-  /* border: 1px solid green; */
   padding-left: 10px;
   padding-right: 10px;
 }
