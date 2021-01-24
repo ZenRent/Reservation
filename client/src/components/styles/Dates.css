@@ -28,11 +28,35 @@
   width: 660px;
   height: 504px;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 16px;
+  z-index: 30;
 }
 
-.dateInputOuterGridContainer {
+.minimizeDatesLayerEnabled {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  background: transparent;
+  /* background: black; */
+  outline: 0;
+  z-index: 20;
+}
+
+.minimizeDatesLayerDisabled {
+  display: none;
+}
+
+.dateInputOuterGridContainerDatesMinimized,
+.dateInputOuterGridContainerDatesMaximized {
   display: grid;
   grid-template: 1fr / 1fr 1fr;
+}
+
+.dateInputOuterGridContainerDatesMaximized {
+  /* display: grid;
+  grid-template: 1fr / 1fr 1fr; */
   padding-left: 30px;
 }
 
@@ -172,7 +196,7 @@
   position: relative;
   justify-content: space-between;
   width: 602px;
-  z-index: 5;
+  z-index: 50;
 }
 
 .calendarMovementButton, .calendarMovementButtonDisabled {

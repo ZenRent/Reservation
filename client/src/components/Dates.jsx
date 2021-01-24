@@ -11,17 +11,19 @@ export default class Dates extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // DatesMaximized: false,
-      DatesMaximized: true,
+      DatesMaximized: false,
+      // DatesMaximized: true,
       formFocus: '',
       fieldFocus: '',
       checkInInput: '',
       checkOutInput: '',
       scrollPosition: 0,
     };
-    this.handleDatesFocus = this.handleDatesFocus.bind(this);
-    this.handleDatesBlur = this.handleDatesBlur.bind(this);
-    this.handleClose = this.handleClose.bind(this);
+    // this.handleDatesFocus = this.handleDatesFocus.bind(this);
+    // this.handleDatesBlur = this.handleDatesBlur.bind(this);
+    this.handleMinimizeDates = this.handleMinimizeDates.bind(this);
+    this.handleMaximizeDates = this.handleMaximizeDates.bind(this);
+    // this.handleClose = this.handleClose.bind(this);
     this.handleFieldFocus = this.handleFieldFocus.bind(this);
     this.handleFieldBlur = this.handleFieldBlur.bind(this);
     this.handleInput = this.handleInput.bind(this);
@@ -31,11 +33,11 @@ export default class Dates extends Component {
     this.moveScrollPositionRight = this.moveScrollPositionRight.bind(this);
   }
 
-  handleDatesFocus() {
-    this.setState({
-      DatesMaximized: true,
-    });
-  }
+  // handleDatesFocus() {
+  //   this.setState({
+  //     DatesMaximized: true,
+  //   });
+  // }
 
   // handleDatesBlur(event) {
   //   if (event.relatedTarget === null) {
@@ -45,19 +47,31 @@ export default class Dates extends Component {
   //   }
   // }
 
-  handleDatesBlur(event) {
-    if (event.relatedTarget === null) {
-      this.setState({
-        DatesMaximized: true,
-      });
-    }
-  }
+  // handleDatesBlur(event) {
+  //   if (event.relatedTarget === null) {
+  //     this.setState({
+  //       DatesMaximized: true,
+  //     });
+  //   }
+  // }
 
-  handleClose() {
+  handleMinimizeDates() {
     this.setState({
       DatesMaximized: false,
     });
   }
+
+  handleMaximizeDates() {
+    this.setState({
+      DatesMaximized: true,
+    });
+  }
+
+  // handleClose() {
+  //   this.setState({
+  //     DatesMaximized: false,
+  //   });
+  // }
 
   handleFieldFocus(event) {
     const { name } = event.currentTarget;
@@ -171,7 +185,8 @@ export default class Dates extends Component {
           </button>
           <div>
             <button className={styles.clearDatesButton} type="button" onClick={this.clearAllInput}>Clear dates</button>
-            <button className={styles.closeButton} type="button" onClick={this.handleClose}>Close</button>
+            {/* <button className={styles.closeButton} type="button" onClick={this.handleClose}>Close</button> */}
+            <button className={styles.closeButton} type="button" onClick={this.handleMinimizeDates}>Close</button>
           </div>
         </div>
       )
@@ -232,14 +247,30 @@ export default class Dates extends Component {
     return (
       <div className={styles.fixedInPlaceDatesContainer}>
         <div
-          tabIndex={1}
-          onFocus={this.handleDatesFocus}
-          onBlur={this.handleDatesBlur}
+          className={DatesMaximized
+            ? styles.minimizeDatesLayerEnabled
+            : styles.minimizeDatesLayerDisabled}
+          onClick={this.handleMinimizeDates}
+          onKeyUp={this.handleMinimizeDates}
+          key="Escape"
+          role="button"
+          label="Minimize Dates"
+          tabIndex={0}
+        />
+        <div
+          // tabIndex={1}
+          // onFocus={this.handleDatesFocus}
+          // onBlur={this.handleDatesBlur}
+          onFocus={this.handleMaximizeDates}
           className={DatesMaximized
             ? styles.DatesContainerMaximized
             : styles.DatesContainerMinimized}
         >
-          <div className={styles.dateInputOuterGridContainer}>
+          <div
+            className={DatesMaximized
+              ? styles.dateInputOuterGridContainerDatesMaximized
+              : styles.dateInputOuterGridContainerDatesMinimized}
+          >
             {selectDates}
             <div className={styles.borderDatesContainer}>
               <div className={styles.dateInputInnerGridContainer}>
