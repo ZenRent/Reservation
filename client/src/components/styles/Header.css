@@ -41,21 +41,32 @@
 }
 
 .earliestAvailabilityContainer {
-  margin-top: 20px;
+  margin-top: 16px;
 }
 
 .earliestAvailability {
   display: flex;
-  align-items: flex-start;
+  align-items: flex-end;
   font-size: 12px;
 }
 
 .earliestAvailabilityDate {
-  margin-right: 4px;
+  margin-right: 0;
+  display:inline-block;
+  line-height: 22px;
 }
 
-.checkInDate {
+  .checkInDateDatesMinimized,
+  .checkInDateDatesMaximized {
   text-decoration: underline;
   font-family: 'RedHatDisplay-Medium', 'Helvetica Neue', Arial, sans-serif;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  display: inline-block;
+  line-height: 22px;
+}
+
+.checkInDateDatesMinimized {
   cursor: pointer;
 }

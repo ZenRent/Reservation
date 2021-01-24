@@ -8,6 +8,8 @@ const Header = ({
   averageRating,
   reviewCount,
   bookedDates,
+  DatesMaximized,
+  onMaximizeDates,
 }) => {
   const nightlyRateDisplay = (
     <span className={styles.nightlyPrice}>
@@ -49,7 +51,17 @@ const Header = ({
         </svg>
       </span>
       <span className={styles.earliestAvailabilityDate}>{`Earliest availability is ${earliestAvailabileDateString}. `}</span>
-      <span className={styles.checkInDate}>Add check-in date</span>
+      <button
+        className={DatesMaximized
+          ? styles.checkInDateDatesMaximized
+          : styles.checkInDateDatesMinimized}
+        type="button"
+        onClick={DatesMaximized
+          ? () => {}
+          : onMaximizeDates}
+      >
+        Add check-in date
+      </button>
     </span>
   );
 
@@ -74,6 +86,8 @@ Header.propTypes = {
   averageRating: PropTypes.number.isRequired,
   reviewCount: PropTypes.number.isRequired,
   bookedDates: PropTypes.arrayOf(PropTypes.object).isRequired,
+  DatesMaximized: PropTypes.bool.isRequired,
+  onMaximizeDates: PropTypes.func.isRequired,
 };
 
 export default Header;

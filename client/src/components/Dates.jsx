@@ -11,7 +11,6 @@ export default class Dates extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      DatesMaximized: false,
       formFocus: '',
       fieldFocus: '',
       checkInInput: '',
@@ -30,15 +29,13 @@ export default class Dates extends Component {
   }
 
   handleMinimizeDates() {
-    this.setState({
-      DatesMaximized: false,
-    });
+    const { onMinimizeDates } = this.props;
+    onMinimizeDates();
   }
 
   handleMaximizeDates() {
-    this.setState({
-      DatesMaximized: true,
-    });
+    const { onMaximizeDates } = this.props;
+    onMaximizeDates();
   }
 
   handleFieldFocus(event) {
@@ -101,14 +98,17 @@ export default class Dates extends Component {
 
   render() {
     const {
-      DatesMaximized,
+      // DatesMaximized,
       formFocus,
       fieldFocus,
       checkInInput,
       checkOutInput,
       scrollPosition,
     } = this.state;
-    const { minNights } = this.props;
+    const {
+      minNights,
+      DatesMaximized,
+    } = this.props;
 
     const selectDates = DatesMaximized
       ? (
@@ -292,4 +292,7 @@ export default class Dates extends Component {
 
 Dates.propTypes = {
   minNights: PropTypes.number.isRequired,
+  DatesMaximized: PropTypes.bool.isRequired,
+  onMinimizeDates: PropTypes.func.isRequired,
+  onMaximizeDates: PropTypes.func.isRequired,
 };

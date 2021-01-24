@@ -28,13 +28,15 @@ export default class Reservation extends Component {
       bookedDates: [],
       checkInDate: '',
       checkOutDate: '',
-      DatesMaximized: false,
       DatesFocused: false,
       displayedMonth: new Date().getMonth() + 1,
       GuestsMaximized: false,
       GuestsFocused: false,
+      DatesMaximized: false,
     };
     this.getData = this.getData.bind(this);
+    this.handleMinimizeDates = this.handleMinimizeDates.bind(this);
+    this.handleMaximizeDates = this.handleMaximizeDates.bind(this);
   }
 
   componentDidMount() {
@@ -82,6 +84,18 @@ export default class Reservation extends Component {
     });
   }
 
+  handleMinimizeDates() {
+    this.setState({
+      DatesMaximized: false,
+    });
+  }
+
+  handleMaximizeDates() {
+    this.setState({
+      DatesMaximized: true,
+    });
+  }
+
   render() {
     const {
       nightlyRate,
@@ -91,6 +105,7 @@ export default class Reservation extends Component {
       bookedDates,
       checkInDate,
       checkOutDate,
+      DatesMaximized,
     } = this.state;
     const checkOrReserveButton = checkInDate === '' || checkOutDate === ''
       ? <button type="submit">Check Availability</button>
@@ -103,9 +118,14 @@ export default class Reservation extends Component {
           averageRating={averageRating}
           reviewCount={reviewCount}
           bookedDates={bookedDates}
+          DatesMaximized={DatesMaximized}
+          onMaximizeDates={this.handleMaximizeDates}
         />
         <Dates
           minNights={minNights}
+          DatesMaximized={DatesMaximized}
+          onMinimizeDates={this.handleMinimizeDates}
+          onMaximizeDates={this.handleMaximizeDates}
         />
         <Guests />
         {checkOrReserveButton}
