@@ -1,11 +1,24 @@
 .dayBlock, .dayLabelBlock {
   display: inline-block;
-  width: 18px;
+  width: 40px;
+  height: 40px;
   text-align: center;
   font-family: 'RedHatDisplay-Medium', 'Helvetica Neue', Arial, sans-serif;
   font-size: 13px;
+  /* position: relative; */
+  line-height: 36px;
+  border: 1.5px solid transparent;
+  /* border: 1.5px solid black; */
+
+}
+
+.dayBlock:hover {
+  border: 1.5px solid rgb(34, 34, 34);
+  border-radius: 100%;
 }
 
 .dayLabelBlock {
   color: rgb(133,133,133);
+  border: 1.5px solid transparent;
+  /* border: 1.5px solid black; */
 }

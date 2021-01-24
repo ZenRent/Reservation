@@ -11,8 +11,8 @@ export default class Dates extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      DatesMaximized: false,
-      // DatesMaximized: true,
+      // DatesMaximized: false,
+      DatesMaximized: true,
       formFocus: '',
       fieldFocus: '',
       checkInInput: '',
@@ -37,21 +37,21 @@ export default class Dates extends Component {
     });
   }
 
-  handleDatesBlur(event) {
-    if (event.relatedTarget === null) {
-      this.setState({
-        DatesMaximized: false,
-      });
-    }
-  }
-
   // handleDatesBlur(event) {
   //   if (event.relatedTarget === null) {
   //     this.setState({
-  //       DatesMaximized: true,
+  //       DatesMaximized: false,
   //     });
   //   }
   // }
+
+  handleDatesBlur(event) {
+    if (event.relatedTarget === null) {
+      this.setState({
+        DatesMaximized: true,
+      });
+    }
+  }
 
   handleClose() {
     this.setState({

@@ -22,7 +22,8 @@
   margin-top: 14px;
   border: 0;
   border-radius: 16px;
-  padding: 24px 32px 16px 32px;
+  /* padding: 24px 32px 16px 32px; */
+  padding: 24px 32px 16px 2px;
   width: calc(367px - 48px);
   background-color: #fff;
   width: 660px;
@@ -33,6 +34,7 @@
 .dateInputOuterGridContainer {
   display: grid;
   grid-template: 1fr / 1fr 1fr;
+  padding-left: 30px;
 }
 
 .selectDatesContainer {
@@ -144,8 +146,10 @@
 
 .dayLabelAbsoluteContainer {
   position: absolute;
-  top: 84px;
-  left: -14px;
+  /* top: 84px; */
+  top: 79px;
+  /* left: -14px; */
+  left: 19px;
   width: 616px;
 }
 
@@ -162,15 +166,18 @@
 .calendarMovementButtonAbsoluteContainer {
   position: absolute;
   top: 31px;
-  left: 0;
-  width: 586px;
+  /* left: 0; */
+  left: 24px;
+  /* width: 586px; */
+  width: 602px;
 }
 
 .calendarMovementButtonContainer {
   display: flex;
   position: relative;
   justify-content: space-between;
-  width: 586px;
+  /* width: 586px; */
+  width: 602px;
   z-index: 5;
 }
 
@@ -201,6 +208,7 @@
 .footer {
   display: flex;
   justify-content: space-between;
+  padding-left: 20px;
 }
 
 .keyboardButton {

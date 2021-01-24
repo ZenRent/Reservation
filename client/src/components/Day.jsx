@@ -25,10 +25,7 @@ const Day = ({ day }) => {
   }
 
   return (
-    // <div className={styles.dayBlock}>
-      // {dayDisplay}
-      dayDisplay
-    // </div>
+    dayDisplay
   );
 };
 
