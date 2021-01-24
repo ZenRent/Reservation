@@ -22,7 +22,6 @@
   margin-top: 14px;
   border: 0;
   border-radius: 16px;
-  /* padding: 24px 32px 16px 32px; */
   padding: 24px 32px 16px 2px;
   width: calc(367px - 48px);
   background-color: #fff;
@@ -146,9 +145,7 @@
 
 .dayLabelAbsoluteContainer {
   position: absolute;
-  /* top: 84px; */
   top: 79px;
-  /* left: -14px; */
   left: 19px;
   width: 616px;
 }
@@ -166,9 +163,7 @@
 .calendarMovementButtonAbsoluteContainer {
   position: absolute;
   top: 31px;
-  /* left: 0; */
   left: 24px;
-  /* width: 586px; */
   width: 602px;
 }
 
@@ -176,7 +171,6 @@
   display: flex;
   position: relative;
   justify-content: space-between;
-  /* width: 586px; */
   width: 602px;
   z-index: 5;
 }
@@ -266,4 +260,3 @@
 .closeButton:hover {
   background: rgb(0, 0, 0);
 }
-

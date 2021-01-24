@@ -5,10 +5,8 @@
   text-align: center;
   font-family: 'RedHatDisplay-Medium', 'Helvetica Neue', Arial, sans-serif;
   font-size: 13px;
-  /* position: relative; */
   line-height: 36px;
   border: 1.5px solid transparent;
-  /* border: 1.5px solid black; */
 
 }
 
@@ -20,5 +18,4 @@
 .dayLabelBlock {
   color: rgb(133,133,133);
   border: 1.5px solid transparent;
-  /* border: 1.5px solid black; */
 }

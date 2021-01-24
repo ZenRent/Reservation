@@ -4,10 +4,7 @@
 
 .monthRowContainer {
   overflow-x: hidden;
-  /* width: calc(660px - 64px); */
   width: calc(660px - 4px);
-  /* position: relative;
-  left: 30px; */
 }
 
 .monthRow {
@@ -15,8 +12,6 @@
   transform: translateX(calc(var(--scroll-position) * -1 * 636px));
   transition: transform 0.25s;
   position: relative;
-  /* left: -23px; */
-  /* left: -32px; */
   left: 9px;
 }
 
