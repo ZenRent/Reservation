@@ -22,10 +22,10 @@
   margin-top: 14px;
   border: 0;
   border-radius: 16px;
-  padding: 24px 32px 16px;
+  padding: 24px 32px 16px 32px;
   width: calc(367px - 48px);
   background-color: #fff;
-  width: 661px;
+  width: 660px;
   height: 464px;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 16px;
 }
@@ -37,6 +37,17 @@
 
 .selectDatesContainer {
   grid-area: 1 / 1 / span 1 / span 1;
+}
+
+.selectDates {
+  font-family: 'RedHatDisplay-Medium', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 24px;
+}
+
+.minimumStay {
+  color: rgb(113, 113, 113);
+  font-size: 14px;
+  margin-top: 8px;
 }
 
 .borderDatesContainer {
@@ -133,32 +144,66 @@
 
 .dayLabelAbsoluteContainer {
   position: absolute;
-  top: 40px;
-  left: 14px;
-  width: 472px;
+  top: 60px;
+  left: -14px;
+  /* width: 472px; */
+  width: 616px;
+  /* border: 1px solid darkgray; */
 }
 
 .dayLabelFlexContainer {
   display: flex;
   justify-content: space-between;
+  /* border: 1px solid brown; */
 }
 
 .dayLabel {
   display: inline-block;
-  width: 220px;
+  /* width: 220px; */
+  width: calc((660px - 64px) / 2);
 }
 
 .calendarMovementButtonAbsoluteContainer {
   position: absolute;
   top: 12px;
-  left: 14px;
-  width: 472px;
+  left: 0;
+  /* width: 472px; */
+  width: 586px;
 }
 
 .calendarMovementButtonContainer {
   display: flex;
   position: relative;
   justify-content: space-between;
-  width: 472px;
+  /* width: 472px; */
+  width: 586px;
   z-index: 5;
+}
+
+.calendarMovementButton, .calendarMovementButtonDisabled {
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+  width: 32px;
+  height: 32px;
+}
+
+/* .calendarMovementButtonDisabled {
+  color: rgb(221, 221, 221);
+} */
+
+.calendarMovementButton:hover {
+  background: rgb(247, 247, 247);
+  border-radius: 50%;
+}
+
+.calendarMovementButtonIcon, .calendarMovementButtonIconDisabled {
+  height: 12px;
+  width: 12px;
+  display: inline-block;
+  fill: currentcolor;
+}
+
+.calendarMovementButtonIconDisabled {
+  fill: rgb(221, 221, 221);
 }

@@ -11,8 +11,8 @@ export default class Dates extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      DatesMaximized: false,
-      // DatesMaximized: true,
+      // DatesMaximized: false,
+      DatesMaximized: true,
       formFocus: '',
       fieldFocus: '',
       checkInInput: '',
@@ -37,21 +37,21 @@ export default class Dates extends Component {
     });
   }
 
-  handleDatesBlur(event) {
-    if (event.relatedTarget === null) {
-      this.setState({
-        DatesMaximized: false,
-      });
-    }
-  }
-
   // handleDatesBlur(event) {
   //   if (event.relatedTarget === null) {
   //     this.setState({
-  //       DatesMaximized: true,
+  //       DatesMaximized: false,
   //     });
   //   }
   // }
+
+  handleDatesBlur(event) {
+    if (event.relatedTarget === null) {
+      this.setState({
+        DatesMaximized: true,
+      });
+    }
+  }
 
   handleClose() {
     this.setState({
@@ -131,10 +131,10 @@ export default class Dates extends Component {
     const selectDates = DatesMaximized
       ? (
         <div className={styles.selectDatesContainer}>
-          <div>
+          <div className={styles.selectDates}>
             Select dates
           </div>
-          <div>
+          <div className={styles.minimumStay}>
             {`Minimum stay: ${minNights} ${minNights === 1 ? 'night' : 'nights'}`}
           </div>
         </div>
@@ -180,8 +180,46 @@ export default class Dates extends Component {
     const calendarMovementButtons = DatesMaximized
       ? (
         <div className={styles.calendarMovementButtonContainer}>
-          <button type="button" onClick={this.moveScrollPositionLeft}>←</button>
-          <button type="button" onClick={this.moveScrollPositionRight}>→</button>
+          {/* <button type="button" onClick={this.moveScrollPositionLeft}>←</button> */}
+          <button
+            className={scrollPosition > 0
+              ? styles.calendarMovementButton
+              : styles.calendarMovementButtonDisabled}
+            type="button"
+            onClick={this.moveScrollPositionLeft}
+          >
+            <svg
+              className={scrollPosition > 0
+                ? styles.calendarMovementButtonIcon
+                : styles.calendarMovementButtonIconDisabled}
+              viewBox="0 0 18 18"
+              role="presentation"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="m13.7 16.29a1 1 0 1 1 -1.42 1.41l-8-8a1 1 0 0 1 0-1.41l8-8a1 1 0 1 1 1.42 1.41l-7.29 7.29z" fillRule="evenodd" />
+            </svg>
+          </button>
+          {/* <button type="button" onClick={this.moveScrollPositionRight}>→</button> */}
+          <button
+            className={scrollPosition < 18
+              ? styles.calendarMovementButton
+              : styles.calendarMovementButtonDisabled}
+            type="button"
+            onClick={this.moveScrollPositionRight}
+          >
+            <svg
+              className={scrollPosition < 18
+                ? styles.calendarMovementButtonIcon
+                : styles.calendarMovementButtonIconDisabled}
+              viewBox="0 0 18 18"
+              role="presentation"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="m4.29 1.71a1 1 0 1 1 1.42-1.41l8 8a1 1 0 0 1 0 1.41l-8 8a1 1 0 1 1 -1.42-1.41l7.29-7.29z" fillRule="evenodd" />
+            </svg>
+          </button>
         </div>
       )
       : null;

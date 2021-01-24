@@ -5,17 +5,30 @@ import styles from './styles/Day.css';
 const Day = ({ day }) => {
   let dayDisplay;
   if (typeof day === 'string' && day.length === 2) {
-    dayDisplay = day;
+    dayDisplay = (
+      <div className={styles.dayLabelBlock}>
+        {day}
+      </div>
+    );
   } else {
     dayDisplay = day === ''
-      ? ''
-      : day.getDate();
+      ? (
+        <div className={styles.dayBlock}>
+          {' '}
+        </div>
+      )
+      : (
+        <div className={styles.dayBlock}>
+          {day.getDate()}
+        </div>
+      );
   }
 
   return (
-    <div className={styles.dayBlock}>
-      {dayDisplay}
-    </div>
+    // <div className={styles.dayBlock}>
+      // {dayDisplay}
+      dayDisplay
+    // </div>
   );
 };
 
