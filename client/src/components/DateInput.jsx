@@ -16,11 +16,12 @@ export default class DateInput extends Component {
       onFieldFocus,
       onFieldBlur,
       DatesMaximized,
-      formFocus,
+      // formFocus,
       fieldFocus,
       input,
       onInput,
       onClear,
+      onMaximizeDates,
     } = this.props;
 
     const dateTypeWithoutHyphen = dateType.indexOf('-') > -1
@@ -34,11 +35,21 @@ export default class DateInput extends Component {
     const labelText = dateType.charAt(0).toUpperCase() + dateType.slice(1);
 
     return (
-      // <div className={formFocus === formAndFieldFocusValue && DatesMaximized
-      //   ? styles.focused
-      //   : styles.unfocused}
-      // >
-      <div className={styles.dateInputContainer}>
+      <div
+        className={DatesMaximized
+          ? styles.dateInputContainerDatesMaximized
+          : styles.dateInputContainerDatesMinimized}
+        onClick={DatesMaximized
+          ? () => {}
+          : onMaximizeDates}
+        onKeyUp={DatesMaximized
+          ? () => {}
+          : onMaximizeDates}
+        key="Space"
+        role="button"
+        label="Minimize Dates"
+        tabIndex={-1}
+      >
         <form
           className={styles.inputForm}
           name={formAndFieldName}
@@ -46,12 +57,19 @@ export default class DateInput extends Component {
           onFocus={onFieldFocus}
           onBlur={onFieldBlur}
         >
-          <label className={styles.inputLabel} htmlFor={fieldId}>
+          <label
+            className={DatesMaximized
+              ? styles.inputLabelDatesMaximized
+              : styles.inputLabelDatesMinimized}
+            htmlFor={fieldId}
+          >
             <div className={styles.dateInputLabel}>
               {labelText}
             </div>
             <input
-              className={styles.inputField}
+              className={DatesMaximized
+                ? styles.inputFieldDatesMaximized
+                : styles.inputFieldDatesMinimized}
               type="text"
               name={formAndFieldName}
               id={fieldId}
@@ -74,9 +92,10 @@ DateInput.propTypes = {
   onFieldFocus: PropTypes.func.isRequired,
   onFieldBlur: PropTypes.func.isRequired,
   DatesMaximized: PropTypes.bool.isRequired,
-  formFocus: PropTypes.string.isRequired,
+  // formFocus: PropTypes.string.isRequired,
   fieldFocus: PropTypes.string.isRequired,
   input: PropTypes.string.isRequired,
   onInput: PropTypes.func.isRequired,
   onClear: PropTypes.func.isRequired,
+  onMaximizeDates: PropTypes.func.isRequired,
 };

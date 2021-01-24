@@ -33,11 +33,8 @@ export default class Reservation extends Component {
       displayedMonth: new Date().getMonth() + 1,
       GuestsMaximized: false,
       GuestsFocused: false,
-      // DatesMaximized: false,
     };
     this.getData = this.getData.bind(this);
-    // this.handleMinimizeDates = this.handleMinimizeDates.bind(this);
-    // this.handleMaximizeDates = this.handleMaximizeDates.bind(this);
   }
 
   componentDidMount() {
@@ -85,18 +82,6 @@ export default class Reservation extends Component {
     });
   }
 
-  // handleMinimizeDates() {
-  //   this.setState({
-  //     DatesMaximized: false,
-  //   });
-  // }
-
-  // handleMaximizeDates() {
-  //   this.setState({
-  //     DatesMaximized: true,
-  //   });
-  // }
-
   render() {
     const {
       nightlyRate,
@@ -106,42 +91,26 @@ export default class Reservation extends Component {
       bookedDates,
       checkInDate,
       checkOutDate,
-      // DatesMaximized,
     } = this.state;
     const checkOrReserveButton = checkInDate === '' || checkOutDate === ''
       ? <button type="submit">Check Availability</button>
       : <button type="submit">Reserve</button>;
 
     return (
-      // <div>
-        // <div
-        //   className={DatesMaximized
-        //     ? styles.minimizeDatesLayerEnabled
-        //     : styles.minimizeDatesLayerDisabled}
-        //   onClick={this.handleMinimizeDates}
-        //   onKeyUp={this.handleMinimizeDates}
-        //   key="Escape"
-        //   role="button"
-        //   label="Minimize Dates"
-        //   tabIndex={0}
-        // />
-        <div className={styles.ReservationContainer}>
-          <Header
-            nightlyRate={nightlyRate}
-            averageRating={averageRating}
-            reviewCount={reviewCount}
-            bookedDates={bookedDates}
-          />
-          <Dates
-            minNights={minNights}
-            // onMinimizeDates={this.handleMinimizeDates}
-            // onMaximizeDates={this.handleMaximizeDates}
-          />
-          <Guests />
-          {checkOrReserveButton}
-          <Costs />
-        </div>
-      // </div>
+      <div className={styles.ReservationContainer}>
+        <Header
+          nightlyRate={nightlyRate}
+          averageRating={averageRating}
+          reviewCount={reviewCount}
+          bookedDates={bookedDates}
+        />
+        <Dates
+          minNights={minNights}
+        />
+        <Guests />
+        {checkOrReserveButton}
+        <Costs />
+      </div>
     );
   }
 }

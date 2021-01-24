@@ -39,7 +39,6 @@
   width: 100%;
   margin: 0;
   background: transparent;
-  /* background: black; */
   outline: 0;
   z-index: 20;
 }
@@ -55,8 +54,6 @@
 }
 
 .dateInputOuterGridContainerDatesMaximized {
-  /* display: grid;
-  grid-template: 1fr / 1fr 1fr; */
   padding-left: 30px;
 }
 

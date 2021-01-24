@@ -1,7 +1,13 @@
-.dateInputContainer {
+.dateInputContainerDatesMinimized,
+.dateInputContainerDatesMaximized {
   width: 157px;
   height: 56px;
   padding: 10px;
+  outline: 0;
+}
+
+.dateInputContainerDatesMinimized {
+  cursor: pointer;
 }
 
 .dateInputLabel {
@@ -17,11 +23,17 @@
   grid-template: 1fr 1fr / 5fr 1fr;
 }
 
-.inputLabel {
+.inputLabelDatesMinimized,
+.inputLabelDatesMaximized {
   grid-area: 1 / 1 / span 1 / span 1;
 }
 
-.inputField {
+.inputLabelDatesMinimized {
+  cursor: pointer;
+}
+
+.inputFieldDatesMinimized,
+.inputFieldDatesMaximized {
   grid-area: 2 / 1 / span 1 / span 1;
   display: inline-block;
   border: 0;
@@ -31,9 +43,13 @@
   height: 18px;
 }
 
+.inputFieldDatesMinimized {
+  cursor: pointer;
+}
+
 .inputClear {
   grid-area: 1 / 2 / span 2 / span 1;
-  background-color: rgba(255, 255, 255, 0);
+  background: transparent;
   border: 0;
   outline: 0;
   font-size: 20px;

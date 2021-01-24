@@ -12,18 +12,14 @@ export default class Dates extends Component {
     super(props);
     this.state = {
       DatesMaximized: false,
-      // DatesMaximized: true,
       formFocus: '',
       fieldFocus: '',
       checkInInput: '',
       checkOutInput: '',
       scrollPosition: 0,
     };
-    // this.handleDatesFocus = this.handleDatesFocus.bind(this);
-    // this.handleDatesBlur = this.handleDatesBlur.bind(this);
     this.handleMinimizeDates = this.handleMinimizeDates.bind(this);
     this.handleMaximizeDates = this.handleMaximizeDates.bind(this);
-    // this.handleClose = this.handleClose.bind(this);
     this.handleFieldFocus = this.handleFieldFocus.bind(this);
     this.handleFieldBlur = this.handleFieldBlur.bind(this);
     this.handleInput = this.handleInput.bind(this);
@@ -32,28 +28,6 @@ export default class Dates extends Component {
     this.moveScrollPositionLeft = this.moveScrollPositionLeft.bind(this);
     this.moveScrollPositionRight = this.moveScrollPositionRight.bind(this);
   }
-
-  // handleDatesFocus() {
-  //   this.setState({
-  //     DatesMaximized: true,
-  //   });
-  // }
-
-  // handleDatesBlur(event) {
-  //   if (event.relatedTarget === null) {
-  //     this.setState({
-  //       DatesMaximized: false,
-  //     });
-  //   }
-  // }
-
-  // handleDatesBlur(event) {
-  //   if (event.relatedTarget === null) {
-  //     this.setState({
-  //       DatesMaximized: true,
-  //     });
-  //   }
-  // }
 
   handleMinimizeDates() {
     this.setState({
@@ -66,12 +40,6 @@ export default class Dates extends Component {
       DatesMaximized: true,
     });
   }
-
-  // handleClose() {
-  //   this.setState({
-  //     DatesMaximized: false,
-  //   });
-  // }
 
   handleFieldFocus(event) {
     const { name } = event.currentTarget;
@@ -162,7 +130,6 @@ export default class Dates extends Component {
     const footer = DatesMaximized
       ? (
         <div className={styles.footer}>
-          {/* <span className={styles.keyboardIcon} /> */}
           <button className={styles.keyboardButton} type="button">
             <svg
               className={styles.keyboardButtonIcon}
@@ -171,21 +138,12 @@ export default class Dates extends Component {
               aria-hidden="true"
               role="presentation"
               focusable="false"
-              // style={
-              //   {
-              //     display: 'inline-block',
-              //     height: '24px',
-              //     width: '24px',
-              //     fill: 'currentcolor',
-              //   }
-              // }
             >
               <path d="M29 5a2 2 0 0 1 1.995 1.85L31 7v18a2 2 0 0 1-1.85 1.995L29 27H3a2 2 0 0 1-1.995-1.85L1 25V7a2 2 0 0 1 1.85-1.995L3 5zm0 2H3v18h26zm-8 13v2H11v-2zm3-5a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm16-4a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
             </svg>
           </button>
           <div>
             <button className={styles.clearDatesButton} type="button" onClick={this.clearAllInput}>Clear dates</button>
-            {/* <button className={styles.closeButton} type="button" onClick={this.handleClose}>Close</button> */}
             <button className={styles.closeButton} type="button" onClick={this.handleMinimizeDates}>Close</button>
           </div>
         </div>
@@ -200,7 +158,6 @@ export default class Dates extends Component {
     const calendarMovementButtons = DatesMaximized
       ? (
         <div className={styles.calendarMovementButtonContainer}>
-          {/* <button type="button" onClick={this.moveScrollPositionLeft}>←</button> */}
           <button
             className={scrollPosition > 0
               ? styles.calendarMovementButton
@@ -220,7 +177,6 @@ export default class Dates extends Component {
               <path d="m13.7 16.29a1 1 0 1 1 -1.42 1.41l-8-8a1 1 0 0 1 0-1.41l8-8a1 1 0 1 1 1.42 1.41l-7.29 7.29z" fillRule="evenodd" />
             </svg>
           </button>
-          {/* <button type="button" onClick={this.moveScrollPositionRight}>→</button> */}
           <button
             className={scrollPosition < 18
               ? styles.calendarMovementButton
@@ -258,9 +214,6 @@ export default class Dates extends Component {
           tabIndex={0}
         />
         <div
-          // tabIndex={1}
-          // onFocus={this.handleDatesFocus}
-          // onBlur={this.handleDatesBlur}
           onFocus={this.handleMaximizeDates}
           className={DatesMaximized
             ? styles.DatesContainerMaximized
@@ -287,11 +240,12 @@ export default class Dates extends Component {
                       onFieldBlur={this.handleFieldBlur}
                       dateType="check-in"
                       DatesMaximized={DatesMaximized}
-                      formFocus={formFocus}
+                      // formFocus={formFocus}
                       fieldFocus={fieldFocus}
                       input={checkInInput}
                       onInput={this.handleInput}
                       onClear={this.clearInput}
+                      onMaximizeDates={this.handleMaximizeDates}
                     />
                   </div>
                 </div>
@@ -305,11 +259,12 @@ export default class Dates extends Component {
                       onFieldBlur={this.handleFieldBlur}
                       dateType="checkout"
                       DatesMaximized={DatesMaximized}
-                      formFocus={formFocus}
+                      // formFocus={formFocus}
                       fieldFocus={fieldFocus}
                       input={checkOutInput}
                       onInput={this.handleInput}
                       onClear={this.clearInput}
+                      onMaximizeDates={this.handleMaximizeDates}
                     />
                   </div>
                 </div>
