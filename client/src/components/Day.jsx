@@ -4,7 +4,6 @@ import dateComp from '../utils/dateComputation';
 import styles from './styles/Day.css';
 
 const Day = ({ day }) => {
-  // console.log(bookedDates);
   let dayDisplay;
   if (day === '') {
     dayDisplay = (
@@ -23,21 +22,18 @@ const Day = ({ day }) => {
     if (dateComp.isBeforeTomorrow(date)) {
       dayDisplay = (
         <div className={styles.pastDayBlock}>
-          {/* {day.date.getDate()} */}
           {date.getDate()}
         </div>
       );
     } else if (day.isBooked) {
       dayDisplay = (
         <div className={styles.alreadyBookedDayBlock}>
-          {/* {day.date.getDate()} */}
           {date.getDate()}
         </div>
       );
     } else {
       dayDisplay = (
         <div className={styles.dayBlock}>
-          {/* {day.date.getDate()} */}
           {date.getDate()}
         </div>
       );
@@ -52,7 +48,5 @@ const Day = ({ day }) => {
 export default Day;
 
 Day.propTypes = {
-  // day: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]).isRequired,
   day: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
-  // bookedDates: PropTypes.arrayOf(PropTypes.object).isRequired,
 };

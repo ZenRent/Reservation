@@ -129,8 +129,6 @@ const dateComp = {
 
   getWeeksAndDays(monthUTCDates) {
     const firstDayOfMonth = new Date(monthUTCDates[0].date);
-    // const month = firstDayOfMonth.getMonth();
-    // const month = monthDate.getMonth();
     const weekdayNumber = this.getWeekdayNumber(firstDayOfMonth);
     const weeksAndDays = [];
     let currentWeek = [];
@@ -149,19 +147,6 @@ const dateComp = {
         weeksAndDays.push(currentWeek);
       }
     }
-    // while (monthDate.getMonth() === month) {
-    //   currentWeek.push(new Date(monthDate));
-    //   monthDate.setDate(monthDate.getDate() + 1);
-    //   if (currentWeek.length === 7) {
-    //     weeksAndDays.push(currentWeek);
-    //     currentWeek = [];
-    //   } else if (monthDate.getMonth() !== month) {
-    //     while (currentWeek.length < 7) {
-    //       currentWeek.push('');
-    //     }
-    //     weeksAndDays.push(currentWeek);
-    //   }
-    // }
     return weeksAndDays;
   },
 
@@ -177,25 +162,25 @@ const dateComp = {
     return day <= today;
   },
 
-  isBooked(day, bookedDatesList) {
-    const localeStringOptions = {
-      year: 'numeric',
-      month: 'numeric',
-      day: 'numeric',
-    };
-    const simpleDay = day.toLocaleString('ja-JP', localeStringOptions);
-    for (let i = 0; i < bookedDatesList.length; i += 1) {
-      const bookedDate = bookedDatesList[i];
-      const simpleBookedDay = bookedDate.toLocaleString('ja-JP', localeStringOptions);
-      if (simpleDay === simpleBookedDay) {
-        return true;
-      }
-      if (simpleDay < simpleBookedDay) {
-        return false;
-      }
-    }
-    return false;
-  },
+  // isBooked(day, bookedDatesList) {
+  //   const localeStringOptions = {
+  //     year: 'numeric',
+  //     month: 'numeric',
+  //     day: 'numeric',
+  //   };
+  //   const simpleDay = day.toLocaleString('ja-JP', localeStringOptions);
+  //   for (let i = 0; i < bookedDatesList.length; i += 1) {
+  //     const bookedDate = bookedDatesList[i];
+  //     const simpleBookedDay = bookedDate.toLocaleString('ja-JP', localeStringOptions);
+  //     if (simpleDay === simpleBookedDay) {
+  //       return true;
+  //     }
+  //     if (simpleDay < simpleBookedDay) {
+  //       return false;
+  //     }
+  //   }
+  //   return false;
+  // },
 };
 
 export default dateComp;

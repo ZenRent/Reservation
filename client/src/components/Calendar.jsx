@@ -4,8 +4,7 @@ import Month from './Month';
 import dateComp from '../utils/dateComputation';
 import styles from './styles/Calendar.css';
 
-const Calendar = ({ scrollPosition, calendarUTCDates/* , bookedDates */ }) => {
-  // console.log(bookedDates);
+const Calendar = ({ scrollPosition, calendarUTCDates }) => {
   const months = [];
   const nextMonth = new Date();
   nextMonth.setDate(1);
@@ -16,7 +15,6 @@ const Calendar = ({ scrollPosition, calendarUTCDates/* , bookedDates */ }) => {
         <Month
           monthDate={new Date(nextMonth)}
           monthUTCDates={monthUTCDates}
-          // bookedDates={bookedDates}
         />
       </div>,
     );
@@ -38,6 +36,5 @@ export default Calendar;
 
 Calendar.propTypes = {
   scrollPosition: PropTypes.number.isRequired,
-  // bookedDates: PropTypes.arrayOf(PropTypes.object).isRequired,
   calendarUTCDates: PropTypes.arrayOf(PropTypes.object).isRequired,
 };

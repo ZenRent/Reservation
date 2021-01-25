@@ -101,7 +101,6 @@ export default class Dates extends Component {
 
   render() {
     const {
-      // DatesMaximized,
       formFocus,
       fieldFocus,
       checkInInput,
@@ -111,7 +110,6 @@ export default class Dates extends Component {
     const {
       minNights,
       DatesMaximized,
-      // bookedDates,
       calendarUTCDates,
     } = this.props;
 
@@ -132,7 +130,6 @@ export default class Dates extends Component {
       ? (
         <Calendar
           scrollPosition={scrollPosition}
-          // bookedDates={bookedDates}
           calendarUTCDates={calendarUTCDates}
         />
       )
@@ -314,6 +311,5 @@ Dates.propTypes = {
   DatesMaximized: PropTypes.bool.isRequired,
   onMinimizeDates: PropTypes.func.isRequired,
   onMaximizeDates: PropTypes.func.isRequired,
-  // bookedDates: PropTypes.arrayOf(PropTypes.object).isRequired,
   calendarUTCDates: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
