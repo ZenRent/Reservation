@@ -9,12 +9,18 @@ const listingSchema = new Schema({
   averageRating: { type: Number, required: true, default: 0 },
   reviewCount: { type: Number, required: true, default: 0 },
   minNights: { type: Number, required: true, default: 1 },
-  bookedDates: [
+  calendarUTCDates: [
     {
-      start: { type: Date },
-      length: { type: Number },
+      date: { type: Date },
+      isBooked: { type: Boolean },
     },
   ],
+  // bookedDates: [
+  //   {
+  //     start: { type: Date },
+  //     length: { type: Number },
+  //   },
+  // ],
   maxGuests: { type: Number, required: true, default: 2 },
   cleaningFee: { type: Number, required: true, default: 0 },
   serviceFee: { type: Number, required: true, default: 0 },

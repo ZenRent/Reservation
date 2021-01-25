@@ -31,6 +31,9 @@ export default class Dates extends Component {
   handleMinimizeDates() {
     const { onMinimizeDates } = this.props;
     onMinimizeDates();
+    this.setState({
+      scrollPosition: 0,
+    });
   }
 
   handleMaximizeDates() {
@@ -108,6 +111,8 @@ export default class Dates extends Component {
     const {
       minNights,
       DatesMaximized,
+      // bookedDates,
+      calendarUTCDates,
     } = this.props;
 
     const selectDates = DatesMaximized
@@ -124,7 +129,13 @@ export default class Dates extends Component {
       : null;
 
     const calendar = DatesMaximized
-      ? <Calendar scrollPosition={scrollPosition} />
+      ? (
+        <Calendar
+          scrollPosition={scrollPosition}
+          // bookedDates={bookedDates}
+          calendarUTCDates={calendarUTCDates}
+        />
+      )
       : null;
 
     const footer = DatesMaximized
@@ -303,4 +314,6 @@ Dates.propTypes = {
   DatesMaximized: PropTypes.bool.isRequired,
   onMinimizeDates: PropTypes.func.isRequired,
   onMaximizeDates: PropTypes.func.isRequired,
+  // bookedDates: PropTypes.arrayOf(PropTypes.object).isRequired,
+  calendarUTCDates: PropTypes.arrayOf(PropTypes.object).isRequired,
 };

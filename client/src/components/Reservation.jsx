@@ -4,6 +4,7 @@ import Header from './Header';
 import Dates from './Dates';
 import Guests from './Guests';
 import Costs from './Costs';
+// import dateComp from '../utils/dateComputation';
 import styles from './styles/Reservation.css';
 import './styles/global.css';
 
@@ -25,7 +26,8 @@ export default class Reservation extends Component {
       discountWeekly10: 0,
       discountWeekly20: 0,
       discountMonthly20: 0,
-      bookedDates: [],
+      // bookedDates: [],
+      calendarUTCDates: [],
       checkInDate: '',
       checkOutDate: '',
       DatesFocused: false,
@@ -62,7 +64,8 @@ export default class Reservation extends Component {
           discountWeekly10,
           discountWeekly20,
           discountMonthly20,
-          bookedDates,
+          // bookedDates,
+          calendarUTCDates,
         } = data;
         this.setState({
           listingId,
@@ -77,7 +80,8 @@ export default class Reservation extends Component {
           discountWeekly10,
           discountWeekly20,
           discountMonthly20,
-          bookedDates,
+          // bookedDates,
+          calendarUTCDates,
         });
       },
       error: console.error
@@ -102,7 +106,8 @@ export default class Reservation extends Component {
       averageRating,
       reviewCount,
       minNights,
-      bookedDates,
+      // bookedDates,
+      calendarUTCDates,
       checkInDate,
       checkOutDate,
       DatesMaximized,
@@ -111,13 +116,17 @@ export default class Reservation extends Component {
       ? <button type="submit">Check Availability</button>
       : <button type="submit">Reserve</button>;
 
+    // const bookedDatesList = dateComp.convertBookedDatesToList(bookedDates);
+    // console.log(bookedDates);
+
     return (
       <div className={styles.ReservationContainer}>
         <Header
           nightlyRate={nightlyRate}
           averageRating={averageRating}
           reviewCount={reviewCount}
-          bookedDates={bookedDates}
+          // bookedDates={bookedDates}
+          calendarUTCDates={calendarUTCDates}
           DatesMaximized={DatesMaximized}
           onMaximizeDates={this.handleMaximizeDates}
         />
@@ -126,6 +135,8 @@ export default class Reservation extends Component {
           DatesMaximized={DatesMaximized}
           onMinimizeDates={this.handleMinimizeDates}
           onMaximizeDates={this.handleMaximizeDates}
+          // bookedDates={bookedDates}
+          calendarUTCDates={calendarUTCDates}
         />
         <Guests />
         {checkOrReserveButton}

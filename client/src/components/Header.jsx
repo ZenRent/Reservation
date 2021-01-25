@@ -7,7 +7,8 @@ const Header = ({
   nightlyRate,
   averageRating,
   reviewCount,
-  bookedDates,
+  // bookedDates,
+  calendarUTCDates,
   DatesMaximized,
   onMaximizeDates,
 }) => {
@@ -31,7 +32,7 @@ const Header = ({
       </span>
     )
     : null;
-  const earliestAvailabileDate = dateComp.getEarliestAvailableDate(bookedDates);
+  const earliestAvailabileDate = dateComp.getEarliestAvailableDate(calendarUTCDates);
   const earliestAvailabileDateString = earliestAvailabileDate
     ? earliestAvailabileDate.toLocaleString('en-US', { month: 'short', day: 'numeric' })
     : null;
@@ -85,7 +86,8 @@ Header.propTypes = {
   nightlyRate: PropTypes.number.isRequired,
   averageRating: PropTypes.number.isRequired,
   reviewCount: PropTypes.number.isRequired,
-  bookedDates: PropTypes.arrayOf(PropTypes.object).isRequired,
+  // bookedDates: PropTypes.arrayOf(PropTypes.object).isRequired,
+  calendarUTCDates: PropTypes.arrayOf(PropTypes.object).isRequired,
   DatesMaximized: PropTypes.bool.isRequired,
   onMaximizeDates: PropTypes.func.isRequired,
 };

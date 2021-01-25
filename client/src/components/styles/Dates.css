@@ -231,12 +231,6 @@
   fill: currentcolor;
 }
 
-/* .calendarMovementButtonIcon:active {
-  width: calc(12px * 0.95);
-  height: calc(12px * 0.95);
-  transition: all 0.15s;
-} */
-
 .calendarMovementButtonIconDisabled {
   fill: rgb(221, 221, 221);
 }

@@ -1,4 +1,8 @@
-.dayBlock, .dayLabelBlock {
+.dayBlock,
+.emptyDayBlock,
+.pastDayBlock,
+.alreadyBookedDayBlock,
+.dayLabelBlock {
   display: inline-block;
   width: 40px;
   height: 40px;
@@ -13,6 +17,12 @@
 .dayBlock:hover {
   border: 1.5px solid rgb(34, 34, 34);
   border-radius: 100%;
+  cursor: pointer;
+}
+
+.pastDayBlock, .alreadyBookedDayBlock {
+  color: rgb(176, 176, 176);
+  text-decoration: line-through;
 }
 
 .dayLabelBlock {
