@@ -103,27 +103,65 @@ const dateComp = {
   //   return weeksAndDays;
   // },
 
-  getWeeksAndDays(monthDate) {
-    const month = monthDate.getMonth();
-    const weekdayNumber = this.getWeekdayNumber(monthDate);
+  // getWeeksAndDays(monthDate) {
+  //   const month = monthDate.getMonth();
+  //   const weekdayNumber = this.getWeekdayNumber(monthDate);
+  //   const weeksAndDays = [];
+  //   let currentWeek = [];
+  //   for (let i = 0; i < weekdayNumber; i += 1) {
+  //     currentWeek.push('');
+  //   }
+  //   while (monthDate.getMonth() === month) {
+  //     currentWeek.push(new Date(monthDate));
+  //     monthDate.setDate(monthDate.getDate() + 1);
+  //     if (currentWeek.length === 7) {
+  //       weeksAndDays.push(currentWeek);
+  //       currentWeek = [];
+  //     } else if (monthDate.getMonth() !== month) {
+  //       while (currentWeek.length < 7) {
+  //         currentWeek.push('');
+  //       }
+  //       weeksAndDays.push(currentWeek);
+  //     }
+  //   }
+  //   return weeksAndDays;
+  // },
+
+  getWeeksAndDays(monthUTCDates) {
+    const firstDayOfMonth = new Date(monthUTCDates[0].date);
+    // const month = firstDayOfMonth.getMonth();
+    // const month = monthDate.getMonth();
+    const weekdayNumber = this.getWeekdayNumber(firstDayOfMonth);
     const weeksAndDays = [];
     let currentWeek = [];
     for (let i = 0; i < weekdayNumber; i += 1) {
       currentWeek.push('');
     }
-    while (monthDate.getMonth() === month) {
-      currentWeek.push(new Date(monthDate));
-      monthDate.setDate(monthDate.getDate() + 1);
+    for (let i = 0; i < monthUTCDates.length; i += 1) {
+      currentWeek.push(monthUTCDates[i]);
       if (currentWeek.length === 7) {
         weeksAndDays.push(currentWeek);
         currentWeek = [];
-      } else if (monthDate.getMonth() !== month) {
+      } else if (i === monthUTCDates.length - 1) {
         while (currentWeek.length < 7) {
           currentWeek.push('');
         }
         weeksAndDays.push(currentWeek);
       }
     }
+    // while (monthDate.getMonth() === month) {
+    //   currentWeek.push(new Date(monthDate));
+    //   monthDate.setDate(monthDate.getDate() + 1);
+    //   if (currentWeek.length === 7) {
+    //     weeksAndDays.push(currentWeek);
+    //     currentWeek = [];
+    //   } else if (monthDate.getMonth() !== month) {
+    //     while (currentWeek.length < 7) {
+    //       currentWeek.push('');
+    //     }
+    //     weeksAndDays.push(currentWeek);
+    //   }
+    // }
     return weeksAndDays;
   },
 

@@ -18,27 +18,30 @@ const Day = ({ day }) => {
         {day}
       </div>
     );
-  } else if (dateComp.isBeforeTomorrow(day.date)) {
-    dayDisplay = (
-      <div className={styles.pastDayBlock}>
-        {/* {day.date.getDate()} */}
-        {day.getDate()}
-      </div>
-    );
-  } else if (day.isBooked) {
-    dayDisplay = (
-      <div className={styles.alreadyBookedDayBlock}>
-        {/* {day.date.getDate()} */}
-        {day.getDate()}
-      </div>
-    );
   } else {
-    dayDisplay = (
-      <div className={styles.dayBlock}>
-        {/* {day.date.getDate()} */}
-        {day.getDate()}
-      </div>
-    );
+    const date = new Date(day.date);
+    if (dateComp.isBeforeTomorrow(date)) {
+      dayDisplay = (
+        <div className={styles.pastDayBlock}>
+          {/* {day.date.getDate()} */}
+          {date.getDate()}
+        </div>
+      );
+    } else if (day.isBooked) {
+      dayDisplay = (
+        <div className={styles.alreadyBookedDayBlock}>
+          {/* {day.date.getDate()} */}
+          {date.getDate()}
+        </div>
+      );
+    } else {
+      dayDisplay = (
+        <div className={styles.dayBlock}>
+          {/* {day.date.getDate()} */}
+          {date.getDate()}
+        </div>
+      );
+    }
   }
 
   return (
@@ -49,6 +52,7 @@ const Day = ({ day }) => {
 export default Day;
 
 Day.propTypes = {
-  day: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]).isRequired,
+  // day: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]).isRequired,
+  day: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
   // bookedDates: PropTypes.arrayOf(PropTypes.object).isRequired,
 };

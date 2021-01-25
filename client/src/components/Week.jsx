@@ -10,7 +10,9 @@ const Week = ({ week }) => {
     number += 1;
     return (
       <Day
-        key={day + number}
+        key={JSON.stringify(day) + number}
+        // key={day.date + number}
+        // key={day + number}
         // key={number}
         day={day}
         // bookedDates={bookedDates}
@@ -30,7 +32,8 @@ export default Week;
 Week.propTypes = {
   week: PropTypes.arrayOf(PropTypes.oneOfType([
     PropTypes.string,
-    PropTypes.instanceOf(Date),
+    // PropTypes.instanceOf(Date),
+    PropTypes.object,
   ])).isRequired,
   // bookedDates: PropTypes.arrayOf(PropTypes.object).isRequired,
 };

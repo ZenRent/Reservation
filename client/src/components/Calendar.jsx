@@ -12,9 +12,10 @@ const Calendar = ({ scrollPosition, calendarUTCDates/* , bookedDates */ }) => {
   for (let i = 0; i < 38; i += 1) {
     const monthUTCDates = dateComp.getMonthUTCDates(nextMonth, calendarUTCDates);
     months.push(
-      <div key={nextMonth} className={styles.monthContainer}>
+      <div key={nextMonth.toUTCString()} className={styles.monthContainer}>
         <Month
           monthDate={new Date(nextMonth)}
+          monthUTCDates={monthUTCDates}
           // bookedDates={bookedDates}
         />
       </div>,
