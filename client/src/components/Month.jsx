@@ -7,6 +7,7 @@ import styles from './styles/Month.css';
 const Month = ({
   monthDate,
   monthUTCDates,
+  onClickDate,
 }) => {
   const monthAndYear = monthDate.toLocaleString('en-US', { month: 'long', year: 'numeric' });
   const weeksAndDays = dateComp.getWeeksAndDays(monthUTCDates);
@@ -14,6 +15,7 @@ const Month = ({
     <Week
       key={JSON.stringify(week)}
       week={week}
+      onClickDate={onClickDate}
     />
   ));
 
@@ -34,4 +36,5 @@ export default Month;
 Month.propTypes = {
   monthDate: PropTypes.instanceOf(Date).isRequired,
   monthUTCDates: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onClickDate: PropTypes.func.isRequired,
 };

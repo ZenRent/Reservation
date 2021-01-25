@@ -5,6 +5,7 @@ import styles from './styles/Day.css';
 
 const Day = ({
   day,
+  onClickDate,
 }) => {
   let dayDisplay;
   if (day === '') {
@@ -68,7 +69,10 @@ const Day = ({
       );
     } else {
       dayDisplay = (
-        <div className={styles.dayBlock}>
+        <div
+          className={styles.dayBlock}
+          onClick={() => onClickDate(date)}
+        >
           {date.getDate()}
         </div>
       );
@@ -84,4 +88,5 @@ export default Day;
 
 Day.propTypes = {
   day: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
+  onClickDate: PropTypes.func.isRequired,
 };

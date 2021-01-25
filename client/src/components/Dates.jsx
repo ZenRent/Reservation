@@ -13,8 +13,8 @@ export default class Dates extends Component {
     this.state = {
       formFocus: '',
       fieldFocus: '',
-      checkInInput: '',
-      checkOutInput: '',
+      // checkInInput: '',
+      // checkOutInput: '',
       scrollPosition: 0,
     };
     this.handleMinimizeDates = this.handleMinimizeDates.bind(this);
@@ -22,8 +22,8 @@ export default class Dates extends Component {
     this.handleFieldFocus = this.handleFieldFocus.bind(this);
     this.handleFieldBlur = this.handleFieldBlur.bind(this);
     this.handleInput = this.handleInput.bind(this);
-    this.clearInput = this.clearInput.bind(this);
-    this.clearAllInput = this.clearAllInput.bind(this);
+    this.handleClearInput = this.handleClearInput.bind(this);
+    this.handleClearAllInput = this.handleClearAllInput.bind(this);
     this.moveScrollPositionLeft = this.moveScrollPositionLeft.bind(this);
     this.moveScrollPositionRight = this.moveScrollPositionRight.bind(this);
   }
@@ -56,28 +56,47 @@ export default class Dates extends Component {
     });
   }
 
+  // handleInput(event) {
+  //   const { name, value } = event.target;
+  //   this.setState({
+  //     [name]: value,
+  //   });
+  // }
+
   handleInput(event) {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value,
-    });
+    const { onInput } = this.props;
+    onInput(event);
   }
 
-  clearInput(event) {
-    event.preventDefault();
-    const { name } = event.target;
-    this.setState({
-      [name]: '',
-    });
+  // handleClearInput(event) {
+  //   event.preventDefault();
+  //   const { name } = event.target;
+  //   this.setState({
+  //     [name]: '',
+  //   });
+  // }
+
+  handleClearInput(event) {
+    const { onClearInput } = this.props;
+    onClearInput(event);
   }
 
-  clearAllInput(event) {
-    event.preventDefault();
+  // handleClearAllInput(event) {
+  //   event.preventDefault();
+  //   this.setState({
+  //     formFocus: 'checkIn',
+  //     fieldFocus: '',
+  //     checkInInput: '',
+  //     checkOutInput: '',
+  //   });
+  // }
+
+  handleClearAllInput(event) {
+    const { onClearAllInput } = this.props;
+    onClearAllInput(event);
     this.setState({
       formFocus: 'checkIn',
       fieldFocus: '',
-      checkInInput: '',
-      checkOutInput: '',
     });
   }
 
@@ -103,8 +122,8 @@ export default class Dates extends Component {
     const {
       formFocus,
       fieldFocus,
-      checkInInput,
-      checkOutInput,
+      // checkInInput,
+      // checkOutInput,
       scrollPosition,
     } = this.state;
     const {
@@ -113,6 +132,9 @@ export default class Dates extends Component {
       calendarUTCDates,
       checkInDate,
       checkOutDate,
+      checkInInput,
+      checkOutInput,
+      onClickDate,
     } = this.props;
 
     const selectDates = DatesMaximized
@@ -135,6 +157,7 @@ export default class Dates extends Component {
           calendarUTCDates={calendarUTCDates}
           checkInDate={checkInDate}
           checkOutDate={checkOutDate}
+          onClickDate={onClickDate}
         />
       )
       : null;
@@ -156,7 +179,7 @@ export default class Dates extends Component {
           </button>
           <div>
             <div className={styles.clearDatesButtonContainer}>
-              <button className={styles.clearDatesButton} type="button" onClick={this.clearAllInput}>Clear dates</button>
+              <button className={styles.clearDatesButton} type="button" onClick={this.handleClearAllInput}>Clear dates</button>
             </div>
             <div className={styles.closeButtonContainer}>
               <button className={styles.closeButton} type="button" onClick={this.handleMinimizeDates}>Close</button>
@@ -168,7 +191,12 @@ export default class Dates extends Component {
 
     const daysOfWeek = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
     const dayLabels = DatesMaximized
-      ? <Week week={daysOfWeek} />
+      ? (
+        <Week
+          week={daysOfWeek}
+          onClickDate={onClickDate}
+        />
+      )
       : null;
 
     const calendarMovementButtons = DatesMaximized
@@ -264,7 +292,7 @@ export default class Dates extends Component {
                       fieldFocus={fieldFocus}
                       input={checkInInput}
                       onInput={this.handleInput}
-                      onClear={this.clearInput}
+                      onClear={this.handleClearInput}
                       onMaximizeDates={this.handleMaximizeDates}
                     />
                   </div>
@@ -283,7 +311,7 @@ export default class Dates extends Component {
                       fieldFocus={fieldFocus}
                       input={checkOutInput}
                       onInput={this.handleInput}
-                      onClear={this.clearInput}
+                      onClear={this.handleClearInput}
                       onMaximizeDates={this.handleMaximizeDates}
                     />
                   </div>
@@ -315,7 +343,13 @@ Dates.propTypes = {
   DatesMaximized: PropTypes.bool.isRequired,
   onMinimizeDates: PropTypes.func.isRequired,
   onMaximizeDates: PropTypes.func.isRequired,
+  onInput: PropTypes.func.isRequired,
+  onClearInput: PropTypes.func.isRequired,
+  onClearAllInput: PropTypes.func.isRequired,
   calendarUTCDates: PropTypes.arrayOf(PropTypes.object).isRequired,
   checkInDate: PropTypes.string.isRequired,
   checkOutDate: PropTypes.string.isRequired,
+  checkInInput: PropTypes.string.isRequired,
+  checkOutInput: PropTypes.string.isRequired,
+  onClickDate: PropTypes.func.isRequired,
 };

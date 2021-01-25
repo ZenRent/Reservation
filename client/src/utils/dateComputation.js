@@ -1,4 +1,12 @@
 const dateComp = {
+  getDateString(date) {
+    const year = date.getFullYear().toString();
+    const month = (date.getMonth() + 1).toString();
+    const day = date.getDate().toString();
+    const dateString = `${month}/${day}/${year}`;
+    return dateString;
+  },
+
   getEarliestAvailableDate(calendarUTCDates) {
     const today = new Date();
     const todayUTC = new Date(

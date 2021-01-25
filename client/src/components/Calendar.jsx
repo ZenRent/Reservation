@@ -9,6 +9,7 @@ const Calendar = ({
   calendarUTCDates,
   checkInDate,
   checkOutDate,
+  onClickDate,
 }) => {
   const months = [];
   const nextMonth = new Date();
@@ -25,6 +26,7 @@ const Calendar = ({
         <Month
           monthDate={new Date(nextMonth)}
           monthUTCDates={monthUTCDates}
+          onClickDate={onClickDate}
         />
       </div>,
     );
@@ -49,4 +51,5 @@ Calendar.propTypes = {
   calendarUTCDates: PropTypes.arrayOf(PropTypes.object).isRequired,
   checkInDate: PropTypes.string.isRequired,
   checkOutDate: PropTypes.string.isRequired,
+  onClickDate: PropTypes.func.isRequired,
 };

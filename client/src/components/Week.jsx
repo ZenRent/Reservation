@@ -5,6 +5,7 @@ import styles from './styles/Week.css';
 
 const Week = ({
   week,
+  onClickDate,
 }) => {
   let number = -1;
   const days = week.map((day) => {
@@ -13,6 +14,7 @@ const Week = ({
       <Day
         key={JSON.stringify(day) + number}
         day={day}
+        onClickDate={onClickDate}
       />
     );
   });
@@ -31,4 +33,5 @@ Week.propTypes = {
     PropTypes.string,
     PropTypes.object,
   ])).isRequired,
+  onClickDate: PropTypes.func.isRequired,
 };

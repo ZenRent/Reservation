@@ -4,6 +4,7 @@ import Header from './Header';
 import Dates from './Dates';
 import Guests from './Guests';
 import Costs from './Costs';
+import dateComp from '../utils/dateComputation';
 import styles from './styles/Reservation.css';
 import './styles/global.css';
 
@@ -26,8 +27,10 @@ export default class Reservation extends Component {
       discountWeekly20: 0,
       discountMonthly20: 0,
       calendarUTCDates: [],
-      checkInDate: '2/5/2021',
+      checkInDate: '',
       checkOutDate: '',
+      checkInInput: '',
+      checkOutInput: '',
       DatesFocused: false,
       displayedMonth: new Date().getMonth() + 1,
       GuestsMaximized: false,
@@ -37,6 +40,10 @@ export default class Reservation extends Component {
     this.getData = this.getData.bind(this);
     this.handleMinimizeDates = this.handleMinimizeDates.bind(this);
     this.handleMaximizeDates = this.handleMaximizeDates.bind(this);
+    this.handleInput = this.handleInput.bind(this);
+    this.handleClearInput = this.handleClearInput.bind(this);
+    this.handleClearAllInput = this.handleClearAllInput.bind(this);
+    this.handleClickDate = this.handleClickDate.bind(this);
   }
 
   componentDidMount() {
@@ -96,6 +103,60 @@ export default class Reservation extends Component {
     });
   }
 
+  handleInput(event) {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value,
+    });
+  }
+
+  handleClearInput(event) {
+    event.preventDefault();
+    const { name } = event.target;
+    if (name === 'checkInInput') {
+      this.setState({
+        checkInInput: '',
+        checkOutInput: '',
+        checkInDate: '',
+        checkOutDate: '',
+      });
+    } else if (name === 'checkOutInput') {
+      this.setState({
+        checkOutInput: '',
+        checkOutDate: '',
+      });
+    }
+  }
+
+  handleClearAllInput(event) {
+    event.preventDefault();
+    this.setState({
+      checkInInput: '',
+      checkOutInput: '',
+      checkInDate: '',
+      checkOutDate: '',
+    });
+  }
+
+  handleClickDate(date) {
+    const { checkInDate, checkOutDate } = this.state;
+    const dateString = dateComp.getDateString(date);
+    if (checkInDate === ''
+      || (checkInDate.length >= 8 && checkOutDate.length >= 8)) {
+      this.setState({
+        checkInDate: dateString,
+        checkInInput: dateString,
+        checkOutDate: '',
+        checkOutInput: '',
+      });
+    } else if (checkInDate.length >= 8 && checkOutDate === '') {
+      this.setState({
+        checkOutDate: dateString,
+        checkOutInput: dateString,
+      });
+    }
+  }
+
   render() {
     const {
       nightlyRate,
@@ -105,6 +166,8 @@ export default class Reservation extends Component {
       calendarUTCDates,
       checkInDate,
       checkOutDate,
+      checkInInput,
+      checkOutInput,
       DatesMaximized,
     } = this.state;
     const checkOrReserveButton = checkInDate === '' || checkOutDate === ''
@@ -144,6 +207,12 @@ export default class Reservation extends Component {
           calendarUTCDates={calendarUTCDates}
           checkInDate={checkInDate}
           checkOutDate={checkOutDate}
+          checkInInput={checkInInput}
+          checkOutInput={checkOutInput}
+          onClickDate={this.handleClickDate}
+          onInput={this.handleInput}
+          onClearInput={this.handleClearInput}
+          onClearAllInput={this.handleClearAllInput}
         />
         {/* <Guests /> */}
         {checkOrReserveButton}
