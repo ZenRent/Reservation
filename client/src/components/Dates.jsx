@@ -111,6 +111,8 @@ export default class Dates extends Component {
       minNights,
       DatesMaximized,
       calendarUTCDates,
+      checkInDate,
+      checkOutDate,
     } = this.props;
 
     const selectDates = DatesMaximized
@@ -131,6 +133,8 @@ export default class Dates extends Component {
         <Calendar
           scrollPosition={scrollPosition}
           calendarUTCDates={calendarUTCDates}
+          checkInDate={checkInDate}
+          checkOutDate={checkOutDate}
         />
       )
       : null;
@@ -312,4 +316,6 @@ Dates.propTypes = {
   onMinimizeDates: PropTypes.func.isRequired,
   onMaximizeDates: PropTypes.func.isRequired,
   calendarUTCDates: PropTypes.arrayOf(PropTypes.object).isRequired,
+  checkInDate: PropTypes.string.isRequired,
+  checkOutDate: PropTypes.string.isRequired,
 };

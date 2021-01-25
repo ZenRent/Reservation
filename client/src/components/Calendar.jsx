@@ -4,12 +4,22 @@ import Month from './Month';
 import dateComp from '../utils/dateComputation';
 import styles from './styles/Calendar.css';
 
-const Calendar = ({ scrollPosition, calendarUTCDates }) => {
+const Calendar = ({
+  scrollPosition,
+  calendarUTCDates,
+  checkInDate,
+  checkOutDate,
+}) => {
   const months = [];
   const nextMonth = new Date();
   nextMonth.setDate(1);
   for (let i = 0; i < 38; i += 1) {
-    const monthUTCDates = dateComp.getMonthUTCDates(nextMonth, calendarUTCDates);
+    const monthUTCDates = dateComp.getMonthUTCDatesWithStatus(
+      nextMonth,
+      calendarUTCDates,
+      checkInDate,
+      checkOutDate,
+    );
     months.push(
       <div key={nextMonth.toUTCString()} className={styles.monthContainer}>
         <Month
@@ -37,4 +47,6 @@ export default Calendar;
 Calendar.propTypes = {
   scrollPosition: PropTypes.number.isRequired,
   calendarUTCDates: PropTypes.arrayOf(PropTypes.object).isRequired,
+  checkInDate: PropTypes.string.isRequired,
+  checkOutDate: PropTypes.string.isRequired,
 };

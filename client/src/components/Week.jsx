@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import Day from './Day';
 import styles from './styles/Week.css';
 
-const Week = ({ week }) => {
+const Week = ({
+  week,
+}) => {
   let number = -1;
   const days = week.map((day) => {
     number += 1;

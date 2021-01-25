@@ -2,7 +2,10 @@
 .emptyDayBlock,
 .pastDayBlock,
 .alreadyBookedDayBlock,
-.dayLabelBlock {
+.dayLabelBlock,
+.checkInDayBlock,
+.checkOutDayBlock,
+.inBetweenDayBlock {
   display: inline-block;
   width: 40px;
   height: 40px;
@@ -11,17 +14,58 @@
   font-size: 13px;
   line-height: 36px;
   border: 1.5px solid transparent;
+  position: relative;
+  z-index: 32;
 }
 
-.dayBlock:hover {
+.dayBlock:hover, .inBetweenDayBlock:hover {
   border: 1.5px solid rgb(34, 34, 34);
   border-radius: 100%;
   cursor: pointer;
+  background:rgb(255, 255, 255);
 }
 
 .pastDayBlock, .alreadyBookedDayBlock {
   color: rgb(176, 176, 176);
   text-decoration: line-through;
+}
+
+.checkInDayBlock, .checkOutDayBlock {
+  border: 1.5px solid rgb(34, 34, 34);
+  background:rgb(34, 34, 34);
+  color: rgb(255, 255, 255);
+  border-radius: 100%;
+}
+
+.checkInDayBlockBackground {
+  display: inline-block;
+  width: 22px;
+  height: 38px;
+  position: absolute;
+  background: rgb(247, 247, 247);
+  margin-top: 1px;
+  margin-left: 20px;
+  z-index: 31;
+}
+
+.checkOutDayBlockBackground {
+  display: inline-block;
+  width: 22px;
+  height: 38px;
+  position: absolute;
+  background: rgb(247, 247, 247);
+  margin-top: 1px;
+  z-index: 31;
+}
+
+.inBetweenDayBlockBackground {
+  display: inline-block;
+  width: 44px;
+  height: 38px;
+  position: absolute;
+  background: rgb(247, 247, 247);
+  margin-top: 1px;
+  z-index: 31;
 }
 
 .dayLabelBlock {

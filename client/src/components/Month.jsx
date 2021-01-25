@@ -4,7 +4,10 @@ import Week from './Week';
 import dateComp from '../utils/dateComputation';
 import styles from './styles/Month.css';
 
-const Month = ({ monthDate, monthUTCDates }) => {
+const Month = ({
+  monthDate,
+  monthUTCDates,
+}) => {
   const monthAndYear = monthDate.toLocaleString('en-US', { month: 'long', year: 'numeric' });
   const weeksAndDays = dateComp.getWeeksAndDays(monthUTCDates);
   const weeks = weeksAndDays.map((week) => (

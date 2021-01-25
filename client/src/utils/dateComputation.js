@@ -1,17 +1,4 @@
 const dateComp = {
-  convertBookedDatesToList(bookedDates) {
-    const bookedDatesList = [];
-    bookedDates.forEach((bookedDateSpan) => {
-      const { start, length } = bookedDateSpan;
-      const bookedDate = new Date(start);
-      for (let i = 0; i < length; i += 1) {
-        bookedDatesList.push(new Date(bookedDate));
-        bookedDate.setDate(bookedDate.getDate() + 1);
-      }
-    });
-    return bookedDatesList;
-  },
-
   getEarliestAvailableDate(calendarUTCDates) {
     const today = new Date();
     const todayUTC = new Date(
@@ -29,24 +16,6 @@ const dateComp = {
     }
     return null;
   },
-
-  // getEarliestAvailableDate(bookedDates) {
-  //   const currentDate = new Date();
-  //   for (let i = 0; i < bookedDates.length; i += 1) {
-  //     const { start, length } = bookedDates[i];
-  //     const bookedUntil = new Date(start);
-  //     bookedUntil.setDate(bookedUntil.getDate() + length);
-  //     const dayAfterLastBooked = new Date(bookedUntil);
-  //     dayAfterLastBooked.setDate(dayAfterLastBooked.getDate() + 1);
-  //     const nextBookingStart = new Date(bookedDates[i + 1].start);
-  //     if (dayAfterLastBooked.getDate() < nextBookingStart.getDate()) {
-  //       if (currentDate.getDate() < dayAfterLastBooked.getDate()) {
-  //         return dayAfterLastBooked;
-  //       }
-  //     }
-  //   }
-  //   return null;
-  // },
 
   getMonthUTCDates(nextMonth, calendarUTCDates) {
     let firstOfMonthPosition;
@@ -72,60 +41,96 @@ const dateComp = {
     return null;
   },
 
-  // getWeeksAndDays(monthDate, bookedDates) {
-  //   const bookedDatesList = this.convertBookedDatesToList(bookedDates);
-  //   const month = monthDate.getMonth();
-  //   const weekdayNumber = this.getWeekdayNumber(monthDate);
-  //   const weeksAndDays = [];
-  //   let currentWeek = [];
-  //   for (let i = 0; i < weekdayNumber; i += 1) {
-  //     currentWeek.push('');
-  //   }
-  //   while (monthDate.getMonth() === month) {
-  //     const currentDay = new Date(monthDate);
-  //     currentWeek.push(
-  //       {
-  //         date: currentDay,
-  //         isBooked: this.isBooked(currentDay, bookedDatesList),
-  //       },
-  //     );
-  //     monthDate.setDate(monthDate.getDate() + 1);
-  //     if (currentWeek.length === 7) {
-  //       weeksAndDays.push(currentWeek);
-  //       currentWeek = [];
-  //     } else if (monthDate.getMonth() !== month) {
-  //       while (currentWeek.length < 7) {
-  //         currentWeek.push('');
-  //       }
-  //       weeksAndDays.push(currentWeek);
-  //     }
-  //   }
-  //   return weeksAndDays;
-  // },
+  getMonthUTCDatesWithStatus(nextMonth, calendarUTCDates, checkInDate, checkOutDate) {
+    // let firstOfMonthPosition;
+    // let lastOfMonthPosition;
+    const monthUTCDatesWithStatus = [];
+    let isInCurrentMonth = false;
+    if (calendarUTCDates.length > 0) {
+      for (let i = 0; i < calendarUTCDates.length; i += 1) {
+        let currentUTCDateData = calendarUTCDates[i];
+        const currentUTCDate = new Date(currentUTCDateData.date);
+        const nextUTCDate = new Date(currentUTCDate);
+        nextUTCDate.setDate(nextUTCDate.getDate() + 1);
+        if (!isInCurrentMonth
+          && nextMonth.getFullYear() === currentUTCDate.getFullYear()
+          && nextMonth.getMonth() === currentUTCDate.getMonth()) {
+          isInCurrentMonth = true;
+        }
+        if (isInCurrentMonth) {
+          currentUTCDateData = this.addStatus(currentUTCDateData, checkInDate, checkOutDate);
+          monthUTCDatesWithStatus.push(currentUTCDateData);
+          if (currentUTCDate.getMonth() !== nextUTCDate.getMonth()) {
+            break;
+          }
+        }
+        // if (nextMonth.getFullYear() === currentUTCDate.getFullYear()
+        //   && nextMonth.getMonth() === currentUTCDate.getMonth()) {
+        //   if (currentUTCDate.getDate() === 1) {
+        //     firstOfMonthPosition = i;
+        //   } else if (currentUTCDate.getMonth() !== nextUTCDate.getMonth()) {
+        //     lastOfMonthPosition = i;
+        //     break;
+        //   }
+        // }
+      }
+      // return calendarUTCDates.slice(firstOfMonthPosition, lastOfMonthPosition + 1);
+      // console.log('monthUTCDatesWithStatus:');
+      // console.log(monthUTCDatesWithStatus);
+      return monthUTCDatesWithStatus;
+    }
+    return null;
+  },
 
-  // getWeeksAndDays(monthDate) {
-  //   const month = monthDate.getMonth();
-  //   const weekdayNumber = this.getWeekdayNumber(monthDate);
-  //   const weeksAndDays = [];
-  //   let currentWeek = [];
-  //   for (let i = 0; i < weekdayNumber; i += 1) {
-  //     currentWeek.push('');
-  //   }
-  //   while (monthDate.getMonth() === month) {
-  //     currentWeek.push(new Date(monthDate));
-  //     monthDate.setDate(monthDate.getDate() + 1);
-  //     if (currentWeek.length === 7) {
-  //       weeksAndDays.push(currentWeek);
-  //       currentWeek = [];
-  //     } else if (monthDate.getMonth() !== month) {
-  //       while (currentWeek.length < 7) {
-  //         currentWeek.push('');
-  //       }
-  //       weeksAndDays.push(currentWeek);
-  //     }
-  //   }
-  //   return weeksAndDays;
-  // },
+  addStatus(currentUTCDateData, checkInDate, checkOutDate) {
+    const currentUTCDate = new Date(currentUTCDateData.date);
+    const currentUTCDateDataWithStatus = {};
+    Object.assign(currentUTCDateDataWithStatus, currentUTCDateData);
+    const checkInDateDetail = this.getDateDetail(checkInDate);
+    const checkOutDateDetail = this.getDateDetail(checkOutDate);
+    if (this.checkDateMatch(currentUTCDate, checkInDateDetail)) {
+      currentUTCDateDataWithStatus.status = 'checkInDate';
+    } else if (this.checkDateMatch(currentUTCDate, checkOutDateDetail)) {
+      currentUTCDateDataWithStatus.status = 'checkOutDate';
+    } else if (this.checkDateRange(currentUTCDate, checkInDateDetail, checkOutDateDetail)) {
+      currentUTCDateDataWithStatus.status = 'inBetweenDate';
+    } else {
+      currentUTCDateDataWithStatus.status = '';
+    }
+    return currentUTCDateDataWithStatus;
+  },
+
+  getDateDetail(limitedDateString) {
+    if (limitedDateString.length >= 8) {
+      const dateDetail = {
+        year: limitedDateString.match(/\d+\/\d+\/(\d+)/)[1],
+        month: limitedDateString.match(/(\d+)\/\d+\/\d+/)[1],
+        day: limitedDateString.match(/\d+\/(\d+)\/\d+/)[1],
+      };
+      return dateDetail;
+    }
+    return { year: '1', month: '1', day: '1' };
+  },
+
+  checkDateMatch(currentUTCDate, dateDetail) {
+    const year = currentUTCDate.getFullYear().toString() === dateDetail.year;
+    const month = (currentUTCDate.getMonth() + 1).toString() === dateDetail.month;
+    const day = currentUTCDate.getDate().toString() === dateDetail.day;
+    return year && month && day;
+  },
+
+  checkDateRange(currentUTCDate, checkInDateDetail, checkOutDateDetail) {
+    const currentYear = currentUTCDate.getFullYear();
+    const currentMonth = currentUTCDate.getMonth() + 1;
+    const currentDay = currentUTCDate.getDate();
+    const year = currentYear >= Number(checkInDateDetail.year)
+      && currentYear <= Number(checkOutDateDetail.year);
+    const month = currentMonth >= Number(checkInDateDetail.month)
+      && currentMonth <= Number(checkOutDateDetail.month);
+    const day = currentDay > Number(checkInDateDetail.day)
+      && currentDay < Number(checkOutDateDetail.day);
+    return year && month && day;
+  },
 
   getWeeksAndDays(monthUTCDates) {
     const firstDayOfMonth = new Date(monthUTCDates[0].date);
@@ -161,26 +166,6 @@ const dateComp = {
     const today = new Date();
     return day <= today;
   },
-
-  // isBooked(day, bookedDatesList) {
-  //   const localeStringOptions = {
-  //     year: 'numeric',
-  //     month: 'numeric',
-  //     day: 'numeric',
-  //   };
-  //   const simpleDay = day.toLocaleString('ja-JP', localeStringOptions);
-  //   for (let i = 0; i < bookedDatesList.length; i += 1) {
-  //     const bookedDate = bookedDatesList[i];
-  //     const simpleBookedDay = bookedDate.toLocaleString('ja-JP', localeStringOptions);
-  //     if (simpleDay === simpleBookedDay) {
-  //       return true;
-  //     }
-  //     if (simpleDay < simpleBookedDay) {
-  //       return false;
-  //     }
-  //   }
-  //   return false;
-  // },
 };
 
 export default dateComp;

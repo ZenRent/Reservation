@@ -26,8 +26,8 @@ export default class Reservation extends Component {
       discountWeekly20: 0,
       discountMonthly20: 0,
       calendarUTCDates: [],
-      checkInDate: '',
-      checkOutDate: '',
+      checkInDate: '2/5/2021',
+      checkOutDate: '2/13/2021',
       DatesFocused: false,
       displayedMonth: new Date().getMonth() + 1,
       GuestsMaximized: false,
@@ -142,6 +142,8 @@ export default class Reservation extends Component {
           onMinimizeDates={this.handleMinimizeDates}
           onMaximizeDates={this.handleMaximizeDates}
           calendarUTCDates={calendarUTCDates}
+          checkInDate={checkInDate}
+          checkOutDate={checkOutDate}
         />
         {/* <Guests /> */}
         {checkOrReserveButton}

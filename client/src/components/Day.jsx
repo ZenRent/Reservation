@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import dateComp from '../utils/dateComputation';
 import styles from './styles/Day.css';
 
-const Day = ({ day }) => {
+const Day = ({
+  day,
+}) => {
   let dayDisplay;
   if (day === '') {
     dayDisplay = (
@@ -29,6 +31,33 @@ const Day = ({ day }) => {
       dayDisplay = (
         <div className={styles.alreadyBookedDayBlock}>
           {date.getDate()}
+        </div>
+      );
+    } else if (day.status === 'checkInDate') {
+      dayDisplay = (
+        <div>
+          <div className={styles.checkInDayBlockBackground} />
+          <div className={styles.checkInDayBlock}>
+            {date.getDate()}
+          </div>
+        </div>
+      );
+    } else if (day.status === 'checkOutDate') {
+      dayDisplay = (
+        <div>
+          <div className={styles.checkOutDayBlockBackground} />
+          <div className={styles.checkOutDayBlock}>
+            {date.getDate()}
+          </div>
+        </div>
+      );
+    } else if (day.status === 'inBetweenDate') {
+      dayDisplay = (
+        <div>
+          <div className={styles.inBetweenDayBlockBackground} />
+          <div className={styles.inBetweenDayBlock}>
+            {date.getDate()}
+          </div>
         </div>
       );
     } else {
