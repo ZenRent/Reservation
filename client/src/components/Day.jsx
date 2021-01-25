@@ -33,7 +33,13 @@ const Day = ({
           {date.getDate()}
         </div>
       );
-    } else if (day.status === 'checkInDate') {
+    } else if (day.status === 'checkInDateOnly') {
+      dayDisplay = (
+        <div className={styles.checkInDayBlock}>
+          {date.getDate()}
+        </div>
+      );
+    } else if (day.status === 'checkInDateWithDateRange') {
       dayDisplay = (
         <div>
           <div className={styles.checkInDayBlockBackground} />

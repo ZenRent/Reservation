@@ -27,7 +27,7 @@ export default class Reservation extends Component {
       discountMonthly20: 0,
       calendarUTCDates: [],
       checkInDate: '2/5/2021',
-      checkOutDate: '2/13/2021',
+      checkOutDate: '',
       DatesFocused: false,
       displayedMonth: new Date().getMonth() + 1,
       GuestsMaximized: false,

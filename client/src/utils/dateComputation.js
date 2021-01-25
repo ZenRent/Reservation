@@ -42,8 +42,6 @@ const dateComp = {
   },
 
   getMonthUTCDatesWithStatus(nextMonth, calendarUTCDates, checkInDate, checkOutDate) {
-    // let firstOfMonthPosition;
-    // let lastOfMonthPosition;
     const monthUTCDatesWithStatus = [];
     let isInCurrentMonth = false;
     if (calendarUTCDates.length > 0) {
@@ -64,19 +62,7 @@ const dateComp = {
             break;
           }
         }
-        // if (nextMonth.getFullYear() === currentUTCDate.getFullYear()
-        //   && nextMonth.getMonth() === currentUTCDate.getMonth()) {
-        //   if (currentUTCDate.getDate() === 1) {
-        //     firstOfMonthPosition = i;
-        //   } else if (currentUTCDate.getMonth() !== nextUTCDate.getMonth()) {
-        //     lastOfMonthPosition = i;
-        //     break;
-        //   }
-        // }
       }
-      // return calendarUTCDates.slice(firstOfMonthPosition, lastOfMonthPosition + 1);
-      // console.log('monthUTCDatesWithStatus:');
-      // console.log(monthUTCDatesWithStatus);
       return monthUTCDatesWithStatus;
     }
     return null;
@@ -88,8 +74,10 @@ const dateComp = {
     Object.assign(currentUTCDateDataWithStatus, currentUTCDateData);
     const checkInDateDetail = this.getDateDetail(checkInDate);
     const checkOutDateDetail = this.getDateDetail(checkOutDate);
-    if (this.checkDateMatch(currentUTCDate, checkInDateDetail)) {
-      currentUTCDateDataWithStatus.status = 'checkInDate';
+    if (this.checkDateMatch(currentUTCDate, checkInDateDetail) && checkOutDate.length >= 8) {
+      currentUTCDateDataWithStatus.status = 'checkInDateWithDateRange';
+    } else if (this.checkDateMatch(currentUTCDate, checkInDateDetail)) {
+      currentUTCDateDataWithStatus.status = 'checkInDateOnly';
     } else if (this.checkDateMatch(currentUTCDate, checkOutDateDetail)) {
       currentUTCDateDataWithStatus.status = 'checkOutDate';
     } else if (this.checkDateRange(currentUTCDate, checkInDateDetail, checkOutDateDetail)) {
