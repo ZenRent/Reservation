@@ -108,8 +108,23 @@ export default class Reservation extends Component {
       DatesMaximized,
     } = this.state;
     const checkOrReserveButton = checkInDate === '' || checkOutDate === ''
-      ? <button type="submit">Check Availability</button>
-      : <button type="submit">Reserve</button>;
+      ? (
+        <button
+          className={styles.reserveButton}
+          type="button"
+          onClick={this.handleMaximizeDates}
+        >
+          Check availability
+        </button>
+      )
+      : (
+        <button
+          className={styles.reserveButton}
+          type="button"
+        >
+          Reserve
+        </button>
+      );
 
     return (
       <div className={styles.ReservationContainer}>
@@ -128,9 +143,9 @@ export default class Reservation extends Component {
           onMaximizeDates={this.handleMaximizeDates}
           calendarUTCDates={calendarUTCDates}
         />
-        <Guests />
+        {/* <Guests /> */}
         {checkOrReserveButton}
-        <Costs />
+        {/* <Costs /> */}
       </div>
     );
   }
