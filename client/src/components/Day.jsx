@@ -79,6 +79,12 @@ const Day = ({
           </div>
         </div>
       );
+    } else if (day.status === 'beforeBookedDate') {
+      dayDisplay = (
+        <div className={styles.beforeBookedDayBlock}>
+          {date.getDate()}
+        </div>
+      );
     } else {
       dayDisplay = (
         <div

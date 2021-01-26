@@ -5,7 +5,8 @@
 .dayLabelBlock,
 .checkInDayBlock,
 .checkOutDayBlock,
-.inBetweenDayBlock {
+.inBetweenDayBlock,
+.beforeBookedDayBlock {
   display: inline-block;
   width: 40px;
   height: 40px;
@@ -66,6 +67,10 @@
   background: rgb(247, 247, 247);
   margin-top: 1px;
   z-index: 31;
+}
+
+.beforeBookedDayBlock {
+  color: rgb(113, 113, 113);
 }
 
 .dayLabelBlock {

@@ -21,13 +21,13 @@ export default class DateInput extends Component {
       onFieldFocus,
       onFieldBlur,
       DatesMaximized,
-      // formFocus,
       fieldFocus,
       input,
       onInput,
       onSubmitInput,
       onClear,
       onMaximizeDates,
+      onMinimizeDates,
       tabIndexValue,
     } = this.props;
 
@@ -52,7 +52,6 @@ export default class DateInput extends Component {
         onKeyUp={DatesMaximized
           ? () => {}
           : onMaximizeDates}
-        key="Space"
         role="button"
         label="Minimize Dates"
         tabIndex={-1}
@@ -61,7 +60,12 @@ export default class DateInput extends Component {
           className={styles.inputForm}
           name={formAndFieldName}
           onReset={onClear}
-          onSubmit={onSubmitInput}
+          onSubmit={(event) => {
+            onSubmitInput(event);
+            if (dateType === 'checkout' && input.length >= 8) {
+              setTimeout(onMinimizeDates, 350);
+            }
+          }}
           onFocus={onFieldFocus}
           onBlur={onFieldBlur}
         >
@@ -85,11 +89,6 @@ export default class DateInput extends Component {
               value={input}
               onChange={onInput}
               onBlur={onSubmitInput}
-              // onKeyDown={(event) => {
-              //   if (event.key === 'Tab') {
-              //     onSubmitInput(event);
-              //   }
-              // }}
               placeholder={fieldFocus === formAndFieldFocusValue && DatesMaximized
                 ? 'MM/DD/YYYY'
                 : 'Add date'}
@@ -108,12 +107,12 @@ DateInput.propTypes = {
   onFieldFocus: PropTypes.func.isRequired,
   onFieldBlur: PropTypes.func.isRequired,
   DatesMaximized: PropTypes.bool.isRequired,
-  // formFocus: PropTypes.string.isRequired,
   fieldFocus: PropTypes.string.isRequired,
   input: PropTypes.string.isRequired,
   onInput: PropTypes.func.isRequired,
   onSubmitInput: PropTypes.func.isRequired,
   onClear: PropTypes.func.isRequired,
   onMaximizeDates: PropTypes.func.isRequired,
+  onMinimizeDates: PropTypes.func.isRequired,
   tabIndexValue: PropTypes.number.isRequired,
 };

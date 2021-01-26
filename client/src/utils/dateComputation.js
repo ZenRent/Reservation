@@ -70,7 +70,7 @@ const dateComp = {
     return null;
   },
 
-  getMonthUTCDatesWithStatus(nextMonth, calendarUTCDates, checkInDate, checkOutDate) {
+  getMonthUTCDatesWithStatus(nextMonth, calendarUTCDates, checkInDate, checkOutDate, minNights) {
     const monthUTCDatesWithStatus = [];
     let isInCurrentMonth = false;
     if (calendarUTCDates.length > 0) {
@@ -90,7 +90,9 @@ const dateComp = {
             currentUTCDateData,
             checkInDate,
             checkOutDate,
+            minNights,
             calendarUTCDates,
+            i,
           );
           monthUTCDatesWithStatus.push(currentUTCDateData);
           if (currentUTCDate.getMonth() !== nextUTCDate.getMonth()) {
@@ -118,7 +120,7 @@ const dateComp = {
     return UTCDate;
   },
 
-  addStatus(currentUTCDateData, checkInDate, checkOutDate, calendarUTCDates) {
+  addStatus(currentUTCDateData, checkInDate, checkOutDate, minNights, calendarUTCDates, i) {
     const currentUTCDate = new Date(currentUTCDateData.date);
     const currentUTCDateDataWithStatus = {};
     Object.assign(currentUTCDateDataWithStatus, currentUTCDateData);
@@ -138,6 +140,9 @@ const dateComp = {
       currentUTCDateDataWithStatus.status = 'checkOutDate';
     } else if (this.checkDateRange(currentUTCDate, checkInDateDetail, checkOutDateDetail)) {
       currentUTCDateDataWithStatus.status = 'inBetweenDate';
+    } else if (checkInDate.length < 8
+      && this.checkIfBeforeBooked(minNights, calendarUTCDates, i)) {
+      currentUTCDateDataWithStatus.status = 'beforeBookedDate';
     } else {
       currentUTCDateDataWithStatus.status = '';
     }
@@ -199,6 +204,18 @@ const dateComp = {
       increment += 1;
     }
     return currentUTCDateZero > nextBookedDateZero;
+  },
+
+  checkIfBeforeBooked(minNights, calendarUTCDates, i) {
+    let isBeforeBooked = false;
+    for (let j = 0; j < minNights; j += 1) {
+      const nextUTCDate = calendarUTCDates[i + 1 + j];
+      if (nextUTCDate.isBooked) {
+        isBeforeBooked = true;
+        break;
+      }
+    }
+    return isBeforeBooked;
   },
 
   checkDateMatch(currentUTCDate, dateDetail) {

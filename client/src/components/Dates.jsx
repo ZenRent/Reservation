@@ -29,11 +29,13 @@ export default class Dates extends Component {
   }
 
   handleMinimizeDates() {
-    const { onMinimizeDates } = this.props;
+    const { onMinimizeDates, checkInDate } = this.props;
     onMinimizeDates();
-    this.setState({
-      scrollPosition: 0,
-    });
+    if (checkInDate.length < 8) {
+      this.setState({
+        scrollPosition: 0,
+      });
+    }
   }
 
   handleMaximizeDates() {
@@ -140,6 +142,7 @@ export default class Dates extends Component {
           checkInDate={checkInDate}
           checkOutDate={checkOutDate}
           onClickDate={onClickDate}
+          minNights={minNights}
         />
       )
       : null;
@@ -270,13 +273,13 @@ export default class Dates extends Component {
                       onFieldBlur={this.handleFieldBlur}
                       dateType="check-in"
                       DatesMaximized={DatesMaximized}
-                      // formFocus={formFocus}
                       fieldFocus={fieldFocus}
                       input={checkInInput}
                       onInput={this.handleInput}
                       onSubmitInput={this.handleSubmitInput}
                       onClear={this.handleClearInput}
                       onMaximizeDates={this.handleMaximizeDates}
+                      onMinimizeDates={this.handleMinimizeDates}
                       tabIndexValue={1}
                     />
                   </div>
@@ -292,13 +295,13 @@ export default class Dates extends Component {
                       onFieldBlur={this.handleFieldBlur}
                       dateType="checkout"
                       DatesMaximized={DatesMaximized}
-                      // formFocus={formFocus}
                       fieldFocus={fieldFocus}
                       input={checkOutInput}
                       onInput={this.handleInput}
                       onSubmitInput={this.handleSubmitInput}
                       onClear={this.handleClearInput}
                       onMaximizeDates={this.handleMaximizeDates}
+                      onMinimizeDates={this.handleMinimizeDates}
                       tabIndexValue={2}
                     />
                   </div>

@@ -37,7 +37,6 @@ export default class Reservation extends Component {
       GuestsFocused: false,
       DatesMaximized: false,
     };
-    this.getData = this.getData.bind(this);
     this.handleMinimizeDates = this.handleMinimizeDates.bind(this);
     this.handleMaximizeDates = this.handleMaximizeDates.bind(this);
     this.handleReserveDates = this.handleReserveDates.bind(this);
@@ -46,51 +45,12 @@ export default class Reservation extends Component {
     this.handleClearInput = this.handleClearInput.bind(this);
     this.handleClearAllInput = this.handleClearAllInput.bind(this);
     this.handleClickDate = this.handleClickDate.bind(this);
+    this.getData = this.getData.bind(this);
   }
 
   componentDidMount() {
     const { listingId } = this.state;
     this.getData(listingId);
-  }
-
-  getData(id) {
-    $.ajax({
-      url: `http://localhost:3003/api/listings/${id}`,
-      method: 'GET',
-      success: (data) => {
-        const {
-          listingId,
-          nightlyRate,
-          averageRating,
-          reviewCount,
-          minNights,
-          maxGuests,
-          cleaningFee,
-          serviceFee,
-          occupancyTaxesAndFees,
-          discountWeekly10,
-          discountWeekly20,
-          discountMonthly20,
-          calendarUTCDates,
-        } = data;
-        this.setState({
-          listingId,
-          nightlyRate,
-          averageRating,
-          reviewCount,
-          minNights,
-          maxGuests,
-          cleaningFee,
-          serviceFee,
-          occupancyTaxesAndFees,
-          discountWeekly10,
-          discountWeekly20,
-          discountMonthly20,
-          calendarUTCDates,
-        });
-      },
-      error: console.error
-    });
   }
 
   handleMinimizeDates() {
@@ -148,9 +108,6 @@ export default class Reservation extends Component {
       this.setState({
         checkOutDate: checkOutInput,
       });
-      if (checkOutInput.length >= 8) {
-        setTimeout(this.handleMinimizeDates, 350);
-      }
     }
   }
 
@@ -202,6 +159,46 @@ export default class Reservation extends Component {
         setTimeout(this.handleMinimizeDates, 350);
       }
     }
+  }
+
+  getData(id) {
+    $.ajax({
+      url: `http://localhost:3003/api/listings/${id}`,
+      method: 'GET',
+      success: (data) => {
+        const {
+          listingId,
+          nightlyRate,
+          averageRating,
+          reviewCount,
+          minNights,
+          maxGuests,
+          cleaningFee,
+          serviceFee,
+          occupancyTaxesAndFees,
+          discountWeekly10,
+          discountWeekly20,
+          discountMonthly20,
+          calendarUTCDates,
+        } = data;
+        this.setState({
+          listingId,
+          nightlyRate,
+          averageRating,
+          reviewCount,
+          minNights,
+          maxGuests,
+          cleaningFee,
+          serviceFee,
+          occupancyTaxesAndFees,
+          discountWeekly10,
+          discountWeekly20,
+          discountMonthly20,
+          calendarUTCDates,
+        });
+      },
+      error: console.error
+    });
   }
 
   render() {

@@ -10,6 +10,7 @@ const Calendar = ({
   checkInDate,
   checkOutDate,
   onClickDate,
+  minNights,
 }) => {
   const months = [];
   const nextMonth = new Date();
@@ -20,6 +21,7 @@ const Calendar = ({
       calendarUTCDates,
       checkInDate,
       checkOutDate,
+      minNights,
     );
     months.push(
       <div key={nextMonth.toUTCString()} className={styles.monthContainer}>
@@ -52,4 +54,5 @@ Calendar.propTypes = {
   checkInDate: PropTypes.string.isRequired,
   checkOutDate: PropTypes.string.isRequired,
   onClickDate: PropTypes.func.isRequired,
+  minNights: PropTypes.number.isRequired,
 };
