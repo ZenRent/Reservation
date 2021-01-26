@@ -21,6 +21,7 @@
 * [Development](#Development)
     * [Installing Dependencies](#Installing-Dependencies)
     * [Reseeding Database](#Reseeding-Database)
+    * [Running Application](#Running-Application)
 
 ## Usage
 
@@ -154,3 +155,19 @@ To reseed the database, run the following commands from within the root director
 $ npm run erase-db
 $ npm run seed-db
 ```
+
+### Running Application
+
+From within the root directory, start the server:
+
+```sh
+$ npm run server-dev
+```
+
+And build the client-side application bundle:
+
+```sh
+$ npm run react-dev
+```
+
+Then open `http://localhost:3003/<id>` in a browser, where `<id>` is the ID for a listing (by default, any number between `1` and `100`, inclusive).
