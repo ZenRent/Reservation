@@ -88,7 +88,11 @@ export default class DateInput extends Component {
               id={fieldId}
               value={input}
               onChange={onInput}
-              onBlur={onSubmitInput}
+              onKeyDown={(event) => {
+                if (event.key === 'Tab') {
+                  onSubmitInput(event);
+                }
+              }}
               placeholder={fieldFocus === formAndFieldFocusValue && DatesMaximized
                 ? 'MM/DD/YYYY'
                 : 'Add date'}

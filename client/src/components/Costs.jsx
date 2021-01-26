@@ -1,7 +1,7 @@
 import React from 'react';
 import LineItem from './LineItem';
 
-const Costs = (props) => (
+const Costs = () => (
   <div>
     <h2>
       Costs component

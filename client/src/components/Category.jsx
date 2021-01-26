@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Category = (props) => (
+const Category = () => (
   <div>
     <h3>
       Category component
