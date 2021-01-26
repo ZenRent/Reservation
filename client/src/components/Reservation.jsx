@@ -96,7 +96,7 @@ export default class Reservation extends Component {
   handleSubmitInput(event) {
     event.preventDefault();
     const { name } = event.target;
-    const { checkInInput, checkOutInput, checkOutDate } = this.state;
+    const { checkInInput, checkOutInput } = this.state;
     if (name === 'checkInInput') {
       this.setState({
         checkInDate: checkInInput,
@@ -197,7 +197,7 @@ export default class Reservation extends Component {
           calendarUTCDates,
         });
       },
-      error: console.error
+      error: console.error,
     });
   }
 
