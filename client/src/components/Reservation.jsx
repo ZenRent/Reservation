@@ -2,8 +2,8 @@ import React from 'react';
 import $ from 'jquery';
 import Header from './Header';
 import Dates from './Dates';
-import Guests from './Guests';
-import Costs from './Costs';
+// import Guests from './Guests';
+// import Costs from './Costs';
 import dateComp from '../utils/dateComputation';
 import styles from './styles/Reservation.css';
 import './styles/global.css';
@@ -19,22 +19,22 @@ export default class Reservation extends Component {
       averageRating: 0,
       reviewCount: 0,
       minNights: 0,
-      maxGuests: 0,
-      cleaningFee: 0,
-      serviceFee: 0,
-      occupancyTaxesAndFees: 0,
-      discountWeekly10: 0,
-      discountWeekly20: 0,
-      discountMonthly20: 0,
+      // maxGuests: 0,
+      // cleaningFee: 0,
+      // serviceFee: 0,
+      // occupancyTaxesAndFees: 0,
+      // discountWeekly10: 0,
+      // discountWeekly20: 0,
+      // discountMonthly20: 0,
       calendarUTCDates: [],
       checkInDate: '',
       checkOutDate: '',
       checkInInput: '',
       checkOutInput: '',
-      DatesFocused: false,
-      displayedMonth: new Date().getMonth() + 1,
-      GuestsMaximized: false,
-      GuestsFocused: false,
+      // DatesFocused: false,
+      // displayedMonth: new Date().getMonth() + 1,
+      // GuestsMaximized: false,
+      // GuestsFocused: false,
       DatesMaximized: false,
     };
     this.handleMinimizeDates = this.handleMinimizeDates.bind(this);
@@ -96,7 +96,7 @@ export default class Reservation extends Component {
   handleSubmitInput(event) {
     event.preventDefault();
     const { name } = event.target;
-    const { checkInInput, checkOutInput, checkOutDate } = this.state;
+    const { checkInInput, checkOutInput } = this.state;
     if (name === 'checkInInput') {
       this.setState({
         checkInDate: checkInInput,
@@ -172,13 +172,13 @@ export default class Reservation extends Component {
           averageRating,
           reviewCount,
           minNights,
-          maxGuests,
-          cleaningFee,
-          serviceFee,
-          occupancyTaxesAndFees,
-          discountWeekly10,
-          discountWeekly20,
-          discountMonthly20,
+          // maxGuests,
+          // cleaningFee,
+          // serviceFee,
+          // occupancyTaxesAndFees,
+          // discountWeekly10,
+          // discountWeekly20,
+          // discountMonthly20,
           calendarUTCDates,
         } = data;
         this.setState({
@@ -187,17 +187,17 @@ export default class Reservation extends Component {
           averageRating,
           reviewCount,
           minNights,
-          maxGuests,
-          cleaningFee,
-          serviceFee,
-          occupancyTaxesAndFees,
-          discountWeekly10,
-          discountWeekly20,
-          discountMonthly20,
+          // maxGuests,
+          // cleaningFee,
+          // serviceFee,
+          // occupancyTaxesAndFees,
+          // discountWeekly10,
+          // discountWeekly20,
+          // discountMonthly20,
           calendarUTCDates,
         });
       },
-      error: console.error
+      error: console.error,
     });
   }
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const LineItem = (props) => (
+const LineItem = () => (
   <div>
     <h3>
       LineItem component
