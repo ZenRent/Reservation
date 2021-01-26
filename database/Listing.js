@@ -15,12 +15,6 @@ const listingSchema = new Schema({
       isBooked: { type: Boolean },
     },
   ],
-  // bookedDates: [
-  //   {
-  //     start: { type: Date },
-  //     length: { type: Number },
-  //   },
-  // ],
   maxGuests: { type: Number, required: true, default: 2 },
   cleaningFee: { type: Number, required: true, default: 0 },
   serviceFee: { type: Number, required: true, default: 0 },

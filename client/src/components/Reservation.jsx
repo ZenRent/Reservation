@@ -40,6 +40,7 @@ export default class Reservation extends Component {
     this.getData = this.getData.bind(this);
     this.handleMinimizeDates = this.handleMinimizeDates.bind(this);
     this.handleMaximizeDates = this.handleMaximizeDates.bind(this);
+    this.handleReserveDates = this.handleReserveDates.bind(this);
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmitInput = this.handleSubmitInput.bind(this);
     this.handleClearInput = this.handleClearInput.bind(this);
@@ -104,6 +105,27 @@ export default class Reservation extends Component {
     });
   }
 
+  handleReserveDates(event) {
+    event.preventDefault();
+    const {
+      calendarUTCDates,
+      checkInDate,
+      checkOutDate,
+    } = this.state;
+    const updatedCalendarUTCDates = dateComp.getDatesWithAddedBooking(
+      calendarUTCDates,
+      checkInDate,
+      checkOutDate,
+    );
+    this.setState({
+      calendarUTCDates: updatedCalendarUTCDates,
+      checkInInput: '',
+      checkOutInput: '',
+      checkInDate: '',
+      checkOutDate: '',
+    });
+  }
+
   handleInput(event) {
     const { name, value } = event.target;
     this.setState({
@@ -114,7 +136,7 @@ export default class Reservation extends Component {
   handleSubmitInput(event) {
     event.preventDefault();
     const { name } = event.target;
-    const { checkInInput, checkOutInput } = this.state;
+    const { checkInInput, checkOutInput, checkOutDate } = this.state;
     if (name === 'checkInInput') {
       this.setState({
         checkInDate: checkInInput,
@@ -126,6 +148,9 @@ export default class Reservation extends Component {
       this.setState({
         checkOutDate: checkOutInput,
       });
+      if (checkOutInput.length >= 8) {
+        setTimeout(this.handleMinimizeDates, 350);
+      }
     }
   }
 
@@ -173,6 +198,9 @@ export default class Reservation extends Component {
         checkOutDate: dateString,
         checkOutInput: dateString,
       });
+      if (dateString.length >= 8) {
+        setTimeout(this.handleMinimizeDates, 350);
+      }
     }
   }
 
@@ -203,6 +231,7 @@ export default class Reservation extends Component {
         <button
           className={styles.reserveButton}
           type="button"
+          onClick={this.handleReserveDates}
         >
           Reserve
         </button>

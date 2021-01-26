@@ -3,16 +3,6 @@ const { Listing } = require('./Listing.js');
 
 const docsToCreate = 100;
 const numberOfFutureMonthsToGenerate = 50;
-// const numberOfFutureMonthsToBook = 12;
-// const maxBookingLength = 5;
-
-// Listing.collection.drop()
-//   .then((res) => {
-//     console.log(res);
-//   })
-//   .catch((err) => {
-//     console.error(err);
-//   });
 
 const upperLimits = {
   nightlyRate: {
@@ -73,7 +63,6 @@ const rollD4 = () => {
 
 const getRandomValue = ({ limit, canBeZero }) => {
   if (canBeZero) {
-    // const fourSidedDie = Math.floor(Math.random() * 4);
     if (rollD4() === 0) {
       return 0;
     }
@@ -88,24 +77,6 @@ const convertMonthsToDays = (months) => {
   const weeks = 52 * years;
   return Math.floor(weeks * 7);
 };
-
-// const getRandomDateRanges = () => {
-//   const dateRanges = [];
-//   const days = convertMonthsToDays(numberOfFutureMonthsToBook);
-//   const date = new Date();
-//   for (let i = 0; i < days; i += maxBookingLength) {
-//     date.setDate(date.getDate() + maxBookingLength);
-//     const fourSidedDie = Math.floor(Math.random() * 4);
-//     if (fourSidedDie > 0) {
-//       const booking = {
-//         start: date.toUTCString(),
-//         length: getRandomValue({ limit: 5, canBeZero: false }),
-//       };
-//       dateRanges.push(booking);
-//     }
-//   }
-//   return dateRanges;
-// };
 
 const getCalendarUTCDates = () => {
   const calendarUTCDates = [];
@@ -149,7 +120,6 @@ for (let i = 0; i < docsToCreate; i += 1) {
     averageRating: (getRandomValue(upperLimits.averageRating) / 100),
     reviewCount: getRandomValue(upperLimits.reviewCount),
     minNights: getRandomValue(upperLimits.minNights),
-    // bookedDates: getRandomDateRanges(),
     calendarUTCDates: getCalendarUTCDates(),
     maxGuests: getRandomValue(upperLimits.maxGuests),
     cleaningFee: getRandomValue(upperLimits.cleaningFee),
