@@ -10,9 +10,17 @@
 
 ## Table of Contents
 
-1. [Usage](#Usage)
-1. [Requirements](#requirements)
-1. [Development](#development)
+* [Usage](#Usage)
+  * [API](#API)
+    * [Spec](#Spec)
+    * [Example](#Example)
+  * [Back-end Configuration](#Back-end-Configuration)
+    * [Server](#Server)
+    * [Database](#Database)
+* [Requirements](#Requirements)
+* [Development](#Development)
+    * [Installing Dependencies](#Installing-Dependencies)
+    * [Reseeding Database](#Reseeding-Database)
 
 ## Usage
 
@@ -29,7 +37,7 @@
 * GET request to: `/api/listings/42`
 * Response:
 
-``` json
+```json
 {
     "averageRating": 1.12,
     "reviewCount": 0,
@@ -104,6 +112,22 @@
 }
 ```
 
+### Back-end Configuration
+
+This application currently uses the following configuration.
+
+#### Server
+
+* Port: `3003`
+
+#### Database
+
+* DBMS: MongoDB
+* Port: `27017`
+* Database name: `zenrent`
+* Model name: `Listing`
+* Collection name: `listings`
+
 ## Requirements
 
 An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
@@ -118,6 +142,15 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 From within the root directory:
 
 ```sh
-npm install -g webpack
-npm install
+$ npm install -g webpack
+$ npm install
+```
+
+### Reseeding Database
+
+To reseed the database, run the following commands from within the root directory:
+
+```sh
+$ npm run erase-db
+$ npm run seed-db
 ```
