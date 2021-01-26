@@ -74,7 +74,12 @@ const Day = ({
       dayDisplay = (
         <div>
           <div className={styles.inBetweenDayBlockBackground} />
-          <div className={styles.inBetweenDayBlock}>
+          <div
+            className={styles.inBetweenDayBlock}
+            onClick={() => onClickDate(date)}
+            role="presentation"
+            focusable="false"
+          >
             {date.getDate()}
           </div>
         </div>
@@ -90,6 +95,8 @@ const Day = ({
         <div
           className={styles.dayBlock}
           onClick={() => onClickDate(date)}
+          role="presentation"
+          focusable="false"
         >
           {date.getDate()}
         </div>
