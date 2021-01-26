@@ -120,7 +120,7 @@ export default class Reservation extends Component {
         checkInDate: checkInInput,
       });
       if (checkInInput.match(/\d+\/\d+\/\d+/)) {
-        this.refs.dates.focusCheckOutInputField();
+        this.refs.datesRef.focusCheckOutInputField();
       }
     } else if (name === 'checkOutInput') {
       this.setState({
@@ -219,7 +219,7 @@ export default class Reservation extends Component {
           onMaximizeDates={this.handleMaximizeDates}
         />
         <Dates
-          ref="dates"
+          ref="datesRef"
           minNights={minNights}
           DatesMaximized={DatesMaximized}
           onMinimizeDates={this.handleMinimizeDates}
