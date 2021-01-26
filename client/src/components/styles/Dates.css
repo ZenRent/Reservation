@@ -1,0 +1,338 @@
+.fixedInPlaceDatesContainer {
+  width: 319px;
+  height: 62px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.DatesContainerMinimized {
+  display: inline-block;
+  position: relative;
+  outline: none;
+  margin-top: 14px;
+}
+
+.DatesContainerMaximized {
+  display: inline-block;
+  position: absolute;
+  top: 71px;
+  right: -10px;
+  outline: none;
+  margin-top: 14px;
+  border: 0;
+  border-radius: 16px;
+  padding: 24px 32px 16px 2px;
+  width: calc(367px - 48px);
+  background-color: #fff;
+  width: 660px;
+  height: 504px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 16px;
+  z-index: 30;
+}
+
+.minimizeDatesLayerEnabled {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  background: transparent;
+  outline: 0;
+  z-index: 20;
+}
+
+.minimizeDatesLayerDisabled {
+  display: none;
+}
+
+.dateInputOuterGridContainerDatesMinimized,
+.dateInputOuterGridContainerDatesMaximized {
+  display: grid;
+  grid-template: 1fr / 1fr 1fr;
+}
+
+.dateInputOuterGridContainerDatesMaximized {
+  padding-left: 30px;
+}
+
+.selectDatesContainer {
+  grid-area: 1 / 1 / span 1 / span 1;
+}
+
+.selectDates {
+  font-family: 'RedHatDisplay-Medium', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 24px;
+}
+
+.minimumStay {
+  color: rgb(113, 113, 113);
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.borderDatesContainer {
+  padding: 0;
+  width: calc(367px - 48px);
+  height: 57px;
+  grid-area: 1 / 2 / span 1 / span 1;
+}
+
+.dateInputInnerGridContainer {
+  display: grid;
+  grid-template: 1fr / 1fr 1fr;
+}
+
+.checkInInputBorder {
+  grid-area: 1 / 1 / span 1 / span 1;
+  border-top: 1px solid #b0b0b0;
+  border-right: 1px solid #b0b0b0;
+  border-bottom: 1px solid #b0b0b0;
+  border-left: 1px solid #b0b0b0;
+  border-top-left-radius: 7px;
+  border-bottom-left-radius: 7px;
+  position: relative;
+}
+
+.checkInInputBorderInputHasFocus {
+  grid-area: 1 / 1 / span 1 / span 1;
+  border-top: 1px solid #b0b0b0;
+  border-bottom: 1px solid #b0b0b0;
+  border-left: 1px solid #b0b0b0;
+  border-top-left-radius: 7px;
+  border-bottom-left-radius: 7px;
+  position: relative;
+}
+
+.checkOutInputBorder {
+  grid-area: 1 / 2 / span 1 / span 1;
+  border-top: 1px solid #b0b0b0;
+  border-right: 1px solid #b0b0b0;
+  border-bottom: 1px solid #b0b0b0;
+  border-top-right-radius: 7px;
+  border-bottom-right-radius: 7px;
+  position: relative;
+}
+
+.checkInInputFocused {
+  border: 2px solid black;
+  border-radius: 7px;
+  position: absolute;
+  top: -2px;
+  left: -2px;
+}
+
+.checkOutInputFocused {
+  grid-area: 1 / 2 / span 1 / span 1;
+  border: 2px solid black;
+  border-radius: 7px;
+  position: absolute;
+  top: -2px;
+  left: -2px;
+}
+
+.checkInInputUnfocused {
+  position: relative;
+}
+
+.checkOutInputUnfocused {
+  position: relative;
+}
+
+.keyboardIcon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background-image: url('./img/kb_no-hover.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.keyboardIcon:hover {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background-image: url('./img/kb_hover.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.dayLabelRelativeContainer {
+  position: relative;
+}
+
+.dayLabelAbsoluteContainer {
+  position: absolute;
+  top: 79px;
+  left: 19px;
+  width: 616px;
+}
+
+.dayLabelFlexContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dayLabel {
+  display: inline-block;
+  width: calc((660px - 64px) / 2);
+}
+
+.calendarMovementButtonAbsoluteContainer {
+  position: absolute;
+  top: 31px;
+  left: 24px;
+  width: 602px;
+}
+
+.calendarMovementButtonContainer {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+  width: 602px;
+  z-index: 50;
+}
+
+.calendarMovementButtonIndividualContainer {
+  display: inline-flex;
+  width: 32px;
+  height: 32px;
+  justify-content: center;
+  align-items: center;
+}
+
+.calendarMovementButton, .calendarMovementButtonDisabled {
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+  width: 32px;
+  height: 32px;
+}
+
+.calendarMovementButton:hover {
+  background: rgb(247, 247, 247);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.calendarMovementButton:active {
+  transform: scale(0.9);
+  transition: all 0.15s;
+}
+
+.calendarMovementButtonIcon, .calendarMovementButtonIconDisabled {
+  height: 12px;
+  width: 12px;
+  display: inline-block;
+  fill: currentcolor;
+}
+
+.calendarMovementButtonIconDisabled {
+  fill: rgb(221, 221, 221);
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 20px;
+}
+
+.keyboardButton {
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+  width: 44px;
+  height: 44px;
+}
+
+.keyboardButton:hover {
+  background: rgb(247, 247, 247);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.keyboardButton:active {
+  transform: scale(0.9);
+  transition: all 0.15s;
+}
+
+.keyboardButtonIcon {
+  display: inline-block;
+  height: 24px;
+  width: 24px;
+  fill: currentcolor;
+  position: relative;
+  top: 2px;
+}
+
+.clearDatesButtonContainer {
+  display: inline-flex;
+  justify-content: center;
+  position: relative;
+  right: 8px;
+  width: 94px;
+  height: 36px;
+}
+
+.clearDatesButton {
+  background: transparent;
+  border: 0;
+  outline: 0;
+  font-family: 'RedHatDisplay-Medium', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 15px;
+  text-decoration: underline;
+  padding: 8px;
+  cursor: pointer;
+  display: inline-block;
+  width: 94px;
+  height: 36px;
+}
+
+.clearDatesButton:hover {
+  background: rgb(247, 247, 247);
+  border-radius: 8px;
+}
+
+.clearDatesButton:active {
+  font-size: calc(15px * 0.93);
+  width: calc(94px * 0.95);
+  height: calc(36px * 0.95);
+  transition: all 0.15s;
+}
+
+.closeButtonContainer {
+  display: inline-flex;
+  justify-content: center;
+  width: 71px;
+  height: 36px;
+}
+
+.closeButton {
+  color:rgb(255, 255, 255);
+  background: rgb(34, 34, 34);
+  border: 0;
+  outline: 0;
+  font-family: 'RedHatDisplay-Medium', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 15px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-block;
+  width: 71px;
+  height: 36px;
+}
+
+.closeButton:hover {
+  background: rgb(0, 0, 0);
+}
+
+.closeButton:active {
+  font-size: calc(15px * 0.93);
+  width: calc(71px * 0.95);
+  height: calc(36px * 0.95);
+  transition: all 0.15s;
+}

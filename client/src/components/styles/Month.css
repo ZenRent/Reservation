@@ -1,0 +1,16 @@
+.monthAndYearHeader {
+  display: flex;
+  justify-content: center;
+  font-family: 'RedHatDisplay-Medium', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px;
+  margin-top: 36px;
+}
+
+.monthBlock {
+  width: calc((660px - 64px) / 2);
+  margin: auto;
+}
+
+.weeks {
+  margin-top: 72px;
+}

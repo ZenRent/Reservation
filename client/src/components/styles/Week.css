@@ -1,0 +1,5 @@
+.weekRow {
+  display: flex;
+  justify-content: space-evenly;
+  height: 40px;
+}

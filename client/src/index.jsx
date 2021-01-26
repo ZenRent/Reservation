@@ -1,4 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Reservation from './components/Reservation';
 
-ReactDOM.render(<h1>ZenRent Reservation</h1>, document.getElementById('app'));
+ReactDOM.render(<Reservation />, document.getElementById('app'));

@@ -1,0 +1,25 @@
+@font-face {
+  font-family: 'RedHatDisplay-Regular';
+  src: url('./fonts/RedHatDisplay-Regular.ttf')
+}
+
+@font-face {
+  font-family: 'RedHatDisplay-Medium';
+  src: url('./fonts/RedHatDisplay-Medium.ttf')
+}
+
+@font-face {
+  font-family: 'RedHatDisplay-Bold';
+  src: url('./fonts/RedHatDisplay-Bold.ttf')
+}
+
+@font-face {
+  font-family: 'RedHatDisplay-Black';
+  src: url('./fonts/RedHatDisplay-Black.ttf')
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'RedHatDisplay-Regular', 'Helvetica Neue', Arial, sans-serif;
+  color: rgb(34, 34, 34);
+}

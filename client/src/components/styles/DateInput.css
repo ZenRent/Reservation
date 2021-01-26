@@ -1,0 +1,56 @@
+.dateInputContainerDatesMinimized,
+.dateInputContainerDatesMaximized {
+  width: 157px;
+  height: 56px;
+  padding: 10px;
+  outline: 0;
+}
+
+.dateInputContainerDatesMinimized {
+  cursor: pointer;
+}
+
+.dateInputLabel {
+  pointer-events: none;
+  text-transform: uppercase;
+  font-size: 11px;
+  font-family: 'RedHatDisplay-Bold', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.inputForm {
+  display: grid;
+  height: 2.5rem;
+  grid-template: 1fr 1fr / 5fr 1fr;
+}
+
+.inputLabelDatesMinimized,
+.inputLabelDatesMaximized {
+  grid-area: 1 / 1 / span 1 / span 1;
+}
+
+.inputLabelDatesMinimized {
+  cursor: pointer;
+}
+
+.inputFieldDatesMinimized,
+.inputFieldDatesMaximized {
+  grid-area: 2 / 1 / span 1 / span 1;
+  display: inline-block;
+  border: 0;
+  outline: 0;
+  background-color: rgba(0, 0, 0, 0);
+  width: 97px;
+  height: 18px;
+}
+
+.inputFieldDatesMinimized {
+  cursor: pointer;
+}
+
+.inputClear {
+  grid-area: 1 / 2 / span 2 / span 1;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  font-size: 20px;
+}

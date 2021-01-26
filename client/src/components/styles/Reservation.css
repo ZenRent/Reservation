@@ -1,0 +1,31 @@
+.ReservationContainer {
+  position: absolute;
+  top: 80px;
+  right: 80px;
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
+  width: 367px;
+  z-index: 10;
+}
+
+.reserveButton {
+  margin-top: 30px;
+  color: white;
+  font-family: 'RedHatDisplay-Medium', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px;
+  width: 322px;
+  height: 48px;
+  background-image: var(--dls19-brand-gradient-radial, radial-gradient(circle at center, #FF385C 0%, #E61E4D 27.5%, #E31C5F 40%, #D70466 57.5%, #BD1E59 75%, #BD1E59 100% ));
+  background-position: calc((100 - var(--mouse-x, 0)) * 1%) calc((100 - var(--mouse-y, 0)) * 1%);
+  background-size: 200% 200%;
+  border-radius: 8px;
+  border: 0;
+  outline: 0;
+}
+
+.reserveButton:active {
+  transform: scale(0.95);
+  transition: all 0.2s;
+}
