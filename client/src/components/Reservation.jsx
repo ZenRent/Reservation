@@ -41,6 +41,7 @@ export default class Reservation extends Component {
     this.handleMinimizeDates = this.handleMinimizeDates.bind(this);
     this.handleMaximizeDates = this.handleMaximizeDates.bind(this);
     this.handleInput = this.handleInput.bind(this);
+    this.handleSubmitInput = this.handleSubmitInput.bind(this);
     this.handleClearInput = this.handleClearInput.bind(this);
     this.handleClearAllInput = this.handleClearAllInput.bind(this);
     this.handleClickDate = this.handleClickDate.bind(this);
@@ -108,6 +109,24 @@ export default class Reservation extends Component {
     this.setState({
       [name]: value,
     });
+  }
+
+  handleSubmitInput(event) {
+    event.preventDefault();
+    const { name } = event.target;
+    const { checkInInput, checkOutInput } = this.state;
+    if (name === 'checkInInput') {
+      this.setState({
+        checkInDate: checkInInput,
+      });
+      if (checkInInput.match(/\d+\/\d+\/\d+/)) {
+        this.refs.dates.focusCheckOutInputField();
+      }
+    } else if (name === 'checkOutInput') {
+      this.setState({
+        checkOutDate: checkOutInput,
+      });
+    }
   }
 
   handleClearInput(event) {
@@ -200,6 +219,7 @@ export default class Reservation extends Component {
           onMaximizeDates={this.handleMaximizeDates}
         />
         <Dates
+          ref="dates"
           minNights={minNights}
           DatesMaximized={DatesMaximized}
           onMinimizeDates={this.handleMinimizeDates}
@@ -211,6 +231,7 @@ export default class Reservation extends Component {
           checkOutInput={checkOutInput}
           onClickDate={this.handleClickDate}
           onInput={this.handleInput}
+          onSubmitInput={this.handleSubmitInput}
           onClearInput={this.handleClearInput}
           onClearAllInput={this.handleClearAllInput}
         />

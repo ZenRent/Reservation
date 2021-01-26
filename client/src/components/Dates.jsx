@@ -13,8 +13,6 @@ export default class Dates extends Component {
     this.state = {
       formFocus: '',
       fieldFocus: '',
-      // checkInInput: '',
-      // checkOutInput: '',
       scrollPosition: 0,
     };
     this.handleMinimizeDates = this.handleMinimizeDates.bind(this);
@@ -22,8 +20,10 @@ export default class Dates extends Component {
     this.handleFieldFocus = this.handleFieldFocus.bind(this);
     this.handleFieldBlur = this.handleFieldBlur.bind(this);
     this.handleInput = this.handleInput.bind(this);
+    this.handleSubmitInput = this.handleSubmitInput.bind(this);
     this.handleClearInput = this.handleClearInput.bind(this);
     this.handleClearAllInput = this.handleClearAllInput.bind(this);
+    this.focusCheckOutInputField = this.focusCheckOutInputField.bind(this);
     this.moveScrollPositionLeft = this.moveScrollPositionLeft.bind(this);
     this.moveScrollPositionRight = this.moveScrollPositionRight.bind(this);
   }
@@ -56,40 +56,20 @@ export default class Dates extends Component {
     });
   }
 
-  // handleInput(event) {
-  //   const { name, value } = event.target;
-  //   this.setState({
-  //     [name]: value,
-  //   });
-  // }
-
   handleInput(event) {
     const { onInput } = this.props;
     onInput(event);
   }
 
-  // handleClearInput(event) {
-  //   event.preventDefault();
-  //   const { name } = event.target;
-  //   this.setState({
-  //     [name]: '',
-  //   });
-  // }
+  handleSubmitInput(event) {
+    const { onSubmitInput } = this.props;
+    onSubmitInput(event);
+  }
 
   handleClearInput(event) {
     const { onClearInput } = this.props;
     onClearInput(event);
   }
-
-  // handleClearAllInput(event) {
-  //   event.preventDefault();
-  //   this.setState({
-  //     formFocus: 'checkIn',
-  //     fieldFocus: '',
-  //     checkInInput: '',
-  //     checkOutInput: '',
-  //   });
-  // }
 
   handleClearAllInput(event) {
     const { onClearAllInput } = this.props;
@@ -98,6 +78,10 @@ export default class Dates extends Component {
       formFocus: 'checkIn',
       fieldFocus: '',
     });
+  }
+
+  focusCheckOutInputField() {
+    this.refs.dateInputCheckOut.focusInputField();
   }
 
   moveScrollPositionLeft() {
@@ -122,8 +106,6 @@ export default class Dates extends Component {
     const {
       formFocus,
       fieldFocus,
-      // checkInInput,
-      // checkOutInput,
       scrollPosition,
     } = this.state;
     const {
@@ -292,8 +274,10 @@ export default class Dates extends Component {
                       fieldFocus={fieldFocus}
                       input={checkInInput}
                       onInput={this.handleInput}
+                      onSubmitInput={this.handleSubmitInput}
                       onClear={this.handleClearInput}
                       onMaximizeDates={this.handleMaximizeDates}
+                      tabIndexValue={1}
                     />
                   </div>
                 </div>
@@ -303,6 +287,7 @@ export default class Dates extends Component {
                     : styles.checkOutInputUnfocused}
                   >
                     <DateInput
+                      ref="dateInputCheckOut"
                       onFieldFocus={this.handleFieldFocus}
                       onFieldBlur={this.handleFieldBlur}
                       dateType="checkout"
@@ -311,8 +296,10 @@ export default class Dates extends Component {
                       fieldFocus={fieldFocus}
                       input={checkOutInput}
                       onInput={this.handleInput}
+                      onSubmitInput={this.handleSubmitInput}
                       onClear={this.handleClearInput}
                       onMaximizeDates={this.handleMaximizeDates}
+                      tabIndexValue={2}
                     />
                   </div>
                 </div>
@@ -344,6 +331,7 @@ Dates.propTypes = {
   onMinimizeDates: PropTypes.func.isRequired,
   onMaximizeDates: PropTypes.func.isRequired,
   onInput: PropTypes.func.isRequired,
+  onSubmitInput: PropTypes.func.isRequired,
   onClearInput: PropTypes.func.isRequired,
   onClearAllInput: PropTypes.func.isRequired,
   calendarUTCDates: PropTypes.arrayOf(PropTypes.object).isRequired,

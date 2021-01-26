@@ -8,6 +8,11 @@ export default class DateInput extends Component {
   constructor(props) {
     super(props);
     this.state = {};
+    this.focusInputField = this.focusInputField.bind(this);
+  }
+
+  focusInputField() {
+    this.refs.inputField.focus();
   }
 
   render() {
@@ -20,8 +25,10 @@ export default class DateInput extends Component {
       fieldFocus,
       input,
       onInput,
+      onSubmitInput,
       onClear,
       onMaximizeDates,
+      tabIndexValue,
     } = this.props;
 
     const dateTypeWithoutHyphen = dateType.indexOf('-') > -1
@@ -54,6 +61,7 @@ export default class DateInput extends Component {
           className={styles.inputForm}
           name={formAndFieldName}
           onReset={onClear}
+          onSubmit={onSubmitInput}
           onFocus={onFieldFocus}
           onBlur={onFieldBlur}
         >
@@ -67,6 +75,7 @@ export default class DateInput extends Component {
               {labelText}
             </div>
             <input
+              ref="inputField"
               className={DatesMaximized
                 ? styles.inputFieldDatesMaximized
                 : styles.inputFieldDatesMinimized}
@@ -75,9 +84,16 @@ export default class DateInput extends Component {
               id={fieldId}
               value={input}
               onChange={onInput}
+              onBlur={onSubmitInput}
+              // onKeyDown={(event) => {
+              //   if (event.key === 'Tab') {
+              //     onSubmitInput(event);
+              //   }
+              // }}
               placeholder={fieldFocus === formAndFieldFocusValue && DatesMaximized
                 ? 'MM/DD/YYYY'
                 : 'Add date'}
+              tabIndex={tabIndexValue}
             />
           </label>
           {input !== '' ? <input className={styles.inputClear} type="reset" value="×" /> : null}
@@ -96,6 +112,8 @@ DateInput.propTypes = {
   fieldFocus: PropTypes.string.isRequired,
   input: PropTypes.string.isRequired,
   onInput: PropTypes.func.isRequired,
+  onSubmitInput: PropTypes.func.isRequired,
   onClear: PropTypes.func.isRequired,
   onMaximizeDates: PropTypes.func.isRequired,
+  tabIndexValue: PropTypes.number.isRequired,
 };
