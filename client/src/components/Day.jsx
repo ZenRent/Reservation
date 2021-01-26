@@ -40,6 +40,12 @@ const Day = ({
           {date.getDate()}
         </div>
       );
+    } else if (day.status === 'afterBookedDate') {
+      dayDisplay = (
+        <div className={styles.pastDayBlock}>
+          {date.getDate()}
+        </div>
+      );
     } else if (day.status === 'checkInDateOnly') {
       dayDisplay = (
         <div className={styles.checkInDayBlock}>

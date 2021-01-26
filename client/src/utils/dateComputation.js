@@ -65,7 +65,12 @@ const dateComp = {
           isInCurrentMonth = true;
         }
         if (isInCurrentMonth) {
-          currentUTCDateData = this.addStatus(currentUTCDateData, checkInDate, checkOutDate);
+          currentUTCDateData = this.addStatus(
+            currentUTCDateData,
+            checkInDate,
+            checkOutDate,
+            calendarUTCDates,
+          );
           monthUTCDatesWithStatus.push(currentUTCDateData);
           if (currentUTCDate.getMonth() !== nextUTCDate.getMonth()) {
             break;
@@ -92,7 +97,7 @@ const dateComp = {
     return UTCDate;
   },
 
-  addStatus(currentUTCDateData, checkInDate, checkOutDate) {
+  addStatus(currentUTCDateData, checkInDate, checkOutDate, calendarUTCDates) {
     const currentUTCDate = new Date(currentUTCDateData.date);
     const currentUTCDateDataWithStatus = {};
     Object.assign(currentUTCDateDataWithStatus, currentUTCDateData);
@@ -100,7 +105,11 @@ const dateComp = {
     const checkOutDateDetail = this.getDateDetail(checkOutDate);
     if (this.checkIfBeforeCheckIn(currentUTCDate, checkInDateDetail)) {
       currentUTCDateDataWithStatus.status = 'beforeCheckInDate';
-    } else if (this.checkDateMatch(currentUTCDate, checkInDateDetail) && checkOutDate.length >= 8) {
+    } else if (checkInDate.length >= 8
+      && this.checkIfAfterBooked(currentUTCDate, checkInDateDetail, calendarUTCDates)) {
+      currentUTCDateDataWithStatus.status = 'afterBookedDate';
+    } else if (this.checkDateMatch(currentUTCDate, checkInDateDetail)
+      && checkOutDate.length >= 8) {
       currentUTCDateDataWithStatus.status = 'checkInDateWithDateRange';
     } else if (this.checkDateMatch(currentUTCDate, checkInDateDetail)) {
       currentUTCDateDataWithStatus.status = 'checkInDateOnly';
@@ -126,23 +135,57 @@ const dateComp = {
     return { year: '1', month: '1', day: '1' };
   },
 
-  checkIfBeforeCheckIn(currentUTCDate, checkInDateDetail) {
-    const checkInDate = new Date(Date.UTC(
-      Number(checkInDateDetail.year),
-      (Number(checkInDateDetail.month) - 1),
-      Number(checkInDateDetail.day),
+  convertDateDetailToDateObjZero(dateDetail) {
+    const date = new Date(Date.UTC(
+      Number(dateDetail.year),
+      (Number(dateDetail.month) - 1),
+      Number(dateDetail.day),
       0, 0, 0, 0,
     ));
-    const currentUTCDateZero = new Date(currentUTCDate);
-    currentUTCDateZero.setHours(0, 0, 0, 0);
+    return date;
+  },
+
+  getUTCDateWithZeroHours(UTCDate) {
+    const UTCDateZero = new Date(UTCDate);
+    UTCDateZero.setHours(0, 0, 0, 0);
+    return UTCDateZero;
+  },
+
+  checkIfBeforeCheckIn(currentUTCDate, checkInDateDetail) {
+    const checkInDate = this.convertDateDetailToDateObjZero(checkInDateDetail);
+    // const checkInDate = new Date(Date.UTC(
+    //   Number(checkInDateDetail.year),
+    //   (Number(checkInDateDetail.month) - 1),
+    //   Number(checkInDateDetail.day),
+    //   0, 0, 0, 0,
+    // ));
+    const currentUTCDateZero = this.getUTCDateWithZeroHours(currentUTCDate);
+    // const currentUTCDateZero = new Date(currentUTCDate);
+    // currentUTCDateZero.setHours(0, 0, 0, 0);
     return currentUTCDateZero < checkInDate;
-    // const currentYear = currentUTCDate.getFullYear();
-    // const currentMonth = currentUTCDate.getMonth() + 1;
-    // const currentDay = currentUTCDate.getDate();
-    // const year = currentYear <= Number(checkInDateDetail.year);
-    // const month = currentMonth <= Number(checkInDateDetail.month);
-    // const day = currentDay < Number(checkInDateDetail.day);
-    // return year && month && day;
+  },
+
+  checkIfAfterBooked(currentUTCDate, checkInDateDetail, calendarUTCDates) {
+    const currentUTCDateZero = this.getUTCDateWithZeroHours(currentUTCDate);
+    const checkInDateZero = this.convertDateDetailToDateObjZero(checkInDateDetail);
+    if (currentUTCDateZero < checkInDateZero) {
+      return false;
+    }
+    let nextBookedDateNotFound = true;
+    let increment = 0;
+    let nextBookedDateZero;
+    while (nextBookedDateNotFound) {
+      if (calendarUTCDates[increment].isBooked) {
+        const bookedUTCDate = new Date(calendarUTCDates[increment].date);
+        const bookedUTCDateZero = this.getUTCDateWithZeroHours(bookedUTCDate);
+        if (bookedUTCDateZero > checkInDateZero) {
+          nextBookedDateNotFound = false;
+          nextBookedDateZero = bookedUTCDateZero;
+        }
+      }
+      increment += 1;
+    }
+    return currentUTCDateZero > nextBookedDateZero;
   },
 
   checkDateMatch(currentUTCDate, dateDetail) {
@@ -153,31 +196,24 @@ const dateComp = {
   },
 
   checkDateRange(currentUTCDate, checkInDateDetail, checkOutDateDetail) {
-    const checkInDate = new Date(Date.UTC(
-      Number(checkInDateDetail.year),
-      (Number(checkInDateDetail.month) - 1),
-      Number(checkInDateDetail.day),
-      0, 0, 0, 0,
-    ));
-    const checkOutDate = new Date(Date.UTC(
-      Number(checkOutDateDetail.year),
-      (Number(checkOutDateDetail.month) - 1),
-      Number(checkOutDateDetail.day),
-      0, 0, 0, 0,
-    ));
-    const currentUTCDateZero = new Date(currentUTCDate);
-    currentUTCDateZero.setHours(0, 0, 0, 0);
+    const checkInDate = this.convertDateDetailToDateObjZero(checkInDateDetail);
+    // const checkInDate = new Date(Date.UTC(
+    //   Number(checkInDateDetail.year),
+    //   (Number(checkInDateDetail.month) - 1),
+    //   Number(checkInDateDetail.day),
+    //   0, 0, 0, 0,
+    // ));
+    const checkOutDate = this.convertDateDetailToDateObjZero(checkOutDateDetail);
+    // const checkOutDate = new Date(Date.UTC(
+    //   Number(checkOutDateDetail.year),
+    //   (Number(checkOutDateDetail.month) - 1),
+    //   Number(checkOutDateDetail.day),
+    //   0, 0, 0, 0,
+    // ));
+    const currentUTCDateZero = this.getUTCDateWithZeroHours(currentUTCDate);
+    // const currentUTCDateZero = new Date(currentUTCDate);
+    // currentUTCDateZero.setHours(0, 0, 0, 0);
     return currentUTCDateZero > checkInDate && currentUTCDateZero < checkOutDate;
-    // const currentYear = currentUTCDate.getFullYear();
-    // const currentMonth = currentUTCDate.getMonth() + 1;
-    // const currentDay = currentUTCDate.getDate();
-    // const year = currentYear >= Number(checkInDateDetail.year)
-    //   && currentYear <= Number(checkOutDateDetail.year);
-    // const month = currentMonth >= Number(checkInDateDetail.month)
-    //   && currentMonth <= Number(checkOutDateDetail.month);
-    // const day = currentDay > Number(checkInDateDetail.day)
-    //   && currentDay < Number(checkOutDateDetail.day);
-    // return year && month && day;
   },
 
   getWeeksAndDays(monthUTCDates) {
