@@ -5,12 +5,14 @@ const controller = require('./controller');
 const app = express();
 const port = '3002';
 
+app.use('/', express.static(path.join(__dirname, '../client/public')));
 app.use('/:id', express.static(path.join(__dirname, '../client/public')));
 
-app.get('/', (req, res) => {
-  res.redirect('/1');
-});
+// app.get('/', (req, res) => {
+//   res.redirect('/1');
+// });
 
+app.get('/api/listings', controller.getData);
 app.get('/api/listings/:id', controller.getData);
 
 app.listen(port, (err) => {

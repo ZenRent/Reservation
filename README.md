@@ -30,9 +30,15 @@
 
 #### Spec
 
-* Endpoint: `/api/listings/<id>`
-* Method: GET
-* Route parameter: Pass target listing's ID number
+* Endpoint 1: `/api/listings`
+  * Method: GET
+  * Response: Data for a random listing
+* Endpoint 2: `/api/listings/<id>`
+  * Method: GET
+  * Route parameter: Pass target listing's ID number
+  * Response: Data for target listing
+* Both endpoints respond with the same data in the same format
+  * The only difference is retrieving data for a random listing vs. for a specified listing
 
 #### Example
 
@@ -175,4 +181,7 @@ And build the client-side application bundle:
 $ npm run react-dev
 ```
 
-Then open `http://localhost:3003/<id>` in a browser, where `<id>` is the ID for a listing (by default, any number between `1` and `100`, inclusive).
+Then open either `http://localhost:3002` or `http://localhost:3002/<id>` in a browser, where `<id>` is the ID for a listing (by default, any number between `1` and `100`, inclusive).
+
+* `http://localhost:3002` will display data for a random listing
+* `http://localhost:3002/<id>` will display data for the specified listing ID
