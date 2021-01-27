@@ -14,7 +14,7 @@ export default class Reservation extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      listingId: window.location.pathname.match(/\/(\d+)\//)[1],
+      listingId: null,
       nightlyRate: 0,
       averageRating: 0,
       reviewCount: 0,
@@ -45,12 +45,15 @@ export default class Reservation extends Component {
     this.handleClearInput = this.handleClearInput.bind(this);
     this.handleClearAllInput = this.handleClearAllInput.bind(this);
     this.handleClickDate = this.handleClickDate.bind(this);
+    this.getListingId = this.getListingId.bind(this);
     this.getData = this.getData.bind(this);
   }
 
   componentDidMount() {
-    const { listingId } = this.state;
-    this.getData(listingId);
+    this.getListingId(() => {
+      const { listingId } = this.state;
+      this.getData(listingId);
+    });
   }
 
   handleMinimizeDates() {
@@ -161,9 +164,21 @@ export default class Reservation extends Component {
     }
   }
 
+  getListingId(callback) {
+    if (window.location.pathname.match(/\/(\d+)\//)) {
+      this.setState({
+        listingId: window.location.pathname.match(/\/(\d+)\//)[1],
+      }, callback);
+    } else {
+      this.setState({
+        listingId: null,
+      }, callback);
+    }
+  }
+
   getData(id) {
     $.ajax({
-      url: `http://localhost:3002/api/listings/${id}`,
+      url: id ? `http://localhost:3002/api/listings/${id}` : 'http://localhost:3002/api/listings',
       method: 'GET',
       success: (data) => {
         const {
