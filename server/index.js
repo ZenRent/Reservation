@@ -3,7 +3,7 @@ const path = require('path');
 const controller = require('./controller');
 
 const app = express();
-const port = '3003';
+const port = '3002';
 
 app.use('/:id', express.static(path.join(__dirname, '../client/public')));
 

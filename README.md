@@ -17,6 +17,7 @@
   * [Back-end Configuration](#Back-end-Configuration)
     * [Server](#Server)
     * [Database](#Database)
+  * [Front-end Configuration](#Front-end-Configuration)
 * [Requirements](#Requirements)
 * [Development](#Development)
     * [Installing Dependencies](#Installing-Dependencies)
@@ -119,7 +120,7 @@ This application currently uses the following configuration.
 
 #### Server
 
-* Port: `3003`
+* Port: `3002`
 
 #### Database
 
@@ -128,6 +129,10 @@ This application currently uses the following configuration.
 * Database name: `zenrent`
 * Model name: `Listing`
 * Collection name: `listings`
+
+### Front-end Configuration
+
+* HTML `div` ID for mounting application: `Reservation`
 
 ## Requirements
 
