@@ -1,10 +1,12 @@
 const express = require('express');
+const cors = require('cors');
 const path = require('path');
 const controller = require('./controller');
 
 const app = express();
 const port = '3002';
 
+app.use(cors());
 app.use('/', express.static(path.join(__dirname, '../client/public')));
 app.use('/:id', express.static(path.join(__dirname, '../client/public')));
 
