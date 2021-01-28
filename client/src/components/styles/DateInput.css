@@ -1,4 +1,21 @@
 .dateInputContainerDatesMinimized,
+.dateInputContainerDatesMaximized,
+.dateInputContainerDatesMinimized,
+.dateInputLabel,
+.inputForm,
+.inputLabelDatesMinimized,
+.inputLabelDatesMaximized,
+.inputLabelDatesMinimized,
+.inputFieldDatesMinimized,
+.inputFieldDatesMaximized,
+.inputFieldDatesMinimized,
+.inputClear {
+  box-sizing: border-box;
+  font-family: 'RedHatDisplay-Regular', 'Helvetica Neue', Arial, sans-serif;
+  color: rgb(34, 34, 34);
+}
+
+.dateInputContainerDatesMinimized,
 .dateInputContainerDatesMaximized {
   width: 157px;
   height: 56px;

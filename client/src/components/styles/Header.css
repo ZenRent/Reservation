@@ -1,3 +1,21 @@
+.star,
+.nightlyPriceAndRatingContainer,
+.nightlyPrice,
+.perNight,
+.ratingDisplay,
+.averageRating,
+.reviewCount,
+.calendarIcon,
+.earliestAvailabilityContainer,
+.earliestAvailability,
+.earliestAvailabilityDate,
+.checkInDateDatesMinimized {
+  box-sizing: border-box;
+  font-family: 'RedHatDisplay-Regular', 'Helvetica Neue', Arial, sans-serif;
+  color: rgb(34, 34, 34);
+}
+
+
 .star {
   color: #ff385c;
   font-size: 12px;

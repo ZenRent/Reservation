@@ -17,9 +17,3 @@
   font-family: 'RedHatDisplay-Black';
   src: url('./fonts/RedHatDisplay-Black.ttf')
 }
-
-* {
-  box-sizing: border-box;
-  font-family: 'RedHatDisplay-Regular', 'Helvetica Neue', Arial, sans-serif;
-  color: rgb(34, 34, 34);
-}
