@@ -73,7 +73,8 @@
   width: 660px;
   height: 504px;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 16px;
-  z-index: 30;
+  /* z-index: 30; */
+  z-index: 16;
 }
 
 .minimizeDatesLayerEnabled {
@@ -85,7 +86,8 @@
   margin: 0;
   background: transparent;
   outline: 0;
-  z-index: 20;
+  /* z-index: 20; */
+  z-index: 15;
 }
 
 .minimizeDatesLayerDisabled {
@@ -239,7 +241,8 @@
   justify-content: space-between;
   align-items: center;
   width: 602px;
-  z-index: 50;
+  /* z-index: 50; */
+  z-index: 19;
 }
 
 .calendarMovementButtonIndividualContainer {
