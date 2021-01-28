@@ -6,6 +6,29 @@
 .checkInDayBlock,
 .checkOutDayBlock,
 .inBetweenDayBlock,
+.beforeBookedDayBlock,
+.pastDayBlock,
+.alreadyBookedDayBlock,
+.checkInDayBlock,
+.checkOutDayBlock,
+.checkInDayBlockBackground,
+.checkOutDayBlockBackground,
+.inBetweenDayBlockBackground,
+.beforeBookedDayBlock,
+.dayLabelBlock {
+  box-sizing: border-box;
+  font-family: 'RedHatDisplay-Regular', 'Helvetica Neue', Arial, sans-serif;
+  color: rgb(34, 34, 34);
+}
+
+.dayBlock,
+.emptyDayBlock,
+.pastDayBlock,
+.alreadyBookedDayBlock,
+.dayLabelBlock,
+.checkInDayBlock,
+.checkOutDayBlock,
+.inBetweenDayBlock,
 .beforeBookedDayBlock {
   display: inline-block;
   width: 40px;
