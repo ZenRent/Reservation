@@ -36,6 +36,7 @@ export default class Reservation extends Component {
       // GuestsMaximized: false,
       // GuestsFocused: false,
       DatesMaximized: false,
+      scrollPosition: 0,
     };
     this.handleMinimizeDates = this.handleMinimizeDates.bind(this);
     this.handleMaximizeDates = this.handleMaximizeDates.bind(this);
@@ -54,6 +55,22 @@ export default class Reservation extends Component {
       const { listingId } = this.state;
       this.getData(listingId);
     });
+    const debounce = (fn) => {
+      let frame;
+      return (...params) => {
+        if (frame) {
+          cancelAnimationFrame(frame);
+        }
+        frame = requestAnimationFrame(() => {
+          fn(...params);
+        });
+      };
+    };
+    const storeScroll = () => {
+      this.setState({ scrollPosition: window.scrollY });
+    };
+    document.addEventListener('scroll', debounce(storeScroll), { passive: true });
+    storeScroll();
   }
 
   handleMinimizeDates() {
@@ -228,6 +245,7 @@ export default class Reservation extends Component {
       checkInInput,
       checkOutInput,
       DatesMaximized,
+      scrollPosition,
     } = this.state;
     const checkOrReserveButton = checkInDate === '' || checkOutDate === ''
       ? (
@@ -248,29 +266,19 @@ export default class Reservation extends Component {
           Reserve
         </button>
       );
-
-    // const debounce = (fn) => {
-    //   let frame;
-    //   return (...params) => {
-    //     if (frame) {
-    //       cancelAnimationFrame(frame);
-    //     }
-    //     frame = requestAnimationFrame(() => {
-    //       fn(...params);
-    //     });
-    //   };
-    // };
-    // let storedScroll;
-    // const storeScroll = () => {
-    //   storedScroll = window.scrollY;
-    //   document.documentElement.dataset.scroll = window.scrollY;
-    // };
-    // document.addEventListener('scroll', debounce(storeScroll), { passive: true });
-    // storeScroll();
+    let reservationContainerStyle;
+    if (scrollPosition < 600) {
+      reservationContainerStyle = 'ReservationContainer';
+    } else if (scrollPosition < 2050) {
+      reservationContainerStyle = 'ReservationContainerScrolling';
+    } else {
+      reservationContainerStyle = 'ReservationContainerScrollingStopped';
+    }
 
     return (
       <div
-        className={styles.ReservationContainer}
+        // className={styles.ReservationContainer}
+        className={styles[reservationContainerStyle]}
       >
         <Header
           nightlyRate={nightlyRate}

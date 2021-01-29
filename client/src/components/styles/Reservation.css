@@ -1,11 +1,15 @@
 .ReservationContainer,
+.ReservationContainerScrolling,
+.ReservationContainerScrollingStopped,
 .reserveButton {
   box-sizing: border-box;
   font-family: 'RedHatDisplay-Regular', 'Helvetica Neue', Arial, sans-serif;
   color: rgb(34, 34, 34);
 }
 
-.ReservationContainer {
+.ReservationContainer,
+.ReservationContainerScrolling,
+.ReservationContainerScrollingStopped {
   /* position: absolute; */
   /* top: 80px; */
   /* right: 80px; */
@@ -17,6 +21,16 @@
   width: 367px;
   background: rgb(255, 255, 255);
   z-index: 5;
+}
+
+.ReservationContainerScrolling {
+  position: fixed;
+  top: 40px;
+}
+
+.ReservationContainerScrollingStopped {
+  position: absolute;
+  top: 1450px;
 }
 
 .reserveButton {
