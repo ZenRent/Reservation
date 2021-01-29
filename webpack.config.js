@@ -15,13 +15,8 @@ module.exports = {
         test: /\.jsx$/,
         use: 'babel-loader',
       },
-      // {
-      //   test: /\.css$/,
-      //   use: ['style-loader', 'css-loader'],
-      // },
       {
         test: /\.css$/i,
-        // exclude: /node_modules/,
         use: [
           'style-loader',
           {
@@ -40,7 +35,6 @@ module.exports = {
       },
     ],
   },
-  mode: 'development',
   resolve: {
     extensions: ['.jsx', '.js'],
   },
