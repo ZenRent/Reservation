@@ -1,14 +1,17 @@
 {
   "name": "zenrent-reservation",
   "description": "Reservation module for ZenRent application (built-from-scratch clone of existing application)",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/ZenRent/reservation.git"
   },
+  "author": "Errol Cleary",
+  "homepage": "https://github.com/ZenRent/reservation#readme",
   "scripts": {
-    "react-dev": "webpack -w",
-    "server-dev": "nodemon ./server/index.js",
+    "start": "nodemon ./server/index.js",
+    "build": "webpack --mode=production",
+    "react-dev": "webpack -w --mode=development",
     "seed-db": "node ./database/seedDatabase.js",
     "erase-db": "node ./database/eraseDatabase.js",
     "test": "jest",

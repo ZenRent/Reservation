@@ -140,13 +140,6 @@ This application currently uses the following configuration.
 
 * HTML `div` ID for mounting application: `Reservation`
 
-## Requirements
-
-An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
-
-- Node 6.13.0
-- etc
-
 ## Development
 
 ### Installing Dependencies
@@ -172,7 +165,7 @@ $ npm run seed-db
 From within the root directory, start the server:
 
 ```sh
-$ npm run server-dev
+$ npm start
 ```
 
 And build the client-side application bundle:
