@@ -18,7 +18,6 @@
     * [Server](#Server)
     * [Database](#Database)
   * [Front-end Configuration](#Front-end-Configuration)
-* [Requirements](#Requirements)
 * [Development](#Development)
     * [Installing Dependencies](#Installing-Dependencies)
     * [Reseeding Database](#Reseeding-Database)
