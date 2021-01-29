@@ -39,7 +39,6 @@
   line-height: 36px;
   border: 1.5px solid transparent;
   position: relative;
-  /* z-index: 32; */
   z-index: 18;
 }
 
@@ -70,7 +69,6 @@
   background: rgb(247, 247, 247);
   margin-top: 1px;
   margin-left: 20px;
-  /* z-index: 31; */
   z-index: 17;
 }
 
@@ -81,7 +79,6 @@
   position: absolute;
   background: rgb(247, 247, 247);
   margin-top: 1px;
-  /* z-index: 31; */
   z-index: 17;
 }
 
@@ -92,7 +89,6 @@
   position: absolute;
   background: rgb(247, 247, 247);
   margin-top: 1px;
-  /* z-index: 31; */
   z-index: 17;
 }
 
