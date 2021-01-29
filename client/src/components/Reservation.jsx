@@ -277,7 +277,6 @@ export default class Reservation extends Component {
 
     return (
       <div
-        // className={styles.ReservationContainer}
         className={styles[reservationContainerStyle]}
       >
         <Header
