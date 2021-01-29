@@ -60,9 +60,9 @@
 
 .DatesContainerMaximized {
   display: inline-block;
-  position: absolute;
-  top: 71px;
-  right: -10px;
+  position: relative;
+  top: -24px;
+  right: 309px;
   outline: none;
   margin-top: 14px;
   border: 0;
@@ -73,7 +73,7 @@
   width: 660px;
   height: 504px;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 16px;
-  z-index: 30;
+  z-index: 16;
 }
 
 .minimizeDatesLayerEnabled {
@@ -85,7 +85,7 @@
   margin: 0;
   background: transparent;
   outline: 0;
-  z-index: 20;
+  z-index: 15;
 }
 
 .minimizeDatesLayerDisabled {
@@ -239,7 +239,7 @@
   justify-content: space-between;
   align-items: center;
   width: 602px;
-  z-index: 50;
+  z-index: 19;
 }
 
 .calendarMovementButtonIndividualContainer {

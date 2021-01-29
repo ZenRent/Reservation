@@ -6,20 +6,22 @@
 }
 
 .ReservationContainer {
-  position: absolute;
-  top: 80px;
-  right: 80px;
+  /* position: absolute; */
+  /* top: 80px; */
+  /* right: 80px; */
+  margin: 30px 0 0 0;
   border: 1px solid rgb(221, 221, 221);
   border-radius: 12px;
   padding: 24px;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
   width: 367px;
-  z-index: 10;
+  background: rgb(255, 255, 255);
+  z-index: 5;
 }
 
 .reserveButton {
   margin-top: 30px;
-  color: white;
+  color: rgb(255, 255, 255);
   font-family: 'RedHatDisplay-Medium', 'Helvetica Neue', Arial, sans-serif;
   font-size: 16px;
   width: 322px;
