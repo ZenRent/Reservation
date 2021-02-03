@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-// const seedDb = require('./seedDatabase.js');
 
 const port = '27017';
 const uri = `mongodb://${process.env.MONGO_HOST}:${port}/${process.env.MONGO_DATABASE}`;
@@ -18,9 +17,6 @@ mongoose.connect(uri, options, (err) => {
     connection = mongoose.connection;
     const { _connectionString } = connection;
     console.log(`Connected to MongoDB database ${_connectionString}`);
-    // if (process.env.SEED_DB && process.env.SEED_DB === 'yes') {
-    //   seedDb.initiateSeeding();
-    // }
     connection.on('error', (err) => {
       console.error(err);
     });
