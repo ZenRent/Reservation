@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  app:
+    container_name: reservation_app
+    build: .
+    ports:
+      - '3002:3002'
+    depends_on:
+      - 'fruitloops'
+    restart: on-failure
+    environment:
+      MONGO_HOST: fruitloops
+      MONGO_DATABASE: zenrent
+
+  fruitloops:
+    container_name: reservation_database
+    image: mongo:4.4.3
+    ports:
+      - '27017:27017'

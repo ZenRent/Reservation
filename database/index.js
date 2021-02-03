@@ -1,9 +1,8 @@
 const mongoose = require('mongoose');
+// const seedDb = require('./seedDatabase.js');
 
-const host = 'localhost';
 const port = '27017';
-const database = 'zenrent';
-const uri = `mongodb://${host}:${port}/${database}`;
+const uri = `mongodb://${process.env.MONGO_HOST}:${port}/${process.env.MONGO_DATABASE}`;
 const options = {
   useNewUrlParser: true,
   useCreateIndex: true,
@@ -19,6 +18,9 @@ mongoose.connect(uri, options, (err) => {
     connection = mongoose.connection;
     const { _connectionString } = connection;
     console.log(`Connected to MongoDB database ${_connectionString}`);
+    // if (process.env.SEED_DB && process.env.SEED_DB === 'yes') {
+    //   seedDb.initiateSeeding();
+    // }
     connection.on('error', (err) => {
       console.error(err);
     });

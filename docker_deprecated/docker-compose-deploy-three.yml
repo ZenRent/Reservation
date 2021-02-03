@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  mongo:
+    container_name: mongo
+    image: errolcleary/zenrent-reservation:database
+    ports:
+      - '27017:27017'
+
+  app:
+    container_name: reservation
+    image: errolcleary/zenrent-reservation:version3
+    ports:
+      - '80:3002'
+    depends_on:
+      - mongo
+    environment:
+      dbhost: mongo
+    restart: on-failure
+    command: sh -c 'npm run dock'

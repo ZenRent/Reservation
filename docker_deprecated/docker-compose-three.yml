@@ -1,0 +1,18 @@
+version: "3"
+services:
+ app:
+   container_name: reservation
+   restart: on-failure
+   build: .
+   ports:
+     - 3002:3002
+   links:
+     - mongo
+    environment:
+      dbhost: mongo
+   command: sh -c 'npm run dock'
+ mongo:
+   container_name: mongo
+   image: mongo
+   ports:
+     - "27017:27017"
