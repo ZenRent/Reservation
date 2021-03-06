@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+  app:
+    container_name: reservation_app
+    image: errolcleary/zenrent-reservation:v7
+    ports:
+      - '80:3002'
+    restart: on-failure
+    environment:
+      MONGO_HOST: fruitloops
+      MONGO_DATABASE: zenrent
+
+  fruitloops:
+    container_name: reservation_database
+    image: mongo:4.4.3
+    ports:
+      - '27017:27017'

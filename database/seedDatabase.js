@@ -1,4 +1,3 @@
-const database = require('./index.js');
 const { Listing } = require('./Listing.js');
 
 const docsToCreate = 100;
@@ -99,23 +98,9 @@ const getCalendarUTCDates = () => {
 
 let recordsCreated = 0;
 
-const addDocument = (mongoDoc, callback) => {
-  Listing.create(mongoDoc, (err, res) => {
-    if (err) {
-      console.error(err);
-    } else {
-      recordsCreated += 1;
-      console.log(`Records created: ${recordsCreated}`);
-      if (callback) {
-        setTimeout(callback, 500);
-      }
-    }
-  });
-};
-
-for (let i = 0; i < docsToCreate; i += 1) {
+const createRecord = () => {
   const mongoDoc = {
-    listingId: i + 1,
+    listingId: recordsCreated + 1,
     nightlyRate: getRandomValue(upperLimits.nightlyRate),
     averageRating: (getRandomValue(upperLimits.averageRating) / 100),
     reviewCount: getRandomValue(upperLimits.reviewCount),
@@ -129,13 +114,26 @@ for (let i = 0; i < docsToCreate; i += 1) {
     discountWeekly20: getRandomValue(upperLimits.discountWeekly20),
     discountMonthly20: getRandomValue(upperLimits.discountMonthly20),
   };
-  let callback;
-  if (i === docsToCreate - 1) {
-    callback = () => {
-      process.exit();
-    };
-  }
-  addDocument(mongoDoc, callback);
-}
+  return mongoDoc;
+};
+
+const addDocument = (mongoDoc) => {
+  Listing.create(mongoDoc, (err) => {
+    if (err) {
+      console.error(err);
+      setTimeout(() => process.exit(), 500);
+    } else {
+      recordsCreated += 1;
+      console.log(`Records created: ${recordsCreated}`);
+      if (recordsCreated < docsToCreate) {
+        addDocument(createRecord());
+      } else {
+        setTimeout(() => process.exit(), 500);
+      }
+    }
+  });
+};
+
+addDocument(createRecord());
 
 console.log('\n-------- Synchronous execution complete --------\n');

@@ -195,7 +195,7 @@ export default class Reservation extends Component {
 
   getData(id) {
     $.ajax({
-      url: id ? `http://localhost:3002/api/listings/${id}` : 'http://localhost:3002/api/listings',
+      url: id ? `/api/listings/${id}` : '/api/listings',
       method: 'GET',
       success: (data) => {
         const {

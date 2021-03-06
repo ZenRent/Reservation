@@ -7,15 +7,17 @@
     "url": "https://github.com/ZenRent/reservation.git"
   },
   "author": "Errol Cleary",
+  "license": "ISC",
   "homepage": "https://github.com/ZenRent/reservation#readme",
   "scripts": {
-    "start": "nodemon ./server/index.js",
+    "start": "MONGO_HOST=localhost MONGO_DATABASE=zenrent nodemon ./server/index.js",
     "build": "webpack --mode=production",
     "react-dev": "webpack -w --mode=development",
     "seed-db": "node ./database/seedDatabase.js",
     "erase-db": "node ./database/eraseDatabase.js",
     "test": "jest",
-    "test-coverage": "jest --coverage"
+    "test-coverage": "jest --coverage",
+    "docker-setup": "node database/index.js && node server/index.js"
   },
   "dependencies": {
     "@wojtekmaj/enzyme-adapter-react-17": "^0.4.1",

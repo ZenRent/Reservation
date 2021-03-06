@@ -1,9 +1,7 @@
 const mongoose = require('mongoose');
 
-const host = 'localhost';
 const port = '27017';
-const database = 'zenrent';
-const uri = `mongodb://${host}:${port}/${database}`;
+const uri = `mongodb://${process.env.MONGO_HOST}:${port}/${process.env.MONGO_DATABASE}`;
 const options = {
   useNewUrlParser: true,
   useCreateIndex: true,
