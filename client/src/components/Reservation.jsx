@@ -229,7 +229,7 @@ export default class Reservation extends Component {
           calendarUTCDates,
         });
       },
-      error: console.error,
+      error: console.error, // eslint-disable-line
     });
   }
 
