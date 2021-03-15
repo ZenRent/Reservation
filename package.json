@@ -1,6 +1,6 @@
 {
   "name": "zenrent-reservation",
-  "description": "Reservation module for ZenRent application (built-from-scratch clone of existing application)",
+  "description": "Reservation service for ZenRent application",
   "version": "1.0.0",
   "repository": {
     "type": "git",
